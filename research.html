@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research · Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f9f6f0;
+      --ink: #1a1714;
+      --warm-mid: #5c5147;
+      --accent: #8b4513;
+      --accent-light: #c8814a;
+      --border: #ddd5c8;
+      --sidebar-w: 260px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; }
+    aside { width: var(--sidebar-w); min-height: 100vh; position: fixed; top: 0; left: 0; background: var(--ink); color: var(--cream); display: flex; flex-direction: column; padding: 2.5rem 2rem; z-index: 10; }
+    aside .site-name { font-family: 'EB Garamond', serif; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.3; margin-bottom: 0.5rem; color: #fff; }
+    aside .site-title { font-size: 0.78rem; color: #a89e92; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2.5rem; font-weight: 300; }
+    nav { display: flex; flex-direction: column; gap: 0.2rem; }
+    nav a { text-decoration: none; font-size: 0.9rem; font-weight: 400; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--accent-light); }
+    .sidebar-footer { margin-top: auto; padding-top: 2rem; }
+    .social-links { display: flex; flex-direction: column; gap: 0.55rem; }
+    .social-links a { font-size: 0.8rem; color: #8a8078; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .social-links a:hover { color: var(--accent-light); }
+    .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+    .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
+    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 900px; animation: fadeUp 0.5s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .page-subtitle { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 2.5rem; }
+    h2 { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--accent); margin: 2.5rem 0 1rem; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+
+    .research-card { display: grid; grid-template-columns: 160px 1fr; gap: 1.4rem; padding: 1.6rem 0; border-top: 1px solid var(--border); align-items: start; }
+    .research-card:last-child { border-bottom: 1px solid var(--border); }
+    .card-thumb { width: 160px; height: 105px; object-fit: cover; border-radius: 4px; background: linear-gradient(135deg, #e8ddd4, #cfc2b4); flex-shrink: 0; }
+    .paper-title { font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 0.35rem; line-height: 1.35; }
+    .badge { display: inline-block; font-size: 0.68rem; font-weight: 500; padding: 0.1rem 0.45rem; border-radius: 3px; background: var(--accent); color: white; margin-left: 0.4rem; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; }
+    .authors { font-size: 0.83rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
+    .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.55rem; }
+    .abstract { font-size: 0.85rem; color: #5c5147; line-height: 1.65; margin-bottom: 0.65rem; }
+    .links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .links a { font-size: 0.75rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; white-space: nowrap; }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    .research-area { margin-bottom: 2.5rem; }
+    .area-intro { font-size: 0.9rem; color: var(--warm-mid); line-height: 1.7; margin-bottom: 1.2rem; max-width: 600px; }
+
+    @media (max-width: 768px) {
+      aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
+      body { flex-direction: column; }
+      main { margin-left: 0; padding: 2rem 1.5rem; }
+      .research-card { grid-template-columns: 1fr; }
+      .card-thumb { width: 100%; height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div class="site-name">Your Name</div>
+  <div class="site-title">PhD Candidate</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="research.html" class="active">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="social-links">
+      <a href="mailto:you@university.edu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://scholar.google.com" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://github.com/yourusername" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="last-updated">last updated: March 2026</div>
+  </div>
+</aside>
+
+<main>
+  <h1>Research</h1>
+  <div class="page-subtitle">My work spans [Area A], [Area B], and [Area C].</div>
+
+  <!-- Research Area 1 -->
+  <div class="research-area">
+    <h2>Research Area One</h2>
+    <div class="area-intro">
+      A short paragraph introducing this research area and why it's important.
+      What problem does it address? What is your unique angle?
+    </div>
+
+    <div class="research-card">
+      <div class="card-thumb"></div>
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="#">Paper Title for Research Area One</a>
+          <span class="badge">New</span>
+        </div>
+        <div class="authors"><strong>Your Name</strong>, Co-author One, Advisor Name</div>
+        <div class="venue">Top Conference / Journal · 2025</div>
+        <div class="abstract">
+          Describe what you did, how you did it, and what the results show. Two or three sentences.
+          Focus on the contribution and impact.
+        </div>
+        <div class="links">
+          <a href="#">paper</a>
+          <a href="#">arXiv</a>
+          <a href="#">code</a>
+          <a href="#">project page</a>
+          <a href="#">slides</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-card">
+      <div class="card-thumb"></div>
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="#">Second Paper in This Area</a>
+        </div>
+        <div class="authors"><strong>Your Name</strong>, Co-author One, Co-author Two</div>
+        <div class="venue">Workshop at Top Conference · 2024 · <em>Oral</em></div>
+        <div class="abstract">
+          Brief description of this project.
+        </div>
+        <div class="links">
+          <a href="#">paper</a>
+          <a href="#">code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Area 2 -->
+  <div class="research-area">
+    <h2>Research Area Two</h2>
+    <div class="area-intro">
+      Introduce this second research direction. How does it connect to your broader goals?
+    </div>
+
+    <div class="research-card">
+      <div class="card-thumb"></div>
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="#">Paper in Your Second Research Area</a>
+        </div>
+        <div class="authors"><strong>Your Name</strong>, Co-author, Advisor Name</div>
+        <div class="venue">Journal Name · 2024</div>
+        <div class="abstract">
+          Summary of this paper's contribution and findings.
+        </div>
+        <div class="links">
+          <a href="#">paper</a>
+          <a href="#">arXiv</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Area 3 -->
+  <div class="research-area">
+    <h2>Research Area Three</h2>
+    <div class="area-intro">
+      Introduce your third area of research here.
+    </div>
+
+    <div class="research-card">
+      <div class="card-thumb"></div>
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="#">Paper in Third Research Area</a>
+        </div>
+        <div class="authors"><strong>Your Name</strong>, Co-author</div>
+        <div class="venue">Conference · 2024</div>
+        <div class="abstract">
+          Summary of contributions.
+        </div>
+        <div class="links">
+          <a href="#">paper</a>
+          <a href="#">poster</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

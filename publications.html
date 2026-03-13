@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publications · Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --cream: #f9f6f0; --ink: #1a1714; --warm-mid: #5c5147; --accent: #8b4513; --accent-light: #c8814a; --border: #ddd5c8; --sidebar-w: 260px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; }
+    aside { width: var(--sidebar-w); min-height: 100vh; position: fixed; top: 0; left: 0; background: var(--ink); color: var(--cream); display: flex; flex-direction: column; padding: 2.5rem 2rem; z-index: 10; }
+    aside .site-name { font-family: 'EB Garamond', serif; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.3; margin-bottom: 0.5rem; color: #fff; }
+    aside .site-title { font-size: 0.78rem; color: #a89e92; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2.5rem; font-weight: 300; }
+    nav { display: flex; flex-direction: column; gap: 0.2rem; }
+    nav a { text-decoration: none; font-size: 0.9rem; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--accent-light); }
+    .sidebar-footer { margin-top: auto; padding-top: 2rem; }
+    .social-links { display: flex; flex-direction: column; gap: 0.55rem; }
+    .social-links a { font-size: 0.8rem; color: #8a8078; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .social-links a:hover { color: var(--accent-light); }
+    .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+    .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
+    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 860px; animation: fadeUp 0.5s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 0.4rem; }
+    .page-subtitle { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 2rem; }
+    .scholar-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--accent); border: 1px solid var(--border); padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 2.5rem; transition: all 0.2s; }
+    .scholar-link:hover { border-color: var(--accent); background: rgba(139,69,19,0.05); text-decoration: none; }
+
+    .year-section { margin-bottom: 2.5rem; }
+    .year-label { font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+    
+    .pub-item { padding: 1rem 0; border-bottom: 1px dashed var(--border); }
+    .pub-item:last-child { border-bottom: none; }
+    
+    .pub-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.25rem; }
+    .pub-title a { color: var(--ink); }
+    .pub-title a:hover { color: var(--accent); }
+    
+    .pub-authors { font-size: 0.83rem; color: var(--warm-mid); margin-bottom: 0.2rem; }
+    .pub-authors strong { color: var(--ink); }
+    
+    .pub-venue { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.45rem; }
+    .pub-venue em { color: var(--ink); }
+    
+    .badge { display: inline-block; font-size: 0.65rem; font-weight: 500; padding: 0.1rem 0.4rem; border-radius: 3px; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; margin-left: 0.4rem; }
+    .badge-new { background: var(--accent); color: white; }
+    .badge-oral { background: #2d6a4f; color: white; }
+    .badge-best { background: #d4a017; color: white; }
+    
+    .links { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .links a { font-size: 0.73rem; padding: 0.15rem 0.55rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    .section-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-mid); margin: 2rem 0 0.8rem; font-weight: 500; }
+
+    @media (max-width: 768px) {
+      aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
+      body { flex-direction: column; }
+      main { margin-left: 0; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div class="site-name">Your Name</div>
+  <div class="site-title">PhD Candidate</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="publications.html" class="active">Publications</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="social-links">
+      <a href="mailto:you@university.edu">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://scholar.google.com" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+        Google Scholar
+      </a>
+      <a href="https://github.com/yourusername" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="last-updated">last updated: March 2026</div>
+  </div>
+</aside>
+
+<main>
+  <h1>Publications</h1>
+  <div class="page-subtitle">* indicates equal contribution</div>
+
+  <a href="https://scholar.google.com" target="_blank" class="scholar-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+    View Google Scholar profile
+  </a>
+
+  <!-- Preprints -->
+  <div class="section-label">Preprints</div>
+  <div class="year-section">
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Your Preprint Title Here</a>
+        <span class="badge badge-new">New</span>
+      </div>
+      <div class="pub-authors"><strong>Your Name</strong>, Co-author One, Co-author Two, Advisor Name</div>
+      <div class="pub-venue"><em>arXiv</em> · 2026</div>
+      <div class="links">
+        <a href="#">arXiv</a>
+        <a href="#">code</a>
+        <a href="#">project page</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2025 -->
+  <div class="section-label">Conference & Journal Papers</div>
+  <div class="year-section">
+    <div class="year-label">2025</div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Your 2025 Paper Title</a>
+        <span class="badge badge-oral">Oral</span>
+      </div>
+      <div class="pub-authors"><strong>Your Name</strong>, Co-author One, Advisor Name</div>
+      <div class="pub-venue"><em>Top Conference (CONF 2025)</em> · Location, 2025</div>
+      <div class="links">
+        <a href="#">paper</a>
+        <a href="#">arXiv</a>
+        <a href="#">code</a>
+        <a href="#">slides</a>
+        <a href="#">poster</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Another 2025 Paper</a>
+      </div>
+      <div class="pub-authors">Co-author One, <strong>Your Name</strong>, Co-author Two, Advisor Name</div>
+      <div class="pub-venue"><em>Journal Name</em> · Vol. X, No. Y, 2025</div>
+      <div class="links">
+        <a href="#">paper</a>
+        <a href="#">arXiv</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2024 -->
+  <div class="year-section">
+    <div class="year-label">2024</div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Your 2024 Paper Title</a>
+        <span class="badge badge-best">Best Paper Award</span>
+      </div>
+      <div class="pub-authors"><strong>Your Name</strong>, Co-author, Advisor Name</div>
+      <div class="pub-venue"><em>Conference Name (CONF 2024)</em> · 2024</div>
+      <div class="links">
+        <a href="#">paper</a>
+        <a href="#">code</a>
+        <a href="#">talk</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Second 2024 Paper</a>
+      </div>
+      <div class="pub-authors"><strong>Your Name*</strong>, Co-author One*, Advisor Name</div>
+      <div class="pub-venue"><em>Workshop at Top Conference</em> · 2024</div>
+      <div class="links">
+        <a href="#">paper</a>
+        <a href="#">poster</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Third 2024 Paper</a>
+      </div>
+      <div class="pub-authors"><strong>Your Name</strong>, Co-author</div>
+      <div class="pub-venue"><em>IEEE Conference Name (CONF)</em> · 2024</div>
+      <div class="links">
+        <a href="#">paper</a>
+        <a href="#">arXiv</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2023 -->
+  <div class="year-section">
+    <div class="year-label">2023</div>
+
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="#">Your 2023 Paper Title</a>
+      </div>
+      <div class="pub-authors"><strong>Your Name</strong>, Advisor Name</div>
+      <div class="pub-venue"><em>Conference Name</em> · 2023</div>
+      <div class="links">
+        <a href="#">paper</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
