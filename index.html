@@ -73,25 +73,12 @@
       position: relative;
     }
 
-    nav a:hover, nav a.active {
-      color: #fff;
-      background: rgba(255,255,255,0.08);
-    }
+    nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--accent-light); }
 
-    nav a.active {
-      color: var(--accent-light);
-    }
+    .sidebar-footer { margin-top: auto; padding-top: 2rem; }
 
-    .sidebar-footer {
-      margin-top: auto;
-      padding-top: 2rem;
-    }
-
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
+    .social-links { display: flex; flex-direction: column; gap: 0.55rem; }
 
     .social-links a {
       font-size: 0.8rem;
@@ -103,20 +90,10 @@
       transition: color 0.2s;
     }
     .social-links a:hover { color: var(--accent-light); }
+    .social-links .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+    .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
 
-    .social-links .icon {
-      width: 16px; height: 16px;
-      opacity: 0.7;
-      flex-shrink: 0;
-    }
-
-    .last-updated {
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      color: #5a5048;
-    }
-
-    /* ── MAIN CONTENT ── */
+    /* ── MAIN ── */
     main {
       margin-left: var(--sidebar-w);
       flex: 1;
@@ -130,7 +107,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── PROFILE SECTION ── */
+    /* ── PROFILE ── */
     .profile {
       display: flex;
       gap: 2.5rem;
@@ -147,28 +124,6 @@
       object-fit: cover;
       flex-shrink: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      background: var(--border);
-      /* placeholder if no photo */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .photo-placeholder {
-      width: 160px;
-      height: 160px;
-      border-radius: 6px;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #d6cbbf 0%, #b8aa9a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--warm-mid);
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .profile-text h1 {
@@ -198,7 +153,7 @@
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── SECTION ── */
+    /* ── SECTIONS ── */
     section { margin-bottom: 3rem; }
 
     .section-header {
@@ -215,13 +170,101 @@
       color: var(--ink);
     }
 
-    .see-more {
-      font-size: 0.8rem;
-      color: var(--accent);
-      letter-spacing: 0.04em;
+    .see-more { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.04em; }
+
+    /* ── CAREER TIMELINE ── */
+    .timeline {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-top: 0.5rem;
     }
 
-    /* ── RESEARCH CARD ── */
+    /* vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 1.6rem 1.4rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    /* hollow dot — default */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.6rem;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--border);
+      transition: border-color 0.2s;
+    }
+
+    .timeline-item:hover::before { border-color: var(--accent-light); }
+
+    /* filled dot — highlighted milestones */
+    .timeline-item.highlight::before {
+      background: var(--accent);
+      border-color: var(--accent);
+      width: 13px;
+      height: 13px;
+      left: calc(-1.6rem - 1px);
+      top: 5px;
+    }
+
+    .tl-year {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .tl-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.15rem;
+    }
+
+    .tl-sub {
+      font-size: 0.82rem;
+      color: var(--warm-mid);
+      line-height: 1.55;
+    }
+
+    .tl-tag {
+      display: inline-block;
+      font-size: 0.64rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .tag-edu   { background: #e8f0e8; color: #3d5a40; }
+    .tag-work  { background: #e8ecf0; color: #2d4a5c; }
+    .tag-award { background: #f5edde; color: #7a5a20; }
+    .tag-pub   { background: #f0e8e4; color: var(--accent); }
+
+    /* ── RESEARCH CARDS ── */
     .research-card {
       display: grid;
       grid-template-columns: 140px 1fr;
@@ -229,7 +272,6 @@
       padding: 1.4rem 0;
       border-top: 1px solid var(--border);
       align-items: start;
-      transition: background 0.2s;
     }
 
     .research-card:last-child { border-bottom: 1px solid var(--border); }
@@ -251,18 +293,8 @@
       line-height: 1.35;
     }
 
-    .card-content .authors {
-      font-size: 0.82rem;
-      color: var(--warm-mid);
-      margin-bottom: 0.25rem;
-    }
-
-    .card-content .venue {
-      font-size: 0.8rem;
-      color: var(--warm-mid);
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
+    .card-content .authors { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
+    .card-content .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.5rem; }
 
     .card-content .abstract {
       font-size: 0.84rem;
@@ -284,25 +316,7 @@
       transition: all 0.2s;
       white-space: nowrap;
     }
-    .links a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* ── CONTACT ── */
-    .contact-block {
-      display: flex;
-      gap: 3rem;
-    }
-
-    .contact-block h3 {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--warm-mid);
-      margin-bottom: 0.8rem;
-    }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
@@ -330,12 +344,12 @@
 
   <div class="sidebar-footer">
     <div class="social-links">
-      <a href="mailto:ar2368[at]cam.ac.uk">
+      <a href="mailto:ar2368@cam.ac.uk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
         Email
       </a>
       <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         ORCiD
       </a>
       <a href="https://github.com/astormic" target="_blank">
@@ -348,44 +362,67 @@
 </aside>
 
 <main>
+
+  <!-- ── PROFILE ── -->
   <div class="profile">
     <img class="profile-photo" src="assets/IMG_0897.jpeg" alt="Amir Rahmani">
     <div class="profile-text">
       <h1>Amir Rahmani</h1>
       <div class="position">Research Associate · Department of Chemical Engineering and Biotechnology · University of Cambridge</div>
       <p>
-        I am a Postdoctoral Research Associate in the <a href="#">Prof. Clemens Kaminski's group</a> at the University of Cambridge. My research focuses on single-molcule microscopy techniques, at the
-        intersection of biophysics, biology, and chemistry. My research is supported by UKRI
+        I am a Postdoctoral Research Associate in
+        <a href="#">Prof. Clemens Kaminski's group</a> at the University of Cambridge.
+        My research focuses on single-molecule microscopy techniques, at the intersection of
+        biophysics, biology, and chemistry. My research is supported by UKRI.
       </p>
       <p>
-        Previously, I earned my PhD in Physics at the <a href="#">University of Leeds</a>.
-        I also received my BSc in Physics
+        Previously, I earned my PhD in Physics at the
+        <a href="https://etheses.whiterose.ac.uk/id/eprint/37929/">University of Leeds</a>,
+        and my BSc in Physics.
       </p>
       <p>
-        Outside of research, I enjoy sports such as Kickboxing, Taekwando, Running, Football, Ping Pong, Chess, Backgammon, .... 
+        Outside of research, I enjoy Kickboxing, Taekwondo, Running, Football, Ping Pong, Chess, and Backgammon.
       </p>
     </div>
   </div>
- 
-  <!-- Career Journey -->
-  <section class="timeline-section">
+
+  <!-- ── CAREER JOURNEY ── -->
+  <section>
     <div class="section-header">
       <h2>Career Journey</h2>
     </div>
- 
+
     <div class="timeline">
- 
-      <!-- CURRENT -->
+
       <div class="timeline-item highlight">
         <div class="tl-year">2025 – present</div>
         <div class="tl-title">
-          Postdoctoral Researcher / Next Role
+          Postdoctoral Research Associate
           <span class="tl-tag tag-work">Work</span>
         </div>
-        <div class="tl-sub">Institution or Company · Location</div>
+        <div class="tl-sub">
+          <a href="#">Kaminski Group</a> · Dept. of Chemical Engineering and Biotechnology, University of Cambridge · Supported by UKRI
+        </div>
       </div>
- 
-      <!-- PhD -->
+
+      <div class="timeline-item">
+        <div class="tl-year">Aug 2025</div>
+        <div class="tl-title">
+          Preprint: Single-molecule flow cytometry
+          <span class="tl-tag tag-pub">Preprint</span>
+        </div>
+        <div class="tl-sub"><em>bioRxiv</em> · with Christie, Truesdale, Thorne, Ponjavic</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="tl-year">Feb 2025</div>
+        <div class="tl-title">
+          Paper: Active remote focus stabilization in oblique plane microscopy
+          <span class="tl-tag tag-pub">Journal</span>
+        </div>
+        <div class="tl-sub"><em>Biomedical Optics Express</em> · with Nguyen, Ponjavic, Millett-Sikking, Fiolka</div>
+      </div>
+
       <div class="timeline-item highlight">
         <div class="tl-year">2021 – 2025</div>
         <div class="tl-title">
@@ -394,73 +431,41 @@
         </div>
         <div class="tl-sub">
           University of Leeds · Supervisor: <a href="#">Aleks Ponjavic</a><br>
-          Thesis: <em>Single-molecule imaging flow cytometry</em>
+          Thesis: <em><a href="https://etheses.whiterose.ac.uk/id/eprint/37929/">Single-molecule imaging flow cytometry</a></em>
         </div>
       </div>
- 
-      <!-- Key publication -->
+
       <div class="timeline-item">
-        <div class="tl-year">2025</div>
-        <div class="tl-title">
-          Paper: Single-molecule flow cytometry
-          <span class="tl-tag tag-pub">Preprint</span>
-        </div>
-        <div class="tl-sub"><em>bioRxiv</em> · with Christie, Truesdale, Thorne, Ponjavic</div>
-      </div>
- 
-      <!-- BOE publication -->
-      <div class="timeline-item">
-        <div class="tl-year">2025</div>
-        <div class="tl-title">
-          Paper: Active remote focus stabilization in oblique plane microscopy
-          <span class="tl-tag tag-pub">Journal</span>
-        </div>
-        <div class="tl-sub"><em>Biomedical Optics Express</em> · with Nguyen, Ponjavic, Millett-Sikking, Fiolka</div>
-      </div>
- 
-      <!-- Optics Express -->
-      <div class="timeline-item">
-        <div class="tl-year">2024</div>
+        <div class="tl-year">Apr 2024</div>
         <div class="tl-title">
           Paper: Astigmatism-based active focus stabilisation (PiFocus)
           <span class="tl-tag tag-pub">Journal</span>
         </div>
         <div class="tl-sub"><em>Optics Express</em> · with Cox, Achary, Ponjavic</div>
       </div>
- 
-      <!-- Conference -->
+
       <div class="timeline-item">
         <div class="tl-year">2024</div>
         <div class="tl-title">
           Conference: EMC 2024
           <span class="tl-tag tag-work">Conference</span>
         </div>
-        <div class="tl-sub">Active focus stabilisation — <em>BIO Web of Conferences</em></div>
+        <div class="tl-sub">Active focus stabilisation · <em>BIO Web of Conferences</em></div>
       </div>
- 
-      <!-- Award or Fellowship — edit to match yours -->
-      <div class="timeline-item">
-        <div class="tl-year">2021</div>
-        <div class="tl-title">
-          [Fellowship / Scholarship Name]
-          <span class="tl-tag tag-award">Award</span>
-        </div>
-        <div class="tl-sub">Awarded by [Institution] · to support PhD research</div>
-      </div>
- 
-      <!-- BSc -->
-      <div class="timeline-item">
+
+      <div class="timeline-item highlight">
         <div class="tl-year">[Year]</div>
         <div class="tl-title">
-          BSc in [Your Undergraduate Degree]
+          BSc in Physics
           <span class="tl-tag tag-edu">Education</span>
         </div>
-        <div class="tl-sub">[Undergraduate University] · [City, Country]</div>
+        <div class="tl-sub">[Your Undergraduate University] · [City, Country]</div>
       </div>
- 
+
     </div>
   </section>
-  <!-- Research Highlights -->
+
+  <!-- ── RESEARCH HIGHLIGHTS ── -->
   <section>
     <div class="section-header">
       <h2>Research Highlights</h2>
@@ -479,7 +484,7 @@
           Flow cytometry (FC) is a powerful tool for high-throughput characterisation of cell populations, yet its ensemble fluorescence detection and the autofluorescence of cells impose a sensitivity limit of ∼100-1,000 fluorophores per cell. This precludes detection of low-abundance proteins and weak signalling events with biological importance and therapeutic potential. We introduce single-molecule Flow Cytometry (smFC), integrating high-numerical aperture oblique plane microscopy (OPM) with microfluidics to achieve optical sectioning and photon collection efficiencies suitable for single-molecule detection on flowing cells. Using super-bright, large Stokes shift fluorophores, smFC can detect labelled membrane proteins on cells with digital precision down to ∼2 molecules per cell, compared to an unlabelled control. This represents an improvement in the detection limit of 10- to 80-fold depending on the probe. We apply smFC to quantify the distribution of the membrane receptor c-kit in triple-negative breast cancer cells with unprecedented sensitivity. This revealed a previously unidentified distribution of 60% c-kit negative cells and 40% with low-abundance but heterogenous (1-200 mol/cell) surface distribution that is undetectable by conventional FC. These results establish smFC as a robust platform for high-throughput, quantitative single-molecule analysis in cell populations, opening new avenues for detecting rare biomarkers and quantifying the presence of low-abundance membrane proteins and targetable surface molecules with digital precision.
         </div>
         <div class="links">
-          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1">bioRxiv</a>
+          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">bioRxiv</a>
         </div>
       </div>
     </div>
@@ -488,22 +493,22 @@
       <img class="card-thumb" src="assets/getThumbnail.jpeg" alt="Astigmatism-based focus stabilisation thumbnail">
       <div class="card-content">
         <div class="paper-title">
-          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
+          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
         </div>
         <div class="authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</div>
         <div class="venue">Optics Express · 2024</div>
         <div class="abstract">
-          Focus stabilisation is vital for long-term fluorescence imaging, particularly in the case of high-resolution imaging techniques. Current stabilisation solutions either rely on fiducial markers that can be perturbative, or on beam reflection monitoring that is limited to high-numerical aperture objective lenses, making multimodal and large-scale imaging challenging. We introduce a beam-based method that relies on astigmatism, which offers advantages in terms of precision and the range over which focus stabilisation is effective. This approach is shown to be compatible with a wide range of objective lenses (10x-100x), typically achieving <10 nm precision with >10 μm operating range. Notably, our technique is largely unaffected by pointing stability errors, which in combination with implementation through a standalone Raspberry Pi architecture, offers a versatile focus stabilisation unit that can be added onto most existing microscope setups.
+          Focus stabilisation is vital for long-term fluorescence imaging, particularly in the case of high-resolution imaging techniques. Current stabilisation solutions either rely on fiducial markers that can be perturbative, or on beam reflection monitoring that is limited to high-numerical aperture objective lenses, making multimodal and large-scale imaging challenging. We introduce a beam-based method that relies on astigmatism, which offers advantages in terms of precision and the range over which focus stabilisation is effective. This approach is shown to be compatible with a wide range of objective lenses (10x-100x), typically achieving &lt;10 nm precision with &gt;10 μm operating range. Notably, our technique is largely unaffected by pointing stability errors, which in combination with implementation through a standalone Raspberry Pi architecture, offers a versatile focus stabilisation unit that can be added onto most existing microscope setups.
         </div>
         <div class="links">
-          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331">paper</a>
-          <a href="https://zenodo.org/records/12783911">code</a>
+          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">paper</a>
+          <a href="https://zenodo.org/records/12783911" target="_blank">code</a>
         </div>
       </div>
     </div>
-    
-  </section>
-</main>
 
+  </section>
+
+</main>
 </body>
 </html>
