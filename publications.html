@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Publications · Your Name</title>
+  <title>Publications · Amir Rahmani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -31,34 +31,26 @@
     .page-subtitle { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 2rem; }
     .scholar-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--accent); border: 1px solid var(--border); padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 2.5rem; transition: all 0.2s; }
     .scholar-link:hover { border-color: var(--accent); background: rgba(139,69,19,0.05); text-decoration: none; }
-
-    .year-section { margin-bottom: 2.5rem; }
-    .year-label { font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
-    
-    .pub-item { padding: 1rem 0; border-bottom: 1px dashed var(--border); }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-mid); margin: 2.5rem 0 0.8rem; font-weight: 500; }
+    .year-section { margin-bottom: 1.5rem; }
+    .year-label { font-family: 'EB Garamond', serif; font-size: 1.35rem; font-weight: 500; color: var(--accent); margin-bottom: 0.8rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border); }
+    .pub-item { padding: 1.1rem 0; border-bottom: 1px dashed var(--border); }
     .pub-item:last-child { border-bottom: none; }
-    
-    .pub-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.25rem; }
+    .pub-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; line-height: 1.4; margin-bottom: 0.3rem; }
     .pub-title a { color: var(--ink); }
     .pub-title a:hover { color: var(--accent); }
-    
-    .pub-authors { font-size: 0.83rem; color: var(--warm-mid); margin-bottom: 0.2rem; }
-    .pub-authors strong { color: var(--ink); }
-    
-    .pub-venue { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.45rem; }
-    .pub-venue em { color: var(--ink); }
-    
-    .badge { display: inline-block; font-size: 0.65rem; font-weight: 500; padding: 0.1rem 0.4rem; border-radius: 3px; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; margin-left: 0.4rem; }
+    .pub-authors { font-size: 0.83rem; color: var(--warm-mid); margin-bottom: 0.2rem; line-height: 1.5; }
+    .pub-authors strong { color: var(--ink); font-weight: 500; }
+    .pub-venue { font-size: 0.81rem; color: var(--warm-mid); margin-bottom: 0.5rem; }
+    .pub-venue em { color: var(--ink); font-style: italic; }
+    .badge { display: inline-block; font-size: 0.65rem; font-weight: 500; padding: 0.1rem 0.42rem; border-radius: 3px; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; margin-left: 0.4rem; }
     .badge-new { background: var(--accent); color: white; }
-    .badge-oral { background: #2d6a4f; color: white; }
-    .badge-best { background: #d4a017; color: white; }
-    
-    .links { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .links a { font-size: 0.73rem; padding: 0.15rem 0.55rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; }
+    .badge-preprint { background: #5c7a8b; color: white; }
+    .badge-thesis { background: #3d5a40; color: white; }
+    .badge-inpress { background: #7a6b3d; color: white; }
+    .links { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.2rem; }
+    .links a { font-size: 0.73rem; padding: 0.18rem 0.55rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; }
     .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    .section-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-mid); margin: 2rem 0 0.8rem; font-weight: 500; }
-
     @media (max-width: 768px) {
       aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
       body { flex-direction: column; }
@@ -69,8 +61,8 @@
 <body>
 
 <aside>
-  <div class="site-name">Your Name</div>
-  <div class="site-title">PhD Candidate</div>
+  <div class="site-name">Amir Rahmani</div>
+  <div class="site-title">PhD · University of Leeds</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
@@ -79,7 +71,7 @@
   </nav>
   <div class="sidebar-footer">
     <div class="social-links">
-      <a href="mailto:you@university.edu">
+      <a href="mailto:you@leeds.ac.uk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
         Email
       </a>
@@ -87,7 +79,7 @@
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
         Google Scholar
       </a>
-      <a href="https://github.com/yourusername" target="_blank">
+      <a href="https://github.com/PonjavicLab" target="_blank">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
       </a>
@@ -105,117 +97,110 @@
     View Google Scholar profile
   </a>
 
-  <!-- Preprints -->
+  <!-- ── PhD THESIS ── -->
+  <div class="section-label">PhD Thesis</div>
+  <div class="year-section">
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://etheses.whiterose.ac.uk/id/eprint/37929/" target="_blank">Single-molecule imaging flow cytometry</a>
+        <span class="badge badge-thesis">Thesis</span>
+      </div>
+      <div class="pub-authors"><strong>Amir Rahmani</strong></div>
+      <div class="pub-venue">
+        <em>PhD Thesis, University of Leeds</em> · 2025<br>
+        Supervisor: Aleks Ponjavic · School of Physics and Astronomy
+      </div>
+      <div class="links">
+        <a href="https://etheses.whiterose.ac.uk/id/eprint/37929/" target="_blank">repository</a>
+        <a href="https://etheses.whiterose.ac.uk/id/eprint/37929/1/eThesis.pdf" target="_blank">PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PREPRINTS ── -->
   <div class="section-label">Preprints</div>
   <div class="year-section">
     <div class="pub-item">
       <div class="pub-title">
-        <a href="#">Your Preprint Title Here</a>
+        <a href="https://doi.org/10.1101/2025.08.26.672174" target="_blank">Single-molecule flow cytometry</a>
+        <span class="badge badge-preprint">Preprint</span>
         <span class="badge badge-new">New</span>
       </div>
-      <div class="pub-authors"><strong>Your Name</strong>, Co-author One, Co-author Two, Advisor Name</div>
-      <div class="pub-venue"><em>arXiv</em> · 2026</div>
+      <div class="pub-authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</div>
+      <div class="pub-venue"><em>bioRxiv</em> · August 2025 · doi: 10.1101/2025.08.26.672174</div>
       <div class="links">
-        <a href="#">arXiv</a>
-        <a href="#">code</a>
-        <a href="#">project page</a>
+        <a href="https://doi.org/10.1101/2025.08.26.672174" target="_blank">bioRxiv</a>
       </div>
     </div>
   </div>
 
-  <!-- 2025 -->
-  <div class="section-label">Conference & Journal Papers</div>
+  <!-- ── JOURNAL PAPERS ── -->
+  <div class="section-label">Journal Articles</div>
   <div class="year-section">
     <div class="year-label">2025</div>
-
     <div class="pub-item">
       <div class="pub-title">
-        <a href="#">Your 2025 Paper Title</a>
-        <span class="badge badge-oral">Oral</span>
+        <a href="https://doi.org/10.1364/BOE.553545" target="_blank">Active remote focus stabilization in oblique plane microscopy</a>
       </div>
-      <div class="pub-authors"><strong>Your Name</strong>, Co-author One, Advisor Name</div>
-      <div class="pub-venue"><em>Top Conference (CONF 2025)</em> · Location, 2025</div>
+      <div class="pub-authors">Trung Duc Nguyen, <strong>Amir Rahmani</strong>, Aleks Ponjavic, Alfred Millett-Sikking, Reto Fiolka</div>
+      <div class="pub-venue"><em>Biomedical Optics Express</em> · Vol. 16, No. 3, pp. 1216–1224 · February 2025</div>
       <div class="links">
-        <a href="#">paper</a>
-        <a href="#">arXiv</a>
-        <a href="#">code</a>
-        <a href="#">slides</a>
-        <a href="#">poster</a>
-      </div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">
-        <a href="#">Another 2025 Paper</a>
-      </div>
-      <div class="pub-authors">Co-author One, <strong>Your Name</strong>, Co-author Two, Advisor Name</div>
-      <div class="pub-venue"><em>Journal Name</em> · Vol. X, No. Y, 2025</div>
-      <div class="links">
-        <a href="#">paper</a>
-        <a href="#">arXiv</a>
+        <a href="https://doi.org/10.1364/BOE.553545" target="_blank">paper</a>
       </div>
     </div>
   </div>
 
-  <!-- 2024 -->
   <div class="year-section">
     <div class="year-label">2024</div>
-
     <div class="pub-item">
       <div class="pub-title">
-        <a href="#">Your 2024 Paper Title</a>
-        <span class="badge badge-best">Best Paper Award</span>
+        <a href="https://doi.org/10.1364/OE.520845" target="_blank">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
       </div>
-      <div class="pub-authors"><strong>Your Name</strong>, Co-author, Advisor Name</div>
-      <div class="pub-venue"><em>Conference Name (CONF 2024)</em> · 2024</div>
+      <div class="pub-authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</div>
+      <div class="pub-venue"><em>Optics Express</em> · Vol. 32, No. 8, pp. 13331–13341 · April 2024</div>
       <div class="links">
-        <a href="#">paper</a>
-        <a href="#">code</a>
-        <a href="#">talk</a>
-      </div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">
-        <a href="#">Second 2024 Paper</a>
-      </div>
-      <div class="pub-authors"><strong>Your Name*</strong>, Co-author One*, Advisor Name</div>
-      <div class="pub-venue"><em>Workshop at Top Conference</em> · 2024</div>
-      <div class="links">
-        <a href="#">paper</a>
-        <a href="#">poster</a>
-      </div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-title">
-        <a href="#">Third 2024 Paper</a>
-      </div>
-      <div class="pub-authors"><strong>Your Name</strong>, Co-author</div>
-      <div class="pub-venue"><em>IEEE Conference Name (CONF)</em> · 2024</div>
-      <div class="links">
-        <a href="#">paper</a>
-        <a href="#">arXiv</a>
+        <a href="https://doi.org/10.1364/OE.520845" target="_blank">paper</a>
+        <a href="https://github.com/PonjavicLab/PiFocus" target="_blank">code (PiFocus)</a>
       </div>
     </div>
   </div>
 
-  <!-- 2023 -->
+  <!-- ── BOOK CHAPTERS ── -->
+  <div class="section-label">Book Chapters</div>
   <div class="year-section">
-    <div class="year-label">2023</div>
-
     <div class="pub-item">
       <div class="pub-title">
-        <a href="#">Your 2023 Paper Title</a>
+        <a href="https://eprints.whiterose.ac.uk/id/eprint/222745/" target="_blank">Super-resolution Imaging</a>
+        <span class="badge badge-inpress">In Press</span>
       </div>
-      <div class="pub-authors"><strong>Your Name</strong>, Advisor Name</div>
-      <div class="pub-venue"><em>Conference Name</em> · 2023</div>
+      <div class="pub-authors">A. Curd, <strong>A. Rahmani</strong>, O. Umney, A. Ponjavic, M. Peckham</div>
+      <div class="pub-venue">
+        In: <em>Live Cell Imaging Across Scales</em> · RMS Wiley · Accepted January 2025
+      </div>
       <div class="links">
-        <a href="#">paper</a>
+        <a href="https://eprints.whiterose.ac.uk/id/eprint/222745/" target="_blank">eprint</a>
       </div>
     </div>
   </div>
-</main>
 
+  <!-- ── CONFERENCE PROCEEDINGS ── -->
+  <div class="section-label">Conference Proceedings</div>
+  <div class="year-section">
+    <div class="pub-item">
+      <div class="pub-title">
+        <a href="https://doi.org/10.1051/bioconf/202412903012" target="_blank">Active focus stabilisation using astigmatism with universal objective lens compatibility and sub-10 nm precision</a>
+      </div>
+      <div class="pub-authors">Aleks Ponjavic, <strong>Amir Rahmani</strong></div>
+      <div class="pub-venue">
+        <em>BIO Web of Conferences</em> · Vol. 129, 03012 · EMC 2024 · 2024
+      </div>
+      <div class="links">
+        <a href="https://doi.org/10.1051/bioconf/202412903012" target="_blank">paper</a>
+        <a href="https://www.bio-conferences.org/articles/bioconf/pdf/2024/48/bioconf_emc2024_03012.pdf" target="_blank">PDF</a>
+      </div>
+    </div>
+  </div>
+
+</main>
 </body>
 </html>
