@@ -19,22 +19,338 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      min-height: 100vh;
-      display: flex;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; }
 
-    /* ── SIDEBAR ── */
     aside {
-      width: var(--sidebar-w);
-      min-height: 100vh;
-      position: fixed;
-      top: 0; left: 0;
-      background: var(--ink);
-      color: var(--cream);
+      width: var(--sidebar-w); min-height: 100vh; position: fixed; top: 0; left: 0;
+      background: var(--ink); color: var(--cream); display: flex; flex-direction: column;
+      padding: 2.5rem 2rem; z-index: 10;
+    }
+    aside .site-name { font-family: 'EB Garamond', serif; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.3; margin-bottom: 0.5rem; color: #fff; }
+    aside .site-title { font-size: 0.78rem; color: #a89e92; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2.5rem; font-weight: 300; }
+    nav { display: flex; flex-direction: column; gap: 0.2rem; }
+    nav a { text-decoration: none; font-size: 0.9rem; font-weight: 400; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
+    nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
+    nav a.active { color: var(--accent-light); }
+    .sidebar-footer { margin-top: auto; padding-top: 2rem; }
+    .social-links { display: flex; flex-direction: column; gap: 0.55rem; }
+    .social-links a { font-size: 0.8rem; color: #8a8078; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .social-links a:hover { color: var(--accent-light); }
+    .social-links .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
+    .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
+
+    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 900px; animation: fadeUp 0.5s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* PROFILE */
+    .profile { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    .profile-photo { width: 160px; height: 160px; border-radius: 6px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+    .profile-text h1 { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.1; }
+    .profile-text .position { font-size: 0.88rem; color: var(--warm-mid); letter-spacing: 0.03em; margin-bottom: 1.2rem; }
+    .profile-text p { font-size: 0.95rem; line-height: 1.75; color: #3d3530; max-width: 560px; }
+    .profile-text p + p { margin-top: 0.9rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* SECTIONS */
+    section { margin-bottom: 3rem; }
+    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
+    h2 { font-family: 'EB Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--ink); }
+    .see-more { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.04em; }
+
+    /* ── MAIN TIMELINE ── */
+    .timeline { position: relative; padding-left: 1.6rem; margin-top: 0.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
+    .timeline-item { position: relative; padding: 0 0 1.6rem 1.4rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -1.6rem; top: 6px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--cream); border: 2px solid var(--border); transition: border-color 0.2s;
+    }
+    .timeline-item:hover::before { border-color: var(--accent-light); }
+    .timeline-item.highlight::before { background: var(--accent); border-color: var(--accent); width: 13px; height: 13px; left: calc(-1.6rem - 1px); top: 5px; }
+
+    .tl-year { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.15rem; }
+    .tl-title { font-family: 'EB Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 0.15rem; }
+    .tl-sub { font-size: 0.82rem; color: var(--warm-mid); line-height: 1.55; }
+    .tl-tag { display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
+    .tag-edu   { background: #e8f0e8; color: #3d5a40; }
+    .tag-work  { background: #e8ecf0; color: #2d4a5c; }
+    .tag-award { background: #f5edde; color: #7a5a20; }
+    .tag-pub   { background: #f0e8e4; color: var(--accent); }
+
+    /* ── NESTED SUB-TIMELINE ── */
+    .sub-timeline { position: relative; margin-top: 0.9rem; padding-left: 1.3rem; }
+    .sub-timeline::before { content: ''; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: var(--border); opacity: 0.6; }
+    .sub-item { position: relative; padding: 0 0 0.8rem 1.1rem; }
+    .sub-item:last-child { padding-bottom: 0; }
+    /* small diamond */
+    .sub-item::before {
+      content: ''; position: absolute; left: -1.32rem; top: 5px;
+      width: 7px; height: 7px; border-radius: 1px; transform: rotate(45deg);
+      background: var(--cream); border: 1.5px solid var(--border); transition: border-color 0.2s, background 0.2s;
+    }
+    .sub-item:hover::before { border-color: var(--accent-light); }
+    .sub-item.sub-pub::before   { border-color: var(--accent-light); }
+    .sub-item.sub-award::before { border-color: #c8a84b; background: #fdf9ed; }
+    .sub-item.sub-event::before { border-color: #7a9ab0; }
+    .sub-year { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--accent-light); text-transform: uppercase; margin-bottom: 0.05rem; }
+    .sub-title { font-size: 0.86rem; color: var(--ink); line-height: 1.35; }
+    .sub-detail { font-size: 0.78rem; color: var(--warm-mid); line-height: 1.45; margin-top: 0.05rem; }
+
+    /* RESEARCH CARDS */
+    .research-card { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--border); align-items: start; }
+    .research-card:last-child { border-bottom: 1px solid var(--border); }
+    .card-thumb { width: 140px; height: 90px; object-fit: cover; border-radius: 4px; background: linear-gradient(135deg, #e8ddd4 0%, #cfc2b4 100%); flex-shrink: 0; }
+    .card-content .paper-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.35; }
+    .card-content .authors { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
+    .card-content .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.5rem; }
+    .card-content .abstract { font-size: 0.84rem; color: #5c5147; line-height: 1.6; margin-bottom: 0.6rem; text-align: justify; hyphens: auto; }
+    .links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .links a { font-size: 0.75rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; white-space: nowrap; }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
+      body { flex-direction: column; }
+      main { margin-left: 0; padding: 2rem 1.5rem; }
+      .profile { flex-direction: column; }
+      .research-card { grid-template-columns: 1fr; }
+      .card-thumb { width: 100%; height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+<aside>
+  <div class="site-name">Amir Rahmani</div>
+  <div class="site-title">Research Associate</div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="research.html">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="social-links">
+      <a href="mailto:ar2368@cam.ac.uk">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        ORCiD
+      </a>
+      <a href="https://github.com/astormic" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="last-updated">last updated: March 2026</div>
+  </div>
+</aside>
+
+<main>
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <img class="profile-photo" src="assets/IMG_0897.jpeg" alt="Amir Rahmani">
+    <div class="profile-text">
+      <h1>Amir Rahmani</h1>
+      <div class="position">Research Associate · Department of Chemical Engineering and Biotechnology · University of Cambridge</div>
+      <p>
+        I'm Amir, a Postdoctoral Research Associate in the Department of Chemical Engineering and
+        Biotechnology at the University of Cambridge, currently working in Prof. Clemens Kaminski's
+        group in collaboration with the British Antarctic Survey on a UKRI-funded project. My research
+        sits at the intersection of physics, biology, and engineering — developing advanced
+        super-resolution optical microscopy tools to study nanoscale cellular behaviour at sub-zero
+        temperatures. I hold a PhD in Physics from the University of Leeds, where I built a
+        single-molecule imaging flow cytometry system for applications in adaptive immunotherapy.
+        Prior to my doctoral studies, I trained at world-leading institutes including EMBL Heidelberg
+        and ICFO Barcelona, shaping my passion for cutting-edge imaging science. Beyond research, I
+        enjoy mentoring students, teaching, and engaging with the broader scientific community through
+        conferences and collaborative initiatives.
+      </p>
+      <p>
+        Outside of the lab, I have a passion for both physical and mental challenges. I train in
+        Kickboxing and Taekwondo, and enjoy staying active through running and football. For a more
+        relaxed but equally competitive fix, you'll often find me at the Ping Pong table or locked in
+        a strategic battle over Chess or Backgammon.
+      </p>
+    </div>
+  </div>
+
+  <!-- CAREER JOURNEY -->
+  <section>
+    <div class="section-header">
+      <h2>Career Journey</h2>
+    </div>
+
+    <div class="timeline">
+
+      <!-- Cambridge postdoc -->
+      <div class="timeline-item highlight">
+        <div class="tl-year">2025 – present</div>
+        <div class="tl-title">
+          Postdoctoral Research Associate
+          <span class="tl-tag tag-work">Work</span>
+        </div>
+        <div class="tl-sub">
+          <a href="#">Kaminski Group</a> · Dept. of Chemical Engineering &amp; Biotechnology,
+          University of Cambridge, Cambridge, UK<br>
+          In collaboration with the British Antarctic Survey · Supported by UKRI
+        </div>
+      </div>
+
+      <!-- PhD with nested sub-timeline -->
+      <div class="timeline-item highlight">
+        <div class="tl-year">2021 – 2025</div>
+        <div class="tl-title">
+          PhD in Physics
+          <span class="tl-tag tag-edu">Education</span>
+        </div>
+        <div class="tl-sub">
+          University of Leeds, Leeds, UK · Supervisor: <a href="#">Dr. Aleks Ponjavic</a><br>
+          Thesis: <em><a href="https://etheses.whiterose.ac.uk/id/eprint/37929/">Single-molecule imaging flow cytometry</a></em>
+        </div>
+
+        <!-- ── SUB-TIMELINE: PhD milestones ── -->
+        <div class="sub-timeline">
+
+          <div class="sub-item sub-pub">
+            <div class="sub-year">Aug 2025</div>
+            <div class="sub-title">Preprint: Single-molecule flow cytometry</div>
+            <div class="sub-detail"><em>bioRxiv</em> · with Christie, Truesdale, Thorne, Ponjavic</div>
+          </div>
+          
+          <div class="sub-item sub-award">
+            <div class="sub-year">2025</div>
+            <div class="sub-title">✈️ Travel Grant — Focus on Microscopy Conference</div>
+            <div class="sub-detail">Focus on Microscopy 2025</div>
+          </div>
+          
+          <div class="sub-item sub-pub">
+            <div class="sub-year">Feb 2025</div>
+            <div class="sub-title">Paper: Active remote focus stabilization in oblique plane microscopy</div>
+            <div class="sub-detail"><em>Biomedical Optics Express</em> · with Nguyen, Ponjavic, Millett-Sikking, Fiolka</div>
+          </div>
+
+          <div class="sub-item sub-award">
+            <div class="sub-year">2025</div>
+            <div class="sub-title">🏆 Best Poster Award — Smart Microscopy Symposium</div>
+            <div class="sub-detail">EPFL, Lausanne, Switzerland</div>
+          </div>
+
+          <div class="sub-item sub-award">
+            <div class="sub-year">2024</div>
+            <div class="sub-title">🎓 JCS-FocalPlane Training Grant</div>
+            <div class="sub-detail">The Company of Biologists</div>
+          </div>
+
+          <div class="sub-item sub-pub">
+            <div class="sub-year">Apr 2024</div>
+            <div class="sub-title">Paper: Astigmatism-based active focus stabilisation (PiFocus)</div>
+            <div class="sub-detail"><em>Optics Express</em> · with Cox, Achary, Ponjavic</div>
+          </div>
+          
+          <div class="sub-item sub-award">
+            <div class="sub-year">2021</div>
+            <div class="sub-title">🎓 EPSRC Doctoral Training Studentship</div>
+            <div class="sub-detail">Engineering and Physical Sciences Research Council · University of Leeds</div>
+          </div>
+
+        </div>
+        <!-- end sub-timeline -->
+
+      </div>
+      <!-- end PhD item -->
+
+      <!-- ICFO -->
+      <div class="timeline-item">
+        <div class="tl-year">2020</div>
+        <div class="tl-title">
+          Research Trainee
+          <span class="tl-tag tag-edu">Research Training</span>
+        </div>
+        <div class="tl-sub">
+          <a href="https://www.icfo.eu" target="_blank">ICFO – The Institute of Photonic Sciences</a> · Barcelona, Spain<br>
+          Supervisor: <a href="#">Prof. Stefan Wieser</a>
+        </div>
+      </div>
+
+      <!-- EMBL -->
+      <div class="timeline-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-title">
+          Research Trainee
+          <span class="tl-tag tag-edu">Research Training</span>
+        </div>
+        <div class="tl-sub">
+          <a href="https://www.embl.org/sites/heidelberg/" target="_blank">EMBL Heidelberg</a> · Heidelberg, Germany<br>
+          Supervisor: <a href="#">Prof. Jonas Ries</a>
+        </div>
+      </div>
+
+      <!-- BSc -->
+      <div class="timeline-item highlight">
+        <div class="tl-year">2019</div>
+        <div class="tl-title">
+          BSc in Physics
+          <span class="tl-tag tag-edu">Education</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESEARCH HIGHLIGHTS -->
+  <section>
+    <div class="section-header">
+      <h2>Research Highlights</h2>
+      <a href="research.html" class="see-more">See all →</a>
+    </div>
+
+    <div class="research-card">
+      <img class="card-thumb" src="assets/smOPM_All2.png" alt="Single-molecule flow cytometry thumbnail">
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1">Single-molecule flow cytometry</a>
+        </div>
+        <div class="authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</div>
+        <div class="venue">bioRxiv · 2025</div>
+        <div class="abstract">
+          Flow cytometry (FC) is a powerful tool for high-throughput characterisation of cell populations, yet its ensemble fluorescence detection and the autofluorescence of cells impose a sensitivity limit of ∼100-1,000 fluorophores per cell. This precludes detection of low-abundance proteins and weak signalling events with biological importance and therapeutic potential. We introduce single-molecule Flow Cytometry (smFC), integrating high-numerical aperture oblique plane microscopy (OPM) with microfluidics to achieve optical sectioning and photon collection efficiencies suitable for single-molecule detection on flowing cells. Using super-bright, large Stokes shift fluorophores, smFC can detect labelled membrane proteins on cells with digital precision down to ∼2 molecules per cell, compared to an unlabelled control. This represents an improvement in the detection limit of 10- to 80-fold depending on the probe. We apply smFC to quantify the distribution of the membrane receptor c-kit in triple-negative breast cancer cells with unprecedented sensitivity. This revealed a previously unidentified distribution of 60% c-kit negative cells and 40% with low-abundance but heterogenous (1-200 mol/cell) surface distribution that is undetectable by conventional FC. These results establish smFC as a robust platform for high-throughput, quantitative single-molecule analysis in cell populations, opening new avenues for detecting rare biomarkers and quantifying the presence of low-abundance membrane proteins and targetable surface molecules with digital precision.
+        </div>
+        <div class="links">
+          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">bioRxiv</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="research-card">
+      <img class="card-thumb" src="assets/getThumbnail.jpeg" alt="Astigmatism-based focus stabilisation thumbnail">
+      <div class="card-content">
+        <div class="paper-title">
+          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
+        </div>
+        <div class="authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</div>
+        <div class="venue">Optics Express · 2024</div>
+        <div class="abstract">
+          Focus stabilisation is vital for long-term fluorescence imaging, particularly in the case of high-resolution imaging techniques. Current stabilisation solutions either rely on fiducial markers that can be perturbative, or on beam reflection monitoring that is limited to high-numerical aperture objective lenses, making multimodal and large-scale imaging challenging. We introduce a beam-based method that relies on astigmatism, which offers advantages in terms of precision and the range over which focus stabilisation is effective. This approach is shown to be compatible with a wide range of objective lenses (10x-100x), typically achieving &lt;10 nm precision with &gt;10 μm operating range. Notably, our technique is largely unaffected by pointing stability errors, which in combination with implementation through a standalone Raspberry Pi architecture, offers a versatile focus stabilisation unit that can be added onto most existing microscope setups.
+        </div>
+        <div class="links">
+          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">paper</a>
+          <a href="https://zenodo.org/records/12783911" target="_blank">code</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</body>
+</html>      color: var(--cream);
       display: flex;
       flex-direction: column;
       padding: 2.5rem 2rem;
