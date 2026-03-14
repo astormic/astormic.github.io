@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About · Your Name</title>
+  <title>About · Amir Rahmani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    :root { --cream: #f9f6f0; --ink: #1a1714; --warm-mid: #5c5147; --accent: #8b4513; --accent-light: #c8814a; --border: #ddd5c8; --sidebar-w: 260px; }
+    :root {
+      --cream: #f9f6f0;
+      --ink: #1a1714;
+      --warm-mid: #5c5147;
+      --accent: #8b4513;
+      --accent-light: #c8814a;
+      --border: #ddd5c8;
+      --sidebar-w: 260px;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; }
+
     aside { width: var(--sidebar-w); min-height: 100vh; position: fixed; top: 0; left: 0; background: var(--ink); color: var(--cream); display: flex; flex-direction: column; padding: 2.5rem 2rem; z-index: 10; }
     aside .site-name { font-family: 'EB Garamond', serif; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.3; margin-bottom: 0.5rem; color: #fff; }
     aside .site-title { font-size: 0.78rem; color: #a89e92; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2.5rem; font-weight: 300; }
     nav { display: flex; flex-direction: column; gap: 0.2rem; }
-    nav a { text-decoration: none; font-size: 0.9rem; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
+    nav a { text-decoration: none; font-size: 0.9rem; font-weight: 400; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
     nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
     nav a.active { color: var(--accent-light); }
     .sidebar-footer { margin-top: auto; padding-top: 2rem; }
@@ -23,65 +32,69 @@
     .social-links a:hover { color: var(--accent-light); }
     .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
     .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
+
     main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 860px; animation: fadeUp 0.5s ease both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 2rem; }
-    h2 { font-family: 'EB Garamond', serif; font-size: 1.2rem; font-weight: 500; margin: 2rem 0 1rem; }
 
-    .about-grid { display: grid; grid-template-columns: 1fr 220px; gap: 3rem; align-items: start; }
+    h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .tagline { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 2.5rem; }
 
-    .bio p { font-size: 0.95rem; line-height: 1.8; color: #3d3530; margin-bottom: 1rem; }
-
-    /* CV download button */
-    .cv-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--ink);
-      color: var(--cream);
-      font-size: 0.82rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 4px;
-      margin-top: 0.5rem;
-      transition: background 0.2s;
-      letter-spacing: 0.03em;
+    /* ── SECTION LABEL ── */
+    .cv-section { margin-bottom: 2.2rem; }
+    .cv-label {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--warm-mid);
+      padding-bottom: 0.4rem; margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
     }
-    .cv-button:hover { background: var(--accent); text-decoration: none; }
 
-    /* Timeline / Education */
-    .timeline { display: flex; flex-direction: column; gap: 0; }
-    .timeline-item { padding: 1rem 0; border-top: 1px solid var(--border); }
-    .timeline-item:last-child { border-bottom: 1px solid var(--border); }
-    .timeline-year { font-size: 0.75rem; color: var(--warm-mid); letter-spacing: 0.04em; margin-bottom: 0.2rem; }
-    .timeline-title { font-size: 0.92rem; font-weight: 500; margin-bottom: 0.1rem; }
-    .timeline-sub { font-size: 0.83rem; color: var(--warm-mid); }
+    /* ── CV ROW ── */
+    .cv-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 0.5rem 1.4rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed var(--border);
+      align-items: baseline;
+    }
+    .cv-row:first-of-type { border-top: 1px solid var(--border); }
 
-    /* Right column */
-    .info-column { display: flex; flex-direction: column; gap: 1.5rem; }
+    .cv-year {
+      font-size: 0.75rem; color: var(--accent); font-weight: 500;
+      letter-spacing: 0.04em; padding-top: 0.05rem;
+      white-space: nowrap;
+    }
 
-    .info-block h3 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-mid); margin-bottom: 0.7rem; }
-    .info-block p, .info-block li { font-size: 0.85rem; color: #3d3530; line-height: 1.7; }
-    .info-block ul { list-style: none; padding: 0; }
-    .info-block ul li::before { content: "— "; color: var(--warm-mid); }
+    .cv-content {}
+    .cv-title { font-size: 0.93rem; font-weight: 500; color: var(--ink); margin-bottom: 0.1rem; line-height: 1.3; }
+    .cv-sub { font-size: 0.82rem; color: var(--warm-mid); line-height: 1.55; }
+    .cv-sub em { font-style: italic; }
 
-    .contact-item { display: flex; flex-direction: column; gap: 0.35rem; }
-    .contact-item a { font-size: 0.84rem; color: var(--accent); display: block; }
+    /* ── SKILLS TABLE ── */
+    .skills-table { width: 100%; border-collapse: collapse; }
+    .skills-table tr { border-bottom: 1px dashed var(--border); }
+    .skills-table tr:first-child td { border-top: 1px solid var(--border); }
+    .skills-table td { padding: 0.65rem 0; font-size: 0.86rem; vertical-align: top; }
+    .skills-table td:first-child { font-weight: 500; color: var(--ink); width: 150px; padding-right: 1rem; white-space: nowrap; }
+    .skills-table td:last-child { color: var(--warm-mid); }
 
     @media (max-width: 768px) {
       aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
       body { flex-direction: column; }
       main { margin-left: 0; padding: 2rem 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; }
+      .cv-row { grid-template-columns: 1fr; gap: 0.15rem; }
+      .cv-year { font-size: 0.7rem; }
+      .skills-table td:first-child { width: 120px; }
     }
   </style>
 </head>
 <body>
 
 <aside>
-  <div class="site-name">Your Name</div>
-  <div class="site-title">PhD Candidate</div>
+  <div class="site-name">Amir Rahmani</div>
+  <div class="site-title">Research Associate</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
@@ -90,21 +103,17 @@
   </nav>
   <div class="sidebar-footer">
     <div class="social-links">
-      <a href="mailto:you@university.edu">
+      <a href="mailto:ar2368@cam.ac.uk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        Email
+        ar2368@cam.ac.uk
       </a>
-      <a href="https://scholar.google.com" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
-        Google Scholar
+      <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        ORCiD
       </a>
-      <a href="https://github.com/yourusername" target="_blank">
+      <a href="https://github.com/astormic" target="_blank">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
-      </a>
-      <a href="https://linkedin.com" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
       </a>
     </div>
     <div class="last-updated">last updated: March 2026</div>
@@ -112,147 +121,267 @@
 </aside>
 
 <main>
-  <h1>About Me</h1>
+  <h1>Amir Rahmani</h1>
+  <div class="tagline">Research Associate · University of Cambridge · Cambridge, UK</div>
 
-  <div class="about-grid">
-    <div class="bio">
-      <p>
-        I am a PhD candidate in the <a href="#">Your Lab / Group</a> in the
-        Department of [Your Department] at [Your University], advised by
-        <a href="#">Professor Name</a>.
-      </p>
-      <p>
-        My research sits at the intersection of [Field A], [Field B], and [Field C].
-        I am passionate about [describe what drives your research in one or two sentences —
-        what problem you want to solve, or what impact you hope to have].
-      </p>
-      <p>
-        Before my PhD, I received my [BS/MS] in [Field] from [University] in [Year].
-        During my undergraduate studies, I worked with [Mentor Name] on [topic].
-      </p>
-      <p>
-        I have had the opportunity to intern at [Company A] (with [Mentor]),
-        [Company B] (with [Mentor]), and [Company C]. These experiences
-        shaped my perspective on how research transitions into real-world applications.
-      </p>
-      <p>
-        I am supported by the [Fellowship Name] and the [Grant or Award].
-      </p>
-      <p>
-        Outside of research, I enjoy [hobby 1], [hobby 2], and [hobby 3].
-      </p>
+  <!-- ── POSITIONS ── -->
+  <div class="cv-section">
+    <div class="cv-label">Positions</div>
 
-      <a href="assets/cv.pdf" target="_blank" class="cv-button">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Download CV
-      </a>
-
-      <!-- Education -->
-      <h2>Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">2021 – present</div>
-          <div class="timeline-title">PhD in [Field]</div>
-          <div class="timeline-sub">[Your University] · Advisor: Professor Name</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2017 – 2021</div>
-          <div class="timeline-title">BS in [Field]</div>
-          <div class="timeline-sub">[Undergraduate University]</div>
-        </div>
-      </div>
-
-      <!-- Experience -->
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">Summer 2024</div>
-          <div class="timeline-title">Research Intern · Company A</div>
-          <div class="timeline-sub">Worked with [Mentor Name] on [brief topic]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">Summer 2023</div>
-          <div class="timeline-title">Research Intern · Company B</div>
-          <div class="timeline-sub">Worked with [Mentor Name] on [brief topic]</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2020 – 2021</div>
-          <div class="timeline-title">Undergraduate Researcher · Lab Name</div>
-          <div class="timeline-sub">Advised by Professor Name</div>
-        </div>
-      </div>
-
-      <!-- Awards -->
-      <h2>Awards & Honors</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">2022 – present</div>
-          <div class="timeline-title">[Fellowship Name]</div>
-          <div class="timeline-sub">Award description or granting institution</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2021</div>
-          <div class="timeline-title">[Undergraduate Award or Honor]</div>
-          <div class="timeline-sub">[Institution]</div>
-        </div>
+    <div class="cv-row">
+      <div class="cv-year">Oct 2025 – present</div>
+      <div class="cv-content">
+        <div class="cv-title">Postdoctoral Research Associate</div>
+        <div class="cv-sub">Kaminski Group · Dept. of Chemical Engineering &amp; Biotechnology, University of Cambridge, UK<br>
+        In collaboration with the British Antarctic Survey · Funded by UKRI</div>
       </div>
     </div>
 
-    <!-- Right info column -->
-    <div class="info-column">
-      <div class="info-block">
-        <h3>Contact</h3>
-        <div class="contact-item">
-          <a href="mailto:you@university.edu">you@university.edu</a>
-          <span style="font-size:0.8rem;color:var(--warm-mid)">
-            Room 000, Building Name<br>
-            University Address<br>
-            City, Country
-          </span>
-        </div>
+    <div class="cv-row">
+      <div class="cv-year">Mar – Sep 2025</div>
+      <div class="cv-content">
+        <div class="cv-title">Postdoctoral Research Assistant</div>
+        <div class="cv-sub">Kaminski Group · University of Cambridge, UK</div>
       </div>
+    </div>
 
-      <div class="info-block">
-        <h3>Research Interests</h3>
-        <ul>
-          <li>Interest / Topic One</li>
-          <li>Interest / Topic Two</li>
-          <li>Interest / Topic Three</li>
-          <li>Interest / Topic Four</li>
-          <li>Interest / Topic Five</li>
-        </ul>
+    <div class="cv-row">
+      <div class="cv-year">Oct 2021 – Sep 2025</div>
+      <div class="cv-content">
+        <div class="cv-title">Doctoral Researcher</div>
+        <div class="cv-sub">Ponjavic Lab · School of Physics and Astronomy, University of Leeds, UK<br>
+        Funded by EPSRC Doctoral Training Studentship</div>
       </div>
+    </div>
 
-      <div class="info-block">
-        <h3>Profiles</h3>
-        <ul>
-          <li><a href="#">Google Scholar</a></li>
-          <li><a href="#">GitHub</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter / X</a></li>
-          <li><a href="#">Semantic Scholar</a></li>
-        </ul>
+    <div class="cv-row">
+      <div class="cv-year">Dec 2019 – May 2020</div>
+      <div class="cv-content">
+        <div class="cv-title">Research Intern</div>
+        <div class="cv-sub"><a href="https://www.icfo.eu" target="_blank">ICFO – The Institute of Photonic Sciences</a> · Barcelona, Spain<br>
+        Supervisor: Prof. Stefan Wieser · Student Research Fellowship</div>
       </div>
+    </div>
 
-      <div class="info-block">
-        <h3>Service</h3>
-        <ul>
-          <li>Reviewer, Conference A</li>
-          <li>Reviewer, Journal B</li>
-          <li>Workshop Organizer, Conference C</li>
-        </ul>
-      </div>
-
-      <div class="info-block">
-        <h3>Teaching</h3>
-        <ul>
-          <li>Course Name (Semester Year)</li>
-          <li>Course Name (Semester Year)</li>
-        </ul>
+    <div class="cv-row">
+      <div class="cv-year">Sep 2018 – Sep 2019</div>
+      <div class="cv-content">
+        <div class="cv-title">Student Trainee</div>
+        <div class="cv-sub"><a href="https://www.embl.org/sites/heidelberg/" target="_blank">EMBL Heidelberg</a> · Heidelberg, Germany<br>
+        Supervisor: Prof. Jonas Ries</div>
       </div>
     </div>
   </div>
-</main>
 
+  <!-- ── EDUCATION ── -->
+  <div class="cv-section">
+    <div class="cv-label">Education</div>
+
+    <div class="cv-row">
+      <div class="cv-year">Oct 2021 – Sep 2025</div>
+      <div class="cv-content">
+        <div class="cv-title">PhD in Physics</div>
+        <div class="cv-sub">University of Leeds, Leeds, UK · Supervisor: Dr. Aleks Ponjavic<br>
+        <em>Thesis: Single-molecule imaging flow cytometry</em></div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Sep 2015 – Sep 2019</div>
+      <div class="cv-content">
+        <div class="cv-title">BSc in Physics</div>
+        <div class="cv-sub">Aryamehr University of Technology, Tehran, Iran</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AWARDS ── -->
+  <div class="cv-section">
+    <div class="cv-label">Honours &amp; Awards</div>
+
+    <div class="cv-row">
+      <div class="cv-year">2025</div>
+      <div class="cv-content">
+        <div class="cv-title">Best Poster Award</div>
+        <div class="cv-sub">EPFL LATSIS Symposium on Smart Microscopy · Lausanne, Switzerland</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2025</div>
+      <div class="cv-content">
+        <div class="cv-title">Travel Grant</div>
+        <div class="cv-sub">Focus on Microscopy Conference</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2024</div>
+      <div class="cv-content">
+        <div class="cv-title">JCS-FocalPlane Training Grant</div>
+        <div class="cv-sub">The Company of Biologists Ltd, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2021</div>
+      <div class="cv-content">
+        <div class="cv-title">EPSRC Doctoral Training Studentship</div>
+        <div class="cv-sub">UKRI, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2019</div>
+      <div class="cv-content">
+        <div class="cv-title">Student Research Fellowship</div>
+        <div class="cv-sub">ICFO, Spain</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2018</div>
+      <div class="cv-content">
+        <div class="cv-title">Ranked 7th Nationwide</div>
+        <div class="cv-sub">Iranian University Entrance Examination</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2017</div>
+      <div class="cv-content">
+        <div class="cv-title">Bronze Medal, 21st Iran National Physics Olympiad</div>
+        <div class="cv-sub">Iran</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PRESENTATIONS ── -->
+  <div class="cv-section">
+    <div class="cv-label">Presentations</div>
+
+    <div class="cv-row">
+      <div class="cv-year">Oct 2024</div>
+      <div class="cv-content">
+        <div class="cv-title">EPFL LATSIS Symposium on Smart Microscopy</div>
+        <div class="cv-sub">Poster presentation · Lausanne, Switzerland</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Jun 2024</div>
+      <div class="cv-content">
+        <div class="cv-title">European Light Microscopy Initiative (ELMI 2024)</div>
+        <div class="cv-sub">Oral presentation · Liverpool, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Aug 2023</div>
+      <div class="cv-content">
+        <div class="cv-title">SMLMS 2023</div>
+        <div class="cv-sub">Poster presentation · Vienna, Austria</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Mar 2023</div>
+      <div class="cv-content">
+        <div class="cv-title">Physics of Life 2023</div>
+        <div class="cv-sub">Oral presentation · Harrogate, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Dec 2023</div>
+      <div class="cv-content">
+        <div class="cv-title">Super-Resolution in the North</div>
+        <div class="cv-sub">Oral presentation · York, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">Jan 2023</div>
+      <div class="cv-content">
+        <div class="cv-title">Bragg Exchange 2023</div>
+        <div class="cv-sub">Poster presentation · Leeds, UK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TEACHING ── -->
+  <div class="cv-section">
+    <div class="cv-label">Teaching</div>
+
+    <div class="cv-row">
+      <div class="cv-year">2025 – present</div>
+      <div class="cv-content">
+        <div class="cv-title">Teaching Assistant — Computational Skills: Python</div>
+        <div class="cv-sub">University of Cambridge, Cambridge, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2022 – 2024</div>
+      <div class="cv-content">
+        <div class="cv-title">Teaching Assistant — Computational Skills: Python</div>
+        <div class="cv-sub">University of Leeds, Leeds, UK</div>
+      </div>
+    </div>
+
+    <div class="cv-row">
+      <div class="cv-year">2022 – 2024</div>
+      <div class="cv-content">
+        <div class="cv-title">Teaching Assistant — Introduction to Experimental Physics</div>
+        <div class="cv-sub">University of Leeds, Leeds, UK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICE ── -->
+  <div class="cv-section">
+    <div class="cv-label">Service &amp; Reviewing</div>
+
+    <div class="cv-row">
+      <div class="cv-year">Peer review</div>
+      <div class="cv-content">
+        <div class="cv-title">Reviewer</div>
+        <div class="cv-sub">Nature Communications · Optics Letters · Optics Express · Biomedical Optics Express</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ── -->
+  <div class="cv-section">
+    <div class="cv-label">Technical Skills</div>
+    <table class="skills-table">
+      <tr>
+        <td>Optics</td>
+        <td>Optical alignment · Interferometry · Fluorescence microscopy · Super-resolution (SMLM, STED, SIM) · Light-sheet (OPM) · Confocal · TIRF</td>
+      </tr>
+      <tr>
+        <td>Instrumentation</td>
+        <td>Custom microscope design &amp; build · Focus stabilisation systems · Microfluidics integration</td>
+      </tr>
+      <tr>
+        <td>Electronics</td>
+        <td>Microcontrollers (Arduino, Raspberry Pi)</td>
+      </tr>
+      <tr>
+        <td>Coding &amp; Software</td>
+        <td>Python (data analysis, image processing) · CAD</td>
+      </tr>
+      <tr>
+        <td>Bio Lab</td>
+        <td>Cell culture · Immunolabelling · Fluorescent dye preparation</td>
+      </tr>
+      <tr>
+        <td>Languages</td>
+        <td>Persian (native) · English (fluent)</td>
+      </tr>
+    </table>
+  </div>
+
+</main>
 </body>
 </html>
