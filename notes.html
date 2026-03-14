@@ -270,7 +270,7 @@
         <p>
           Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv.
           We integrated high-NA oblique plane microscopy with microfluidics to push flow
-          cytometry sensitivity down to single molecules on live cells — detecting as few
+          cytometry sensitivity down to single molecules on live cells that enables detecting as few
           as ~2 labelled receptors per cell.
         </p>
       </div>
@@ -278,19 +278,18 @@
         <p>
           Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv.
           We integrated high-NA oblique plane microscopy with microfluidics to push flow
-          cytometry sensitivity down to single molecules on live cells — detecting as few
+          cytometry sensitivity down to single molecules on live cells that enables detecting as few
           as ~2 labelled receptors per cell.
         </p>
         <p>
           The key insight was combining optical sectioning from the OPM light sheet with
-          super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence
-          — which is the main bottleneck in conventional flow cytometry at low expression levels.
+          super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence which is the main bottleneck in conventional flow cytometry at low expression levels.
           We validated the system on c-kit receptor distribution in triple-negative breast
           cancer cells and found a subpopulation invisible to standard FC.
         </p>
         <p>
-          We're now working on extending smFC to multicolour detection and higher throughput.
-          Feedback very welcome — reach out or leave a comment on bioRxiv.
+          Future work will be on extending smFC to multicolour detection and higher throughput.
+          Feedback very welcome!
         </p>
         <p>
           <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">→ Read the preprint on bioRxiv</a>
@@ -328,32 +327,28 @@
     <div class="post-body">
       <div class="post-excerpt">
         <p>
-          Working with solvatochromic dyes like di-4-ANEPPDHQ at sub-zero temperatures throws
-          up some surprising challenges. Membrane fluidity drops dramatically as you cool cells
-          toward 0°C and below, which is precisely what makes Antarctic fish cells so interesting
-          — but it also changes how the dye partitions and reports.
+          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
+          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
+          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
         </p>
       </div>
       <div class="post-full">
         <p>
-          Working with solvatochromic dyes like di-4-ANEPPDHQ at sub-zero temperatures throws
-          up some surprising challenges. Membrane fluidity drops dramatically as you cool cells
-          toward 0°C and below, which is precisely what makes Antarctic fish cells so interesting
-          — but it also changes how the dye partitions and reports.
+          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
+          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
+          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
         </p>
         <p>
-          The emission spectrum of solvatochromic dyes shifts with the polarity of their local
-          environment. In fluid (disordered) membranes, the dye sits in a more polar environment
-          and shifts one way; in ordered (gel-phase) membranes, it shifts the other. The problem
+          The peak emission wavelength of solvatochromic dyes shifts with the polarity of their local
+          environment. In disordered membranes, the fluorophore sits in a more polar environment
+          and shifts one way; in ordered membranes, it shifts the other. The problem
           at very low temperatures is that most mammalian membrane lipids start to phase-separate
           or gel, and the spectral shift you'd normally interpret as "ordered membrane" now
           partially reflects a kinetic freezing-in of the dye rather than true equilibrium
           partitioning.
         </p>
         <p>
-          One practical implication: you need to allow longer equilibration times at low temperature
-          before imaging, and you should always include a positive control (a cell line with known
-          membrane order) at the same temperature. More notes to follow as this project develops.
+          So if I prepare membrane models and image them at low temperature, it should be interpretable of how the dye is behaving on the membrane at cold and we can use this as the calibration of membrane dyes at cold. More notes to follow as this project develops.
         </p>
       </div>
     </div>
@@ -388,33 +383,23 @@
     <div class="post-body">
       <div class="post-excerpt">
         <p>
-          A recent Nature Communications paper from the Bhatt lab presents soTILT3D — a
+          A recent Nature Communications paper presents soTILT3D, a
           single-objective tilted light-sheet approach for whole-cell 3D SMLM. It is a
-          clever engineering solution to a problem I've spent a lot of time thinking about:
-          how do you get optical sectioning and high-NA collection in the same objective
-          without a second lens getting in the way?
+          clever engineering solution to an aged problem! But why not just have an OPM?
         </p>
       </div>
       <div class="post-full">
         <p>
-          A recent Nature Communications paper presents soTILT3D — a single-objective tilted
-          light-sheet approach for whole-cell 3D SMLM. It is a clever engineering solution to a
-          problem I've spent a lot of time thinking about: how do you get optical sectioning and
-          high-NA collection in the same objective without a second lens getting in the way?
+          A recent Nature Communications paper presents soTILT3D, a
+          single-objective tilted light-sheet approach for whole-cell 3D SMLM. It is a
+          clever engineering solution to an aged problem! But why not just have an high-NA OPM?
         </p>
         <p>
           The key idea is to steer a light sheet at a tilt angle through the sample using only
           the primary high-NA objective, combined with nanoprinted microfluidics to hold the
           sample. This avoids the stitching artefacts and drift issues that plague dual-objective
           setups. The results show super-resolution imaging of whole mammalian cells with
-          reduced background compared to TIRF or HILO.
-        </p>
-        <p>
-          What I find most interesting is the nanoprinted microfluidics integration — it
-          essentially solves the sample-mounting headache that has always been the limiting
-          factor for single-objective light-sheet designs. Worth keeping in mind for the
-          cryo-imaging project, where sample mounting at sub-zero temperatures is its own
-          engineering challenge.
+          reduced background compared to TIRF or HILO (Boring!).
         </p>
       </div>
     </div>
@@ -450,21 +435,21 @@
       <div class="post-excerpt">
         <p>
           A recurring debate in imaging labs: should you build your own microscope or buy a
-          commercial system? The honest answer depends on what question you are trying to answer —
+          commercial system? The honest answer depends on what question you are trying to answer,
           but I've come to think the framing itself is slightly wrong.
         </p>
       </div>
       <div class="post-full">
         <p>
           A recurring debate in imaging labs: should you build your own microscope or buy a
-          commercial system? The honest answer depends on what question you are trying to answer —
+          commercial system? The honest answer depends on what question you are trying to answer,
           but I've come to think the framing itself is slightly wrong.
         </p>
         <p>
-          Commercial systems are optimised for robustness, reproducibility, and throughput. They
+          Commercial systems are optimised for robustness and reproducibility They
           are excellent for asking well-defined questions on well-behaved samples. The moment your
-          sample or your question is at the edge of what the instrument was designed for — flowing
-          cells, sub-zero temperatures, nanometre-precision focus over long timescales — you are
+          sample or your question is at the edge of what the instrument was designed for, flowing
+          cells, sub-zero temperatures, nanometre-precision focus over long timescales, you are
           fighting the machine rather than using it.
         </p>
         <p>
@@ -472,8 +457,7 @@
           every degree of freedom in the measurement. When something goes wrong (and it always
           does), you know where to look. More importantly, when you want to do something the
           machine was not designed for, you can. The PiFocus project started because I needed
-          focus stabilisation compatible with a 10× objective — something no commercial autofocus
-          system supported at the time.
+          focus stabilisation compatible with different objective lenses and my custom-built OPM.
         </p>
         <p>
           My working rule: buy commercial for routine measurements, build custom for novel
