@@ -31,33 +31,229 @@
     .social-links a:hover { color: var(--accent-light); }
     .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
     .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
-    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 900px; animation: fadeUp 0.5s ease both; }
+
+    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 920px; animation: fadeUp 0.5s ease both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; margin-bottom: 0.4rem; }
-    .page-subtitle { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 2.5rem; }
-    h2 { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--accent); margin: 2.5rem 0 1rem; letter-spacing: 0.02em; text-transform: uppercase; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+    .page-subtitle { font-size: 0.88rem; color: var(--warm-mid); margin-bottom: 3rem; }
 
-    .research-card { display: grid; grid-template-columns: 160px 1fr; gap: 1.4rem; padding: 1.6rem 0; border-top: 1px solid var(--border); align-items: start; }
+    /* ── SECTION HEADINGS ── */
+    .section-label {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--warm-mid);
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── MAIN PROJECT CARD ── */
+    .project-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .project-card .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .meta-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .meta-current  { background: #e8f0e8; color: #3d5a40; }
+    .meta-collab   { background: #e8ecf0; color: #2d4a5c; }
+    .meta-funded   { background: #f5edde; color: #7a5a20; }
+
+    .project-card p {
+      font-size: 0.92rem;
+      line-height: 1.78;
+      color: #3d3530;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-card p:last-of-type { margin-bottom: 0; }
+
+    .project-card .highlight-list {
+      margin: 1rem 0 1rem 0;
+      padding: 1rem 1.2rem;
+      background: var(--cream);
+      border-left: 3px solid var(--accent-light);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .highlight-list li {
+      font-size: 0.87rem;
+      color: #3d3530;
+      line-height: 1.7;
+      list-style: none;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .highlight-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-light);
+      font-size: 0.8rem;
+    }
+
+    /* ── SIDE PROJECT CARD ── */
+    .side-project {
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 1.4rem 1.8rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .side-project h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .side-project p {
+      font-size: 0.86rem;
+      color: var(--warm-mid);
+      line-height: 1.65;
+    }
+
+    .side-project .side-links { display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-end; flex-shrink: 0; }
+
+    .side-project .side-links a {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--warm-mid);
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .side-project .side-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── INSTRUMENTS GRID ── */
+    .instruments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .instrument-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.2rem 1.3rem;
+      background: white;
+      position: relative;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .instrument-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      border-color: var(--accent-light);
+    }
+
+    .instrument-era {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .instrument-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .instrument-where {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--warm-mid);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .instrument-desc {
+      font-size: 0.8rem;
+      color: var(--warm-mid);
+      line-height: 1.6;
+    }
+
+    .instrument-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.38rem;
+      border-radius: 3px;
+      margin-top: 0.6rem;
+      background: #f0e8e4;
+      color: var(--accent);
+    }
+
+    /* ── PAPERS ── */
+    .research-card { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--border); align-items: start; }
     .research-card:last-child { border-bottom: 1px solid var(--border); }
-    .card-thumb { width: 160px; height: 105px; object-fit: cover; border-radius: 4px; background: linear-gradient(135deg, #e8ddd4, #cfc2b4); flex-shrink: 0; }
-    .paper-title { font-family: 'EB Garamond', serif; font-size: 1.1rem; font-weight: 500; margin-bottom: 0.35rem; line-height: 1.35; }
-    .badge { display: inline-block; font-size: 0.68rem; font-weight: 500; padding: 0.1rem 0.45rem; border-radius: 3px; background: var(--accent); color: white; margin-left: 0.4rem; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; }
-    .authors { font-size: 0.83rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
-    .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.55rem; }
-    .abstract { font-size: 0.85rem; color: #5c5147; line-height: 1.65; margin-bottom: 0.65rem; }
+    .card-thumb { width: 140px; height: 90px; object-fit: cover; border-radius: 4px; background: linear-gradient(135deg, #e8ddd4, #cfc2b4); flex-shrink: 0; }
+    .paper-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.35; }
+    .badge { display: inline-block; font-size: 0.66rem; font-weight: 500; padding: 0.1rem 0.42rem; border-radius: 3px; background: var(--accent); color: white; margin-left: 0.4rem; vertical-align: middle; letter-spacing: 0.05em; text-transform: uppercase; }
+    .authors { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
+    .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.5rem; }
+    .abstract { font-size: 0.84rem; color: #5c5147; line-height: 1.65; margin-bottom: 0.6rem; }
     .links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .links a { font-size: 0.75rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; white-space: nowrap; }
     .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-
-    .research-area { margin-bottom: 2.5rem; }
-    .area-intro { font-size: 0.9rem; color: var(--warm-mid); line-height: 1.7; margin-bottom: 1.2rem; max-width: 600px; }
 
     @media (max-width: 768px) {
       aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
       body { flex-direction: column; }
       main { margin-left: 0; padding: 2rem 1.5rem; }
+      .project-card .project-header { flex-direction: column; }
+      .side-project { grid-template-columns: 1fr; }
+      .side-project .side-links { align-items: flex-start; flex-direction: row; }
+      .instruments-grid { grid-template-columns: 1fr; }
       .research-card { grid-template-columns: 1fr; }
       .card-thumb { width: 100%; height: 160px; }
     }
@@ -76,12 +272,12 @@
   </nav>
   <div class="sidebar-footer">
     <div class="social-links">
-      <a href="mailto:ar2368[at]cam.ac.uk">
+      <a href="mailto:ar2368@cam.ac.uk">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
         Email
       </a>
       <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 1 12 20.055a11.952 11.952 0 0 1-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
         ORCiD
       </a>
       <a href="https://github.com/astormic" target="_blank">
@@ -95,109 +291,200 @@
 
 <main>
   <h1>Research</h1>
-  <div class="page-subtitle">My work spans optical microscopy, biophysics, and biotechnology.</div>
+  <div class="page-subtitle">
+    My work spans advanced fluorescence microscopy, biophysics, and biological imaging —
+    with a focus on building custom optical systems to address problems at the nanoscale.
+  </div>
 
-  <!-- Research Area 1 -->
-  <div class="research-area">
-    <h2>Optical Microscopy</h2>
-    <div class="area-intro">
-      I've been developing optical microscope since 2018. Started by implementing a cutom-built laser-scanning confocal microscope. Then, with so much interest I had I started to explore the super-resolution microscopy technique and started my time at EMBL
+  <!-- ═══════════════════════════════════════════
+       SECTION 1 — RESEARCH PROJECTS
+  ════════════════════════════════════════════ -->
+  <div class="section-label">Research Projects</div>
+
+  <!-- Main project: Cambridge / BAS -->
+  <div class="project-card">
+    <div class="project-header">
+      <h2>Dynamic live-cell super-resolution imaging at sub-zero temperatures</h2>
+    </div>
+    <div class="project-meta">
+      <span class="meta-tag meta-current">Current · 2025–present</span>
+      <span class="meta-tag meta-collab">British Antarctic Survey × University of Cambridge</span>
+      <span class="meta-tag meta-funded">UKRI CRCRM</span>
     </div>
 
-    <div class="research-card">
-      <div class="card-thumb"></div>
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="#">Paper Title for Research Area One</a>
-          <span class="badge">New</span>
-        </div>
-        <div class="authors"><strong>Your Name</strong>, Co-author One, Advisor Name</div>
-        <div class="venue">Top Conference / Journal · 2025</div>
-        <div class="abstract">
-          Describe what you did, how you did it, and what the results show. Two or three sentences.
-          Focus on the contribution and impact.
-        </div>
-        <div class="links">
-          <a href="#">paper</a>
-          <a href="#">arXiv</a>
-          <a href="#">code</a>
-          <a href="#">project page</a>
-          <a href="#">slides</a>
-        </div>
+    <p>
+      This interdisciplinary project brings together the
+      <a href="#">Kaminski Group</a> (Dept. of Chemical Engineering &amp; Biotechnology, Cambridge)
+      and the <a href="https://www.bas.ac.uk" target="_blank">British Antarctic Survey</a> to develop
+      a high-resolution microscopy platform capable of visualising protein dynamics in Antarctic fish
+      cells at sub-zero temperatures — one of the most challenging frontiers in live-cell imaging.
+    </p>
+
+    <p>
+      I am applying advanced fluorescence microscopy techniques — including super-resolution methods
+      and solvatochromic dyes — to probe nanoscale cellular behaviour in these extreme cold
+      conditions. Solvatochromic probes are particularly powerful here: their emission spectra shift
+      with local membrane polarity, allowing us to sense changes in membrane organisation and protein
+      environment in real time, without perturbing the cell.
+    </p>
+
+    <ul class="highlight-list">
+      <li>Developing a cryo-compatible live-cell fluorescence imaging platform</li>
+      <li>Using solvatochromic dyes to probe membrane dynamics at sub-zero temperatures</li>
+      <li>Studying evolutionary cold-adaptation mechanisms in Antarctic fish cell lines</li>
+      <li>Insights into climate-change resilience of polar organisms</li>
+    </ul>
+
+    <p>
+      Beyond polar biology, the technologies emerging from this project have broad applications:
+      improving <strong>cryopreservation</strong> protocols, enabling long-term storage of
+      therapeutic proteins, and driving advances in imaging for hazardous or extreme environments
+      — from high-containment labs to potential future space exploration contexts.
+    </p>
+  </div>
+
+  <!-- Side project: mitochondria -->
+  <div class="side-project">
+    <div>
+      <h3>Mitochondria morphology analysis pipeline</h3>
+      <p>
+        A computational pipeline built on top of
+        <a href="https://github.com/newhouselab/nellie" target="_blank">Nellie</a>'s output to
+        extract and interpret quantitative morphological parameters of mitochondrial networks —
+        including network connectivity, branch length distributions, and motility metrics.
+        Designed for high-throughput batch analysis of live-cell imaging data.
+      </p>
+    </div>
+    <div class="side-links">
+      <a href="https://github.com/astormic" target="_blank">GitHub →</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 2 — OPTICAL SYSTEMS BUILT
+  ════════════════════════════════════════════ -->
+  <div class="section-label">Optical Systems I've Built</div>
+
+  <div class="instruments-grid">
+
+    <div class="instrument-card">
+      <div class="instrument-era">PhD · 2021–2025 · Leeds</div>
+      <div class="instrument-name">Oblique Plane Microscopy (OPM) System</div>
+      <div class="instrument-where">Ponjavic Lab, University of Leeds</div>
+      <div class="instrument-desc">
+        A single-objective light-sheet system enabling optical sectioning without a secondary
+        objective. Integrated with a microfluidic chip to enable single-molecule flow cytometry
+        (smFC) — capable of detecting as few as ~2 labelled molecules on the surface of flowing cells.
       </div>
+      <span class="instrument-tag">Light-sheet · Microfluidics · smFC</span>
     </div>
 
-    <div class="research-card">
-      <div class="card-thumb"></div>
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="#">Second Paper in This Area</a>
-        </div>
-        <div class="authors"><strong>Your Name</strong>, Co-author One, Co-author Two</div>
-        <div class="venue">Workshop at Top Conference · 2024 · <em>Oral</em></div>
-        <div class="abstract">
-          Brief description of this project.
-        </div>
-        <div class="links">
-          <a href="#">paper</a>
-          <a href="#">code</a>
-        </div>
+    <div class="instrument-card">
+      <div class="instrument-era">PhD · 2021–2025 · Leeds</div>
+      <div class="instrument-name">Astigmatism-based Focus Stabilisation (PiFocus)</div>
+      <div class="instrument-where">Ponjavic Lab, University of Leeds</div>
+      <div class="instrument-desc">
+        A standalone, low-cost active focus stabilisation unit using an astigmatic infrared beam
+        and a Raspberry Pi controller. Compatible with objective lenses from 10× to 100×,
+        achieving &lt;10 nm axial precision over a &gt;10 µm operating range.
+      </div>
+      <span class="instrument-tag">Focus Stabilisation · Raspberry Pi · Open-source</span>
+    </div>
+
+    <div class="instrument-card">
+      <div class="instrument-era">PhD · 2021–2025 · Leeds</div>
+      <div class="instrument-name">Double-Helix PSF SMLM System</div>
+      <div class="instrument-where">Ponjavic Lab, University of Leeds</div>
+      <div class="instrument-desc">
+        A single-molecule localisation microscopy (SMLM) system using a double-helix
+        point-spread-function (DH-PSF) phase mask for 3D super-resolution imaging. Enables
+        simultaneous lateral and axial localisation of single fluorophores with extended
+        depth range compared to astigmatic approaches.
+      </div>
+      <span class="instrument-tag">SMLM · 3D Super-resolution · DH-PSF</span>
+    </div>
+
+    <div class="instrument-card">
+      <div class="instrument-era">Research Training · 2019 · EMBL Heidelberg</div>
+      <div class="instrument-name">Dual-channel SMLM System</div>
+      <div class="instrument-where">Ries Lab, EMBL Heidelberg</div>
+      <div class="instrument-desc">
+        A two-colour single-molecule localisation microscopy system for simultaneous
+        multi-target imaging, built to study protein complex stoichiometry and spatial
+        organisation at the nanoscale.
+      </div>
+      <span class="instrument-tag">SMLM · Two-colour · Super-resolution</span>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3 — SELECTED PUBLICATIONS
+  ════════════════════════════════════════════ -->
+  <div class="section-label">Selected Publications</div>
+
+  <div class="research-card">
+    <img class="card-thumb" src="assets/smOPM_All2.png" alt="Single-molecule flow cytometry">
+    <div class="card-content">
+      <div class="paper-title">
+        <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">Single-molecule flow cytometry</a>
+        <span class="badge">Preprint</span>
+      </div>
+      <div class="authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</div>
+      <div class="venue">bioRxiv · 2025</div>
+      <div class="abstract">
+        We introduce smFC, integrating high-NA oblique plane microscopy with microfluidics for
+        single-molecule detection on flowing cells. Using super-bright fluorophores, smFC detects
+        membrane proteins with digital precision down to ~2 molecules per cell — a 10- to 80-fold
+        improvement over conventional flow cytometry. Applied to quantify c-kit receptor distribution
+        in triple-negative breast cancer cells with unprecedented sensitivity.
+      </div>
+      <div class="links">
+        <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">bioRxiv</a>
       </div>
     </div>
   </div>
 
-  <!-- Research Area 2 -->
-  <div class="research-area">
-    <h2>Research Area Two</h2>
-    <div class="area-intro">
-      Introduce this second research direction. How does it connect to your broader goals?
-    </div>
-
-    <div class="research-card">
-      <div class="card-thumb"></div>
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="#">Paper in Your Second Research Area</a>
-        </div>
-        <div class="authors"><strong>Your Name</strong>, Co-author, Advisor Name</div>
-        <div class="venue">Journal Name · 2024</div>
-        <div class="abstract">
-          Summary of this paper's contribution and findings.
-        </div>
-        <div class="links">
-          <a href="#">paper</a>
-          <a href="#">arXiv</a>
-        </div>
+  <div class="research-card">
+    <img class="card-thumb" src="assets/getThumbnail.jpeg" alt="PiFocus focus stabilisation">
+    <div class="card-content">
+      <div class="paper-title">
+        <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
+      </div>
+      <div class="authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</div>
+      <div class="venue">Optics Express · 2024</div>
+      <div class="abstract">
+        We introduce PiFocus, a standalone Raspberry Pi–based focus stabilisation unit relying on
+        astigmatism for axial drift estimation. Compatible with objective lenses from 10× to 100×,
+        achieving &lt;10 nm precision over a &gt;10 µm operating range — without fiducials and
+        largely unaffected by pointing stability errors.
+      </div>
+      <div class="links">
+        <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">paper</a>
+        <a href="https://zenodo.org/records/12783911" target="_blank">code</a>
       </div>
     </div>
   </div>
 
-  <!-- Research Area 3 -->
-  <div class="research-area">
-    <h2>Research Area Three</h2>
-    <div class="area-intro">
-      Introduce your third area of research here.
-    </div>
-
-    <div class="research-card">
-      <div class="card-thumb"></div>
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="#">Paper in Third Research Area</a>
-        </div>
-        <div class="authors"><strong>Your Name</strong>, Co-author</div>
-        <div class="venue">Conference · 2024</div>
-        <div class="abstract">
-          Summary of contributions.
-        </div>
-        <div class="links">
-          <a href="#">paper</a>
-          <a href="#">poster</a>
-        </div>
+  <div class="research-card">
+    <div class="card-thumb"></div>
+    <div class="card-content">
+      <div class="paper-title">
+        <a href="https://doi.org/10.1364/BOE.553545" target="_blank">Active remote focus stabilization in oblique plane microscopy</a>
+      </div>
+      <div class="authors">Trung Duc Nguyen, <strong>Amir Rahmani</strong>, Aleks Ponjavic, Alfred Millett-Sikking, Reto Fiolka</div>
+      <div class="venue">Biomedical Optics Express · 2025</div>
+      <div class="abstract">
+        We demonstrate that for oblique plane microscopes (OPM), light-sheet stabilisation can be
+        achieved without fluorescence from the sample — using a non-perturbative remote approach
+        that preserves the scientific imaging channel and reduces photobleaching.
+      </div>
+      <div class="links">
+        <a href="https://doi.org/10.1364/BOE.553545" target="_blank">paper</a>
       </div>
     </div>
   </div>
+
 </main>
-
 </body>
 </html>
