@@ -256,8 +256,62 @@
        Change: data-category, .cat class, date, title, excerpt, full content.
        Categories: lab-note | thought | reading | news
   ═════════════════════════════════════════════ -->
+  <div class="post" data-category="lab-note">
+    <div class="post-header">
+      <div class="post-title">Why solvatochromic dyes are tricky in cold membranes</div>
+      <div class="post-meta">
+        Amir Rahmani
+        <span class="sep">·</span>
+        University of Cambridge
+        <span class="sep">·</span>
+        January 2026
+        <span class="sep">·</span>
+        <span class="cat cat-labnote">Lab Note</span>
+      </div>
+    </div>
 
-  <!-- POST 1 — example: News -->
+    <div class="post-body">
+      <div class="post-excerpt">
+        <p>
+          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
+          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
+          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
+        </p>
+      </div>
+      <div class="post-full">
+        <p>
+          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
+          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
+          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
+        </p>
+        <p>
+          The peak emission wavelength of solvatochromic dyes shifts with the polarity of their local
+          environment. In disordered membranes, the fluorophore sits in a more polar environment
+          and shifts one way; in ordered membranes, it shifts the other. The problem
+          at very low temperatures is that most mammalian membrane lipids start to phase-separate
+          or gel, and the spectral shift you'd normally interpret as "ordered membrane" now
+          partially reflects a kinetic freezing-in of the dye rather than true equilibrium
+          partitioning.
+        </p>
+        <p>
+          So if I prepare membrane models and image them at low temperature, it should be interpretable of how the dye is behaving on the membrane at cold and we can use this as the calibration of membrane dyes at cold. More notes to follow as this project develops.
+        </p>
+      </div>
+    </div>
+
+    <button class="toggle-btn" onclick="togglePost(this)">
+      Read more <span class="arrow">↓</span>
+    </button>
+
+    <div class="post-discuss">
+      <a class="discuss-link" href="mailto:ar2368@cam.ac.uk?subject=Re: solvatochromic dyes in cold membranes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Discuss by email
+      </a>
+    </div>
+  </div>
+
+  <!-- POST -->
   <div class="post" data-category="news">
     <div class="post-header">
       <div class="post-title">smFC preprint is out on bioRxiv</div>
@@ -377,63 +431,7 @@
     </div>
   </div>
   
-  <!-- POST 2 — example: Lab Note -->
-  <div class="post" data-category="lab-note">
-    <div class="post-header">
-      <div class="post-title">Why solvatochromic dyes are tricky in cold membranes</div>
-      <div class="post-meta">
-        Amir Rahmani
-        <span class="sep">·</span>
-        University of Cambridge
-        <span class="sep">·</span>
-        January 2026
-        <span class="sep">·</span>
-        <span class="cat cat-labnote">Lab Note</span>
-      </div>
-    </div>
-
-    <div class="post-body">
-      <div class="post-excerpt">
-        <p>
-          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
-          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
-          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
-        </p>
-      </div>
-      <div class="post-full">
-        <p>
-          Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws
-          up some surprising challenges. How membrane fluidity changes if you cool mammalian cells
-          toward 0°C? and the changes we see are from the dye or actual fluidity is changing? cause lowering temperature also affect how the dye partitions and reports.
-        </p>
-        <p>
-          The peak emission wavelength of solvatochromic dyes shifts with the polarity of their local
-          environment. In disordered membranes, the fluorophore sits in a more polar environment
-          and shifts one way; in ordered membranes, it shifts the other. The problem
-          at very low temperatures is that most mammalian membrane lipids start to phase-separate
-          or gel, and the spectral shift you'd normally interpret as "ordered membrane" now
-          partially reflects a kinetic freezing-in of the dye rather than true equilibrium
-          partitioning.
-        </p>
-        <p>
-          So if I prepare membrane models and image them at low temperature, it should be interpretable of how the dye is behaving on the membrane at cold and we can use this as the calibration of membrane dyes at cold. More notes to follow as this project develops.
-        </p>
-      </div>
-    </div>
-
-    <button class="toggle-btn" onclick="togglePost(this)">
-      Read more <span class="arrow">↓</span>
-    </button>
-
-    <div class="post-discuss">
-      <a class="discuss-link" href="mailto:ar2368@cam.ac.uk?subject=Re: solvatochromic dyes in cold membranes">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        Discuss by email
-      </a>
-    </div>
-  </div>
-
-  <!-- POST 3 — example: Reading -->
+  <!-- POST -->
   <div class="post" data-category="reading">
     <div class="post-header">
       <div class="post-title">Reading: soTILT3D — whole-cell SMLM without a second objective</div>
