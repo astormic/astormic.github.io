@@ -240,6 +240,70 @@
       line-height: 1.65;
     }
 
+    /* ── STUDENT SUPERVISION ROWS ── */
+    .supervision-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .supervision-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.1rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .supervision-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .supervision-name {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .supervision-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .supervision-role::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      flex-shrink: 0;
+    }
+
+    .supervision-project {
+      font-size: 0.84rem;
+      color: var(--warm-mid);
+      line-height: 1.6;
+    }
+
+    .supervision-year {
+      font-size: 0.75rem;
+      color: #a89e92;
+      font-weight: 400;
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
     /* ── INSTRUMENTS GRID ── */
     .instruments-grid {
       display: grid;
@@ -331,6 +395,8 @@
       .collab-grid { grid-template-columns: 1fr; }
       .research-card { grid-template-columns: 1fr; }
       .card-thumb { width: 100%; height: 160px; }
+      .supervision-row { grid-template-columns: 1fr; gap: 0.3rem; }
+      .supervision-year { padding-top: 0; }
     }
   </style>
 </head>
@@ -439,7 +505,7 @@
         these membraneless compartments relate to their function.
       </p>
     </div>
-  
+
     <div class="collab-card">
       <div class="collab-topic">3D OPM imaging of giant unilamellar vesicles</div>
       <div class="collab-lab">Di Michele Group</div>
@@ -451,43 +517,43 @@
 
   </div>
 
+  <!-- Student Supervision -->
   <div class="section-label">Student Supervision</div>
-<p class="section-description">
-  Current and recent students I am supervising or co-supervising within the University of Cambridge.
-</p>
+  <p class="section-description">
+    Current and recent students I am supervising or co-supervising within the University of Cambridge.
+  </p>
 
-<div class="collab-grid">
+  <div class="supervision-list">
 
-  <div class="collab-card">
-    <div class="collab-topic">Characterisation of membrane bilayer models at cold using solvatochromic dyes</div>
-    <div class="collab-lab">Shonit Sharma · Part IIB, CEB · 2025–2026</div>
-    <p class="collab-desc">
-      Investigating how solvatochromic dyes report on membrane organisation and polarity in model
-      lipid bilayer systems at sub-zero temperatures, in support of the Antarctic cryo-imaging project.
-    </p>
+    <div class="supervision-row">
+      <div>
+        <div class="supervision-name">Shonit Sharma</div>
+        <div class="supervision-role">Part IIB · Dept. of Chemical Engineering &amp; Biotechnology</div>
+        <div class="supervision-project">Characterisation of membrane bilayer models at cold using solvatochromic dyes</div>
+      </div>
+      <div class="supervision-year">2024–2025</div>
+    </div>
+
+    <div class="supervision-row">
+      <div>
+        <div class="supervision-name">Boyd Lyons</div>
+        <div class="supervision-role">Part IIB · Dept. of Chemical Engineering &amp; Biotechnology</div>
+        <div class="supervision-project">Characterisation of membrane bilayer models at cold using solvatochromic dyes</div>
+      </div>
+      <div class="supervision-year">2024–2025</div>
+    </div>
+
+    <div class="supervision-row">
+      <div>
+        <div class="supervision-name">Frederick Lawrence</div>
+        <div class="supervision-role">MPhil DIS · Dept. of Physics</div>
+        <div class="supervision-project">Transformer-based single-particle tracking analysis</div>
+      </div>
+      <div class="supervision-year">2024–present</div>
+    </div>
+
   </div>
 
-  <div class="collab-card">
-    <div class="collab-topic">Characterisation of membrane bilayer models at cold using solvatochromic dyes</div>
-    <div class="collab-lab">Boyd Lyons · Part IIB, CEB · 2025–2026</div>
-    <p class="collab-desc">
-      Investigating how solvatochromic dyes report on membrane organisation and polarity in model
-      lipid bilayer systems at sub-zero temperatures, in support of the Antarctic cryo-imaging project.
-    </p>
-  </div>
-
-  <div class="collab-card">
-    <div class="collab-topic">Transformer-based single-particle tracking analysis</div>
-    <div class="collab-lab">Frederick Lawrence · MPhil DIS, Physics · 2025–present</div>
-    <p class="collab-desc">
-      Developing a transformer-based deep learning pipeline for automated analysis of single-particle
-      tracking data, with the aim of improving tracking accuracy and throughput in dense biological
-      imaging conditions.
-    </p>
-  </div>
-
-</div>
-  
   <div class="section-label">Optical Systems I've Built</div>
 
   <div class="instruments-grid">
