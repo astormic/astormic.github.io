@@ -1,373 +1,928 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PVT87TKYJX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PVT87TKYJX');
-</script>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Amir Rahmani</title>
-  <link rel="icon" type="image/png" href="assets/image1.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --cream: #f9f6f0;
-      --ink: #1a1714;
-      --warm-mid: #5c5147;
-      --accent: #8b4513;
-      --accent-light: #c8814a;
-      --border: #ddd5c8;
-      --sidebar-w: 260px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Rahmani</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black:  #000000;
+  --grey:   rgb(10,10,10);
+  --white:  #ffffff;
+  --cyan:   #26ade4;
+  --muted:  rgba(255,255,255,0.6);
+  --faint:  rgba(255,255,255,0.28);
+  --varela: 'Varela Round', sans-serif;
+  --nunito: 'Nunito', -apple-system, 'Segoe UI', sans-serif;
+}
 
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; display: flex; }
+html { scroll-behavior: smooth; }
 
-    aside {
-      width: var(--sidebar-w); min-height: 100vh; position: fixed; top: 0; left: 0;
-      background: var(--ink); color: var(--cream); display: flex; flex-direction: column;
-      padding: 2.5rem 2rem; z-index: 10;
-    }
-    aside .site-name { font-family: 'EB Garamond', serif; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.3; margin-bottom: 0.5rem; color: #fff; }
-    aside .site-title { font-size: 0.78rem; color: #a89e92; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2.5rem; font-weight: 300; }
-    nav { display: flex; flex-direction: column; gap: 0.2rem; }
-    nav a { text-decoration: none; font-size: 0.9rem; font-weight: 400; color: #c8bfb5; padding: 0.45rem 0.6rem; border-radius: 4px; letter-spacing: 0.03em; transition: all 0.2s; }
-    nav a:hover, nav a.active { color: #fff; background: rgba(255,255,255,0.08); }
-    nav a.active { color: var(--accent-light); }
-    .sidebar-footer { margin-top: auto; padding-top: 2rem; }
-    .social-links { display: flex; flex-direction: column; gap: 0.55rem; }
-    .social-links a { font-size: 0.8rem; color: #8a8078; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
-    .social-links a:hover { color: var(--accent-light); }
-    .social-links .icon { width: 16px; height: 16px; opacity: 0.7; flex-shrink: 0; }
-    .last-updated { margin-top: 2rem; font-size: 0.7rem; color: #5a5048; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--nunito);
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.75px;
+  -webkit-font-smoothing: antialiased;
+}
 
-    main { margin-left: var(--sidebar-w); flex: 1; padding: 3.5rem 4rem 4rem 4.5rem; max-width: 900px; animation: fadeUp 0.5s ease both; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+a { color: var(--white); text-decoration: none; transition: color .15s; }
+a:hover { color: var(--cyan); }
 
-    /* PROFILE */
-    .profile { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
-    .profile-photo { width: 160px; height: 160px; border-radius: 6px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
-    .profile-text h1 { font-family: 'EB Garamond', serif; font-size: 2.2rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.1; }
-    .profile-text .position { font-size: 0.88rem; color: var(--warm-mid); letter-spacing: 0.03em; margin-bottom: 1.2rem; }
-    .profile-text p { font-size: 0.95rem; line-height: 1.75; color: #3d3530; max-width: 560px; }
-    .profile-text p + p { margin-top: 0.9rem; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 52px;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center;
+  padding: 0 32px;
+  justify-content: space-between;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+.nav-brand {
+  font-family: var(--nunito);
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 0.75px; color: var(--white);
+}
+.nav-links { display: flex; gap: 30px; list-style: none; }
+.nav-links a {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.75px;
+  color: var(--muted);
+  padding-bottom: 3px;
+  border-bottom: 3px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a.active { color: var(--cyan); border-bottom-color: var(--cyan); }
 
-    /* SECTIONS */
-    section { margin-bottom: 3rem; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
-    h2 { font-family: 'EB Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--ink); }
-    .see-more { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.04em; }
+/* ── HERO ── */
+.hero {
+  position: relative; width: 100%; height: 100vh; min-height: 560px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 1.4s ease-in-out;
+}
+.hero-slide.active { opacity: 1; }
+.hero-slide canvas { width: 100%; height: 100%; display: block; }
+.vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 85% 85% at 50% 50%,
+    rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.8) 100%);
+}
+.hero-body { position: relative; z-index: 2; padding: 0 24px; }
 
-    /* ── MAIN TIMELINE ── */
-    .timeline { position: relative; padding-left: 1.6rem; margin-top: 0.5rem; }
-    .timeline::before { content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
-    .timeline-item { position: relative; padding: 0 0 1.6rem 1.4rem; }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-item::before {
-      content: ''; position: absolute; left: -1.6rem; top: 6px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--cream); border: 2px solid var(--border); transition: border-color 0.2s;
-    }
-    .timeline-item:hover::before { border-color: var(--accent-light); }
-    .timeline-item.highlight::before { background: var(--accent); border-color: var(--accent); width: 13px; height: 13px; left: calc(-1.6rem - 1px); top: 5px; }
+.hero-name {
+  font-family: var(--varela);
+  font-size: clamp(44px, 8.5vw, 80px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1; margin-bottom: 20px;
+}
+.hero-affil {
+  font-size: 13px; font-weight: 300;
+  letter-spacing: 0.75px; color: var(--muted);
+  margin-bottom: 26px;
+}
+.hero-tagline {
+  font-size: 22px; font-weight: 500;
+  letter-spacing: 0.75px; line-height: 1.45;
+  max-width: 580px; margin: 0 auto 16px;
+}
+.hero-desc {
+  font-size: 12px; font-weight: 300;
+  letter-spacing: 0.75px; line-height: 20px;
+  color: var(--muted); max-width: 500px;
+  margin: 0 auto 38px; text-align: center;
+}
+.scroll-btn {
+  width: 42px; height: 42px;
+  border: 1.5px solid rgba(255,255,255,0.4); border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; animation: bob 2.8s ease-in-out infinite;
+  transition: border-color .15s;
+}
+.scroll-btn:hover { border-color: var(--cyan); }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
 
-    .tl-year { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.07em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.15rem; }
-    .tl-title { font-family: 'EB Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 0.15rem; }
-    .tl-sub { font-size: 0.82rem; color: var(--warm-mid); line-height: 1.55; }
-    .tl-tag { display: inline-block; font-size: 0.64rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
-    .tag-edu   { background: #e8f0e8; color: #3d5a40; }
-    .tag-work  { background: #e8ecf0; color: #2d4a5c; }
-    .tag-award { background: #f5edde; color: #7a5a20; }
-    .tag-pub   { background: #f0e8e4; color: var(--accent); }
+.slide-dots {
+  position: absolute; bottom: 18px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 3;
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(255,255,255,0.28); cursor: pointer;
+  transition: background .2s;
+}
+.dot.active { background: var(--cyan); }
 
-    /* ── NESTED SUB-TIMELINE ── */
-    .sub-timeline { position: relative; margin-top: 0.9rem; padding-left: 1.3rem; }
-    .sub-timeline::before { content: ''; position: absolute; left: 4px; top: 6px; bottom: 6px; width: 1px; background: var(--border); opacity: 0.6; }
-    .sub-item { position: relative; padding: 0 0 0.8rem 1.1rem; }
-    .sub-item:last-child { padding-bottom: 0; }
-    /* small diamond */
-    .sub-item::before {
-      content: ''; position: absolute; left: -1.32rem; top: 5px;
-      width: 7px; height: 7px; border-radius: 1px; transform: rotate(45deg);
-      background: var(--cream); border: 1.5px solid var(--border); transition: border-color 0.2s, background 0.2s;
-    }
-    .sub-item:hover::before { border-color: var(--accent-light); }
-    .sub-item.sub-pub::before   { border-color: var(--accent-light); }
-    .sub-item.sub-award::before { border-color: #c8a84b; background: #fdf9ed; }
-    .sub-item.sub-event::before { border-color: #7a9ab0; }
-    .sub-year { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--accent-light); text-transform: uppercase; margin-bottom: 0.05rem; }
-    .sub-title { font-size: 0.86rem; color: var(--ink); line-height: 1.35; }
-    .sub-detail { font-size: 0.78rem; color: var(--warm-mid); line-height: 1.45; margin-top: 0.05rem; }
+/* ── SECTION ── */
+.sec { padding: 60px 0; text-align: center; }
+.sec.black { background: var(--black); }
+.sec.grey  { background: var(--grey); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 36px; }
+.sec-title {
+  font-size: 24px; font-weight: 500; letter-spacing: 0.75px;
+  margin-bottom: 32px;
+}
+hr.rule {
+  border: none; border-top: 0.5px solid rgba(255,255,255,0.1);
+  max-width: 1100px; margin: 0 auto;
+}
 
-    /* RESEARCH CARDS */
-    .research-card { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; padding: 1.4rem 0; border-top: 1px solid var(--border); align-items: start; }
-    .research-card:last-child { border-bottom: 1px solid var(--border); }
-    .card-thumb { width: 140px; height: 90px; object-fit: cover; border-radius: 4px; background: linear-gradient(135deg, #e8ddd4 0%, #cfc2b4 100%); flex-shrink: 0; }
-    .card-content .paper-title { font-family: 'EB Garamond', serif; font-size: 1.05rem; font-weight: 500; margin-bottom: 0.3rem; line-height: 1.35; }
-    .card-content .authors { font-size: 0.82rem; color: var(--warm-mid); margin-bottom: 0.25rem; }
-    .card-content .venue { font-size: 0.8rem; color: var(--warm-mid); font-style: italic; margin-bottom: 0.5rem; }
-    .card-content .abstract { font-size: 0.84rem; color: #5c5147; line-height: 1.6; margin-bottom: 0.6rem; text-align: justify; hyphens: auto; }
-    .links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-    .links a { font-size: 0.75rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; color: var(--warm-mid); transition: all 0.2s; white-space: nowrap; }
-    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+/* ── PROFILE ── */
+.profile-grid {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 48px; text-align: left; align-items: start;
+  max-width: 860px; margin: 0 auto;
+}
+.profile-photo {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover; border-radius: 3px;
+  display: block;
+}
+.profile-photo-placeholder {
+  width: 100%; aspect-ratio: 3/4;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--faint); font-size: 11px; letter-spacing: 0.08em;
+}
+.profile-name {
+  font-size: 24px; font-weight: 500; letter-spacing: 0.75px;
+  margin-bottom: 6px;
+}
+.profile-role {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.75px;
+  color: var(--muted); margin-bottom: 22px; line-height: 18px;
+}
+.profile-bio {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: 0.75px; line-height: 20px;
+  color: rgba(255,255,255,0.82); text-align: justify;
+  margin-bottom: 14px;
+}
+.profile-links {
+  display: flex; gap: 18px; flex-wrap: wrap; margin-top: 20px;
+}
+.profile-links a {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(38,173,228,0.3);
+  padding-bottom: 2px;
+  transition: border-color .15s;
+}
+.profile-links a:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    @media (max-width: 768px) {
-      aside { position: relative; width: 100%; min-height: auto; padding: 1.5rem; }
-      body { flex-direction: column; }
-      main { margin-left: 0; padding: 2rem 1.5rem; }
-      .profile { flex-direction: column; }
-      .research-card { grid-template-columns: 1fr; }
-      .card-thumb { width: 100%; height: 160px; }
-    }
-  </style>
+/* ── RESEARCH ── */
+.research-intro {
+  font-size: 12px; letter-spacing: 0.75px; line-height: 20px;
+  text-align: justify; max-width: 860px; margin: 0 auto 36px;
+  color: rgba(255,255,255,0.82);
+}
+.research-intro a { color: var(--cyan); }
+.research-intro a:hover { text-decoration: underline; }
+
+.project-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+.project-card {
+  position: relative; overflow: hidden;
+  aspect-ratio: 16/9; cursor: pointer;
+}
+.project-card canvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.project-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, transparent 100%);
+  transition: opacity .3s;
+}
+.project-card:hover .project-overlay { opacity: 0.85; }
+.project-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20px 24px; text-align: left;
+}
+.project-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 5px;
+}
+.project-title {
+  font-size: 14px; font-weight: 600; letter-spacing: 0.75px;
+  line-height: 1.4; margin-bottom: 5px;
+}
+.project-desc {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.5px;
+  line-height: 16px; color: var(--muted);
+}
+
+/* ── INSTRUMENTS ── */
+.instr-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+}
+.instr-card {
+  background: rgba(255,255,255,0.025);
+  border: 0.5px solid rgba(255,255,255,0.07);
+  padding: 26px 20px; text-align: left;
+  transition: background .18s; cursor: default;
+}
+.instr-card:hover { background: rgba(255,255,255,0.055); }
+.instr-icon { margin-bottom: 14px; opacity: 0.5; }
+.instr-abbr {
+  font-size: 14px; font-weight: 700; letter-spacing: 0.75px;
+  margin-bottom: 5px;
+}
+.instr-full {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.5px;
+  line-height: 16px; color: var(--muted); margin-bottom: 10px;
+}
+.instr-tags {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;
+}
+.tag {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 2px 6px; border-radius: 2px;
+  background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
+}
+.instr-place {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cyan);
+}
+
+/* ── PUBLICATIONS ── */
+.pub-year-block { margin-bottom: 32px; }
+.pub-year-row {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: 20px; font-weight: 500; letter-spacing: 0.75px;
+  margin-bottom: 18px; cursor: default;
+}
+.pub-year-row svg { color: var(--muted); }
+.pub-list { text-align: left; max-width: 860px; margin: 0 auto; }
+.pub-entry {
+  padding: 16px 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.pub-entry:first-child { border-top: 0.5px solid rgba(255,255,255,0.08); }
+.pub-title-txt {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.75px;
+  line-height: 1.45; margin-bottom: 4px;
+}
+.pub-authors {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.75px;
+  line-height: 18px; color: var(--muted); margin-bottom: 3px;
+}
+.pub-authors strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.pub-journal {
+  font-size: 12px; font-style: italic; letter-spacing: 0.75px;
+  color: rgba(255,255,255,0.45); margin-bottom: 4px;
+}
+.pub-doi { font-size: 12px; color: var(--cyan); text-decoration: underline; }
+.pub-doi:hover { color: #55c8f0; }
+.pub-links { display: flex; gap: 14px; margin-top: 5px; flex-wrap: wrap; }
+.pub-link {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--cyan);
+  border-bottom: 1px solid rgba(38,173,228,0.3);
+  padding-bottom: 1px;
+}
+.pub-link:hover { border-color: var(--cyan); }
+.pub-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 2px 7px; border-radius: 2px;
+  vertical-align: middle; margin-left: 7px;
+}
+.badge-new { background: rgba(38,173,228,0.18); color: var(--cyan); border: 0.5px solid rgba(38,173,228,0.4); }
+
+/* ── CV STRIP ── */
+.cv-strip { background: var(--grey); padding: 56px 0; }
+.cv-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 36px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+.cv-text { text-align: left; }
+.cv-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 10px;
+}
+.cv-heading {
+  font-size: 22px; font-weight: 500; letter-spacing: 0.75px;
+  line-height: 1.35; margin-bottom: 10px;
+}
+.cv-rows { display: flex; flex-direction: column; gap: 5px; }
+.cv-row {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.75px;
+  line-height: 18px; color: var(--muted);
+}
+.cv-row strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+.btn-outline {
+  flex-shrink: 0;
+  font-family: var(--nunito); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--white); border: 1.5px solid rgba(255,255,255,0.28);
+  padding: 11px 22px; border-radius: 2px; white-space: nowrap;
+  display: inline-block;
+  transition: border-color .15s, color .15s;
+}
+.btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ── NOTES ── */
+.notes-list { max-width: 860px; margin: 0 auto; text-align: left; }
+.note-row {
+  display: grid; grid-template-columns: 96px 1fr 16px;
+  gap: 18px; padding: 17px 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  align-items: start; cursor: pointer; transition: opacity .15s;
+}
+.note-row:first-child { border-top: 0.5px solid rgba(255,255,255,0.08); }
+.note-row:hover { opacity: 0.72; }
+.note-date {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.75px;
+  color: var(--faint); padding-top: 2px;
+}
+.note-cat {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 5px;
+}
+.note-cat.lab     { color: var(--cyan); }
+.note-cat.thought { color: rgba(255,255,255,0.42); }
+.note-cat.reading { color: #7ee8b8; }
+.note-cat.news    { color: #e8c87e; }
+.note-title {
+  font-size: 13px; font-weight: 400; letter-spacing: 0.75px;
+  line-height: 1.5; color: var(--white);
+}
+.note-arrow { color: var(--faint); font-size: 12px; padding-top: 18px; }
+
+/* ── CONTACT ── */
+.contact-sec { padding: 60px 0; text-align: center; background: var(--black); }
+.contact-sub {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.75px;
+  line-height: 20px; color: var(--muted);
+  max-width: 480px; margin: 0 auto 28px; text-align: center;
+}
+.contact-row {
+  display: flex; align-items: center;
+  justify-content: center; gap: 26px; flex-wrap: wrap;
+}
+.contact-row a {
+  font-size: 12px; font-weight: 400; letter-spacing: 0.75px;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 2px;
+  transition: color .15s, border-color .15s;
+}
+.contact-row a:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+.contact-row a.email {
+  font-size: 14px; font-weight: 600; color: var(--cyan);
+  border-bottom-color: rgba(38,173,228,0.35);
+}
+.contact-row a.email:hover { border-bottom-color: var(--cyan); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+  padding: 22px 36px; max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.75px; color: var(--faint);
+}
+.footer-links { display: flex; gap: 20px; }
+footer a { color: var(--faint); }
+footer a:hover { color: var(--cyan); }
+</style>
 </head>
 <body>
 
-<aside>
-  <div class="site-name">Amir Rahmani</div>
-  <div class="site-title">Research Associate</div>
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="research.html">Research</a>
-    <a href="publications.html">Publications</a>
-    <a href="notes.html">Notes</a>
-    <a href="cv.html">CV</a>
-  </nav>
-  <div class="sidebar-footer">
-    <div class="social-links">
-      <a href="mailto:ar2368@cam.ac.uk">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        Email
-      </a>
-      <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-        ORCiD
-      </a>
-      <a href="https://github.com/astormic" target="_blank">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
-    </div>
-    <div class="last-updated">last updated: March 2026</div>
-  </div>
-</aside>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Home</a>
+  <ul class="nav-links">
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="cv.html">CV</a></li>
+    <li><a href="notes.html">Notes</a></li>
+  </ul>
+</nav>
 
-<main>
-
-  <!-- PROFILE -->
-  <div class="profile">
-    <img class="profile-photo" src="assets/IMG_0897.jpeg" alt="Amir Rahmani">
-    <div class="profile-text">
-      <h1>Amir Rahmani</h1>
-      <div class="position">Research Associate · Department of Chemical Engineering and Biotechnology · University of Cambridge</div>
-      <p>
-        I'm Amir, a Postdoctoral Research Associate in the Department of Chemical Engineering and
-        Biotechnology at the University of Cambridge, currently working in Prof. Clemens Kaminski's
-        group in collaboration with the British Antarctic Survey on a UKRI-funded project. My research
-        sits at the intersection of physics, biology, and engineering. I develop advanced
-        super-resolution microscopy tools to study nanoscale cellular behaviour at sub-zero
-        temperatures. I hold a PhD in Physics from the University of Leeds, where I developed the first
-        single-molecule flow cytometry system for applications in adaptive immunotherapy.
-        Prior to my doctoral studies, I trained at world-leading institutes including EMBL Heidelberg
-        and ICFO Barcelona, shaping my passion for cutting-edge imaging science. Beyond research, I
-        enjoy mentoring students, teaching, and engaging with the broader scientific community through
-        conferences and collaborative initiatives.
-      </p>
-      <p>
-        Outside of the lab, I have a passion for both physical and mental challenges. I train in
-        Kickboxing and Taekwondo, and enjoy staying active through running and football. For a more
-        relaxed but equally competitive fix, you'll often find me at the Ping Pong table or locked in
-        a strategic battle over Chess or Backgammon.
-      </p>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-slide active" id="slide-0"><canvas id="c0"></canvas></div>
+  <div class="hero-slide"         id="slide-1"><canvas id="c1"></canvas></div>
+  <div class="hero-slide"         id="slide-2"><canvas id="c2"></canvas></div>
+  <div class="vignette"></div>
+  <div class="hero-body">
+    <h1 class="hero-name">Amir Rahmani</h1>
+    <p class="hero-affil">
+      Dept. of Chemical Engineering &amp; Biotechnology · University of Cambridge
+      &nbsp;·&nbsp; British Antarctic Survey
+    </p>
+    <h2 class="hero-tagline">Super-resolution Microscopy<br>for Extreme Cell Biology</h2>
+    <p class="hero-desc">
+      Developing cryogenic fluorescence instruments to image nanoscale
+      cellular behaviour at sub-zero temperatures — probing how Antarctic fish adapt to extreme cold.
+    </p>
+    <div class="scroll-btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round">
+        <polyline points="6 9 12 15 18 9"/>
+        <polyline points="6 14 12 20 18 14" opacity="0.45"/>
+      </svg>
     </div>
   </div>
+  <div class="slide-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot"        onclick="goSlide(1)"></div>
+    <div class="dot"        onclick="goSlide(2)"></div>
+  </div>
+</section>
 
-  <!-- CAREER JOURNEY -->
-  <section>
-    <div class="section-header">
-      <h2>Career Journey</h2>
-    </div>
+<hr class="rule">
 
-    <div class="timeline">
-      <div class="timeline-item highlight">
-        <div class="tl-year">2025 – present</div>
-        <div class="tl-title">
-          Postdoctoral Research Associate
-          <span class="tl-tag tag-work">Research</span>
-        </div>
-        <div class="tl-sub">
-          <a href="#">Kaminski Group</a> · Dept. of Chemical Engineering &amp; Biotechnology,
-          University of Cambridge, Cambridge, UK<br>
-        </div>
-        
-        <div class="sub-timeline">
-          
-          <div class="sub-item sub-pub">
-            <div class="sub-year">Mar 2025</div>
-            <div class="sub-title">Visiting Researcher</div>
-            <div class="sub-detail">British Antarctic Survey, Cambridge, UK</div>
-          </div>
-          
-          <div class="sub-item sub-pub">
-            <div class="sub-year">Oct 2025</div>
-            <div class="sub-title">College Research Associate</div>
-            <div class="sub-detail">Wolfson College, Cambridge, UK</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item highlight">
-        <div class="tl-year">2021 – 2025</div>
-        <div class="tl-title">
-          PhD in Physics
-          <span class="tl-tag tag-work">Research</span>
-        </div>
-        <div class="tl-sub">
-          University of Leeds, Leeds, UK · Supervisor: <a href="#">Dr. Aleks Ponjavic</a><br>
-          Thesis: <em><a href="https://etheses.whiterose.ac.uk/id/eprint/37929/">Single-molecule imaging flow cytometry</a></em>
-        </div>
-
-        <div class="sub-timeline">
-
-          <div class="sub-item sub-pub">
-            <div class="sub-year">Aug 2025</div>
-            <div class="sub-title">Preprint: Single-molecule flow cytometry</div>
-            <div class="sub-detail"><em>bioRxiv</em> · with Christie, Truesdale, Thorne, Ponjavic</div>
-          </div>
-          
-          <div class="sub-item sub-award">
-            <div class="sub-year">2025</div>
-            <div class="sub-title">Travel Grant — Focus on Microscopy Conference</div>
-            <div class="sub-detail">Focus on Microscopy 2025</div>
-          </div>
-          
-          <div class="sub-item sub-pub">
-            <div class="sub-year">Feb 2025</div>
-            <div class="sub-title">Paper: Active remote focus stabilization in oblique plane microscopy</div>
-            <div class="sub-detail"><em>Biomedical Optics Express</em> · with Nguyen, Ponjavic, Millett-Sikking, Fiolka</div>
-          </div>
-
-          <div class="sub-item sub-award">
-            <div class="sub-year">Oct 2024</div>
-            <div class="sub-title">Best Poster Award — Smart Microscopy Symposium</div>
-            <div class="sub-detail">EPFL, Lausanne, Switzerland</div>
-          </div>
-
-          <div class="sub-item sub-award">
-            <div class="sub-year">2024</div>
-            <div class="sub-title">JCS-FocalPlane Training Grant</div>
-            <div class="sub-detail">The Company of Biologists</div>
-          </div>
-
-          <div class="sub-item sub-pub">
-            <div class="sub-year">Apr 2024</div>
-            <div class="sub-title">Paper: Astigmatism-based active focus stabilisation (PiFocus)</div>
-            <div class="sub-detail"><em>Optics Express</em> · with Cox, Achary, Ponjavic</div>
-          </div>
-          
-          <div class="sub-item sub-award">
-            <div class="sub-year">2021</div>
-            <div class="sub-title">EPSRC Doctoral Training Studentship</div>
-            <div class="sub-detail">Engineering and Physical Sciences Research Council · University of Leeds</div>
-          </div>
-
-        </div>
-        <!-- end sub-timeline -->
-
-      </div>
-      <!-- end PhD item -->
-
-      <!-- ICFO -->
-      <div class="timeline-item">
-        <div class="tl-year">2020</div>
-        <div class="tl-title">
-          Research Trainee
-          <span class="tl-tag tag-work">Research</span>
-        </div>
-        <div class="tl-sub">
-          <a href="https://www.icfo.eu" target="_blank">ICFO – The Institute of Photonic Sciences</a> · Barcelona, Spain<br>
-          Supervisor: <a href="#">Prof. Stefan Wieser</a>
-        </div>
-      </div>
-
-      <!-- EMBL -->
-      <div class="timeline-item">
-        <div class="tl-year">2019</div>
-        <div class="tl-title">
-          Research Trainee
-          <span class="tl-tag tag-work">Research</span>
-        </div>
-        <div class="tl-sub">
-          <a href="https://www.embl.org/sites/heidelberg/" target="_blank">EMBL Heidelberg</a> · Heidelberg, Germany<br>
-          Supervisor: <a href="#">Prof. Jonas Ries</a>
-        </div>
-      </div>
-
-      <!-- BSc -->
-      <div class="timeline-item highlight">
-        <div class="tl-year">2019</div>
-        <div class="tl-title">
-          BSc in Physics
-          <span class="tl-tag tag-edu">Education</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- RESEARCH HIGHLIGHTS -->
-  <section>
-    <div class="section-header">
-      <h2>Research Highlights</h2>
-      <a href="research.html" class="see-more">See all →</a>
-    </div>
-
-    <div class="research-card">
-      <img class="card-thumb" src="assets/smOPM_All2.png" alt="Single-molecule flow cytometry thumbnail">
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1">Single-molecule flow cytometry</a>
-        </div>
-        <div class="authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</div>
-        <div class="venue">bioRxiv · 2025</div>
-        <div class="abstract">
-          Flow cytometry (FC) is a powerful tool for high-throughput characterisation of cell populations, yet its ensemble fluorescence detection and the autofluorescence of cells impose a sensitivity limit of ∼100-1,000 fluorophores per cell. This precludes detection of low-abundance proteins and weak signalling events with biological importance and therapeutic potential. We introduce single-molecule Flow Cytometry (smFC), integrating high-numerical aperture oblique plane microscopy (OPM) with microfluidics to achieve optical sectioning and photon collection efficiencies suitable for single-molecule detection on flowing cells. Using super-bright, large Stokes shift fluorophores, smFC can detect labelled membrane proteins on cells with digital precision down to ∼2 molecules per cell, compared to an unlabelled control. This represents an improvement in the detection limit of 10- to 80-fold depending on the probe. We apply smFC to quantify the distribution of the membrane receptor c-kit in triple-negative breast cancer cells with unprecedented sensitivity. This revealed a previously unidentified distribution of 60% c-kit negative cells and 40% with low-abundance but heterogenous (1-200 mol/cell) surface distribution that is undetectable by conventional FC. These results establish smFC as a robust platform for high-throughput, quantitative single-molecule analysis in cell populations, opening new avenues for detecting rare biomarkers and quantifying the presence of low-abundance membrane proteins and targetable surface molecules with digital precision.
-        </div>
-        <div class="links">
-          <a href="https://www.biorxiv.org/content/10.1101/2025.08.26.672174v1" target="_blank">bioRxiv</a>
+<!-- ABOUT -->
+<section class="sec black" id="about">
+  <div class="wrap">
+    <h2 class="sec-title">About</h2>
+    <div class="profile-grid">
+      <img
+        src="https://astormic.github.io/assets/IMG_0897.jpeg"
+        alt="Amir Rahmani"
+        class="profile-photo"
+        onerror="this.outerHTML='<div class=\'profile-photo-placeholder\'>Photo</div>'"
+      >
+      <div>
+        <p class="profile-name">Amir Rahmani</p>
+        <p class="profile-role">
+          Research Associate · Dept. of Chemical Engineering and Biotechnology · University of Cambridge<br>
+          College Research Associate · Wolfson College, Cambridge
+        </p>
+        <p class="profile-bio">
+          I'm a Postdoctoral Research Associate in the Department of Chemical Engineering and
+          Biotechnology at the University of Cambridge, working in Prof. Clemens Kaminski's group in
+          collaboration with the British Antarctic Survey on a UKRI-funded project. My research sits
+          at the intersection of physics, biology, and engineering. I develop advanced
+          super-resolution microscopy tools to study nanoscale cellular behaviour at sub-zero
+          temperatures.
+        </p>
+        <p class="profile-bio">
+          I hold a PhD in Physics from the University of Leeds, where I developed the first
+          single-molecule flow cytometry system for applications in adaptive immunotherapy.
+          Prior to my doctoral studies, I trained at world-leading institutes including EMBL
+          Heidelberg and ICFO Barcelona, shaping my passion for cutting-edge imaging science.
+          Beyond research, I enjoy mentoring students, teaching, and engaging with the broader
+          scientific community.
+        </p>
+        <div class="profile-links">
+          <a href="mailto:ar2368@cam.ac.uk">Email</a>
+          <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">ORCiD</a>
+          <a href="https://github.com/astormic" target="_blank">GitHub</a>
+          <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="research-card">
-      <img class="card-thumb" src="assets/getThumbnail.jpeg" alt="Astigmatism-based focus stabilisation thumbnail">
-      <div class="card-content">
-        <div class="paper-title">
-          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</a>
+<hr class="rule">
+
+<!-- RESEARCH -->
+<section class="sec grey" id="research">
+  <div class="wrap">
+    <h2 class="sec-title">Research</h2>
+    <p class="research-intro">
+      My work spans advanced fluorescence microscopy, biophysics, and biological imaging,
+      with a focus on developing custom optical systems to address biological questions at the nanoscale.
+      My current project brings together the <a href="#">Kaminski Group</a> and the
+      <a href="#">British Antarctic Survey</a> to develop a high-resolution microscopy platform
+      capable of visualising protein dynamics in Antarctic fish cells at sub-zero temperatures.
+      Solvatochromic probes allow us to sense changes in
+      <a href="#">membrane organisation</a> in real time, without perturbing the cell.
+      I also develop a <a href="#">computational pipeline</a> on top of Nellie's output to extract
+      quantitative morphological parameters of mitochondrial networks for high-throughput batch analysis.
+    </p>
+  </div>
+  <div class="project-grid" style="max-width:1100px;margin:0 auto;">
+    <div class="project-card">
+      <canvas id="c-cryo"></canvas>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <p class="project-tag">UKRI funded · Cambridge × British Antarctic Survey · 2025–present</p>
+        <h3 class="project-title">Dynamic live-cell super-resolution imaging at sub-zero temperatures</h3>
+        <p class="project-desc">Fluorescence microscopy platform for Antarctic fish cells — solvatochromic probes, membrane dynamics, cold-adaptation at the nanoscale</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <canvas id="c-mito"></canvas>
+      <div class="project-overlay"></div>
+      <div class="project-info">
+        <p class="project-tag">Computational pipeline · Open source</p>
+        <h3 class="project-title">Mitochondria morphology analysis pipeline</h3>
+        <p class="project-desc">Built on Nellie's output — network connectivity, branch length distributions, motility metrics. Designed for high-throughput batch analysis of live-cell data</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- INSTRUMENTS -->
+<section class="sec black" id="instruments">
+  <div class="wrap">
+    <h2 class="sec-title">Optical Systems</h2>
+    <div class="instr-grid">
+
+      <div class="instr-card">
+        <svg class="instr-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="3" y="3" width="30" height="30" rx="3" stroke="#26ade4" stroke-width="0.8"/>
+          <line x1="3" y1="18" x2="33" y2="18" stroke="#26ade4" stroke-width="0.6"/>
+          <circle cx="18" cy="10" r="4" stroke="#26ade4" stroke-width="0.8"/>
+          <line x1="18" y1="14" x2="18" y2="33" stroke="#26ade4" stroke-width="0.6" stroke-dasharray="2 2"/>
+        </svg>
+        <div class="instr-abbr">OPM</div>
+        <div class="instr-full">Oblique Plane Microscopy — single-objective light-sheet with microfluidics for single-molecule flow cytometry (smFC)</div>
+        <div class="instr-tags">
+          <span class="tag">Light-sheet</span><span class="tag">Microfluidics</span><span class="tag">smFC</span>
         </div>
-        <div class="authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</div>
-        <div class="venue">Optics Express · 2024</div>
-        <div class="abstract">
-          Focus stabilisation is vital for long-term fluorescence imaging, particularly in the case of high-resolution imaging techniques. Current stabilisation solutions either rely on fiducial markers that can be perturbative, or on beam reflection monitoring that is limited to high-numerical aperture objective lenses, making multimodal and large-scale imaging challenging. We introduce a beam-based method that relies on astigmatism, which offers advantages in terms of precision and the range over which focus stabilisation is effective. This approach is shown to be compatible with a wide range of objective lenses (10x-100x), typically achieving &lt;10 nm precision with &gt;10 μm operating range. Notably, our technique is largely unaffected by pointing stability errors, which in combination with implementation through a standalone Raspberry Pi architecture, offers a versatile focus stabilisation unit that can be added onto most existing microscope setups.
+        <div class="instr-place">Ponjavic Lab · Leeds</div>
+      </div>
+
+      <div class="instr-card">
+        <svg class="instr-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <rect x="3" y="4" width="12" height="6" rx="2" stroke="#e8a050" stroke-width="0.8"/>
+          <rect x="3" y="26" width="12" height="6" rx="2" stroke="#e8a050" stroke-width="0.8"/>
+          <rect x="10" y="13" width="16" height="10" rx="2" stroke="#50a8e8" stroke-width="0.8"/>
+          <line x1="9" y1="7" x2="16" y2="16" stroke="#e8a050" stroke-width="0.6" stroke-dasharray="2 1.5"/>
+          <line x1="9" y1="29" x2="16" y2="23" stroke="#e8a050" stroke-width="0.6" stroke-dasharray="2 1.5"/>
+          <line x1="26" y1="18" x2="33" y2="18" stroke="#50a8e8" stroke-width="0.6" stroke-dasharray="2 1.5"/>
+        </svg>
+        <div class="instr-abbr">PiFocus</div>
+        <div class="instr-full">Astigmatism-based active focus stabilisation — compatible 10×–100×, &lt;10 nm axial precision, &gt;10 µm range</div>
+        <div class="instr-tags">
+          <span class="tag">Focus Stabilisation</span><span class="tag">Raspberry Pi</span><span class="tag">Open-source</span>
         </div>
-        <div class="links">
-          <a href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331" target="_blank">paper</a>
-          <a href="https://zenodo.org/records/12783911" target="_blank">code</a>
+        <div class="instr-place">Ponjavic Lab · Leeds</div>
+      </div>
+
+      <div class="instr-card">
+        <svg class="instr-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="12" cy="13" r="6" stroke="#a078e0" stroke-width="0.8"/>
+          <circle cx="24" cy="23" r="6" stroke="#a078e0" stroke-width="0.8"/>
+          <line x1="12" y1="19" x2="24" y2="17" stroke="#a078e0" stroke-width="0.6" stroke-dasharray="2 2"/>
+          <circle cx="12" cy="13" r="2" fill="#a078e0" opacity="0.5"/>
+          <circle cx="24" cy="23" r="2" fill="#a078e0" opacity="0.5"/>
+        </svg>
+        <div class="instr-abbr">DH-PSF SMLM</div>
+        <div class="instr-full">Double-helix PSF for 3D single-molecule localisation — extended depth range vs astigmatic approaches</div>
+        <div class="instr-tags">
+          <span class="tag">SMLM</span><span class="tag">3D Super-resolution</span><span class="tag">DH-PSF</span>
+        </div>
+        <div class="instr-place">Ponjavic Lab · Leeds</div>
+      </div>
+
+      <div class="instr-card">
+        <svg class="instr-icon" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="11" cy="18" r="2.5" stroke="#26ade4" stroke-width="0.8" fill="#26ade4" fill-opacity="0.3"/>
+          <circle cx="20" cy="11" r="2.5" stroke="#26ade4" stroke-width="0.8" fill="#26ade4" fill-opacity="0.3"/>
+          <circle cx="26" cy="21" r="2.5" stroke="#26ade4" stroke-width="0.8" fill="#26ade4" fill-opacity="0.3"/>
+          <circle cx="16" cy="27" r="2.5" stroke="#26ade4" stroke-width="0.8" fill="#26ade4" fill-opacity="0.3"/>
+          <circle cx="29" cy="12" r="1.5" stroke="#26ade4" stroke-width="0.6" fill="#26ade4" fill-opacity="0.2"/>
+          <circle cx="8"  cy="27" r="1.5" stroke="#26ade4" stroke-width="0.6" fill="#26ade4" fill-opacity="0.2"/>
+        </svg>
+        <div class="instr-abbr">Dual-channel SMLM</div>
+        <div class="instr-full">Two-colour SMLM for simultaneous multi-target imaging — protein complex stoichiometry and spatial organisation</div>
+        <div class="instr-tags">
+          <span class="tag">SMLM</span><span class="tag">Two-colour</span><span class="tag">Super-resolution</span>
+        </div>
+        <div class="instr-place">Ries Lab · EMBL Heidelberg</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PUBLICATIONS -->
+<section class="sec grey" id="publications">
+  <div class="wrap">
+    <h2 class="sec-title">Publications</h2>
+
+    <!-- Preprints -->
+    <div class="pub-year-block">
+      <div class="pub-year-row">
+        <svg width="11" height="10" viewBox="0 0 11 10"><polygon points="5.5,9 1,1.5 10,1.5" fill="currentColor"/></svg>
+        Preprints
+      </div>
+      <div class="pub-list">
+        <div class="pub-entry">
+          <p class="pub-title-txt">
+            Single-molecule flow cytometry
+            <span class="pub-badge badge-new">New</span>
+          </p>
+          <p class="pub-authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</p>
+          <p class="pub-journal">bioRxiv · August 2025</p>
+          <a href="https://doi.org/10.1101/2025.08.26.672174" class="pub-doi" target="_blank">doi: 10.1101/2025.08.26.672174</a>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1101/2025.08.26.672174" class="pub-link" target="_blank">bioRxiv</a>
+          </div>
         </div>
       </div>
     </div>
 
-  </section>
+    <!-- 2025 -->
+    <div class="pub-year-block">
+      <div class="pub-year-row">
+        <svg width="11" height="10" viewBox="0 0 11 10"><polygon points="5.5,9 1,1.5 10,1.5" fill="currentColor"/></svg>
+        2025
+      </div>
+      <div class="pub-list">
+        <div class="pub-entry">
+          <p class="pub-title-txt">Active remote focus stabilization in oblique plane microscopy</p>
+          <p class="pub-authors">Trung Duc Nguyen, <strong>Amir Rahmani</strong>, Aleks Ponjavic, Alfred Millett-Sikking, Reto Fiolka</p>
+          <p class="pub-journal">Biomedical Optics Express · Vol. 16, No. 3, pp. 1216–1224 · February 2025</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">paper</a>
+          </div>
+        </div>
+        <div class="pub-entry">
+          <p class="pub-title-txt">Super-resolution Imaging</p>
+          <p class="pub-authors">A. Curd, <strong>A. Rahmani</strong>, O. Umney, A. Ponjavic, M. Peckham</p>
+          <p class="pub-journal">In: <em>Live Cell Imaging Across Scales</em> · RMS Wiley · Accepted January 2025</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">eprint</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</main>
+    <!-- 2024 -->
+    <div class="pub-year-block">
+      <div class="pub-year-row">
+        <svg width="11" height="10" viewBox="0 0 11 10"><polygon points="5.5,9 1,1.5 10,1.5" fill="currentColor"/></svg>
+        2024
+      </div>
+      <div class="pub-list">
+        <div class="pub-entry">
+          <p class="pub-title-txt">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</p>
+          <p class="pub-authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</p>
+          <p class="pub-journal">Optics Express · Vol. 32, No. 8, pp. 13331–13341 · April 2024</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">paper</a>
+            <a href="#" class="pub-link">code (PiFocus)</a>
+          </div>
+        </div>
+        <div class="pub-entry">
+          <p class="pub-title-txt">Active focus stabilisation using astigmatism with universal objective lens compatibility and sub-10 nm precision</p>
+          <p class="pub-authors">Aleks Ponjavic, <strong>Amir Rahmani</strong></p>
+          <p class="pub-journal">BIO Web of Conferences · Vol. 129, 03012 · EMC 2024 · 2024</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">paper</a>
+            <a href="#" class="pub-link">PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thesis -->
+    <div class="pub-year-block">
+      <div class="pub-year-row">
+        <svg width="11" height="10" viewBox="0 0 11 10"><polygon points="5.5,9 1,1.5 10,1.5" fill="currentColor"/></svg>
+        Thesis
+      </div>
+      <div class="pub-list">
+        <div class="pub-entry">
+          <p class="pub-title-txt">Single-molecule imaging flow cytometry</p>
+          <p class="pub-authors"><strong>Amir Rahmani</strong></p>
+          <p class="pub-journal">PhD Thesis · University of Leeds · 2025 · Supervisor: Aleks Ponjavic</p>
+          <div class="pub-links">
+            <a href="#" class="pub-link">repository</a>
+            <a href="#" class="pub-link">PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:11px;font-weight:300;letter-spacing:0.75px;color:rgba(255,255,255,0.3);margin-top:10px;text-align:center;">
+      Reviewer for <em>Nature Communications</em> · <em>Optics Letters</em> · <em>Optics Express</em> · <em>Biomedical Optics Express</em>
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- CV STRIP -->
+<div class="cv-strip" id="cv">
+  <div class="cv-inner">
+    <div class="cv-text">
+      <p class="cv-eyebrow">Curriculum Vitae</p>
+      <p class="cv-heading">Amir Rahmani<br>Research Associate · University of Cambridge</p>
+      <div class="cv-rows">
+        <p class="cv-row"><strong>Oct 2025–present</strong> &nbsp;Postdoctoral Research Associate · Kaminski Group, Cambridge</p>
+        <p class="cv-row"><strong>2021–2025</strong> &nbsp;PhD in Physics · University of Leeds · Supervisor: Dr. Aleks Ponjavic</p>
+        <p class="cv-row"><strong>2020</strong> &nbsp;Research Trainee · ICFO Barcelona · Supervisor: Prof. Stefan Wieser</p>
+        <p class="cv-row"><strong>2019</strong> &nbsp;Research Trainee · EMBL Heidelberg · Supervisor: Prof. Jonas Ries</p>
+        <p class="cv-row"><strong>2019</strong> &nbsp;BSc in Physics · Aryamehr University of Technology, Tehran</p>
+      </div>
+    </div>
+    <a href="cv.html" class="btn-outline">View full CV →</a>
+  </div>
+</div>
+
+<hr class="rule">
+
+<!-- NOTES -->
+<section class="sec black" id="notes">
+  <div class="wrap">
+    <h2 class="sec-title">Notes</h2>
+    <div class="notes-list">
+
+      <div class="note-row" onclick="location.href='notes.html'">
+        <div class="note-date">Jan 2026</div>
+        <div>
+          <div class="note-cat lab">Lab note</div>
+          <p class="note-title">Why solvatochromic dyes are tricky in cold membranes</p>
+        </div>
+        <div class="note-arrow">→</div>
+      </div>
+
+      <div class="note-row" onclick="location.href='notes.html'">
+        <div class="note-date">Aug 2025</div>
+        <div>
+          <div class="note-cat news">News</div>
+          <p class="note-title">smFC preprint is out on bioRxiv</p>
+        </div>
+        <div class="note-arrow">→</div>
+      </div>
+
+      <div class="note-row" onclick="location.href='notes.html'">
+        <div class="note-date">Dec 2024</div>
+        <div>
+          <div class="note-cat reading">Reading</div>
+          <p class="note-title">soTILT3D — whole-cell SMLM without a second objective</p>
+        </div>
+        <div class="note-arrow">→</div>
+      </div>
+
+      <div class="note-row" onclick="location.href='notes.html'">
+        <div class="note-date">Oct 2024</div>
+        <div>
+          <div class="note-cat news">News</div>
+          <p class="note-title">Best Poster Award at Smart Microscopy Symposium, EPFL</p>
+        </div>
+        <div class="note-arrow">→</div>
+      </div>
+
+      <div class="note-row" onclick="location.href='notes.html'">
+        <div class="note-date">Oct 2023</div>
+        <div>
+          <div class="note-cat thought">Thought</div>
+          <p class="note-title">On building microscopes vs. buying them</p>
+        </div>
+        <div class="note-arrow">→</div>
+      </div>
+
+    </div>
+    <p style="margin-top:28px;text-align:center;">
+      <a href="notes.html" style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">All notes →</a>
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-sec">
+  <div class="wrap">
+    <h2 class="sec-title">Contact</h2>
+    <p class="contact-sub">
+      Happy to hear from collaborators, students interested in super-resolution microscopy,
+      or anyone curious about Antarctic biology and cryo-imaging.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:ar2368@cam.ac.uk" class="email">ar2368@cam.ac.uk</a>
+      <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">ORCiD 0000-0002-2730-6099</a>
+      <a href="https://github.com/astormic" target="_blank">GitHub / astormic</a>
+      <a href="#" target="_blank">Google Scholar</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Amir Rahmani</span>
+  <div class="footer-links">
+    <a href="https://www.ch.cam.ac.uk" target="_blank">University of Cambridge</a>
+    <a href="https://www.bas.ac.uk" target="_blank">British Antarctic Survey</a>
+    <a href="https://www.wolfson.cam.ac.uk" target="_blank">Wolfson College</a>
+  </div>
+</footer>
+
+<script>
+/* ── CANVAS UTILITY ── */
+function prng(seed) {
+  let s = seed;
+  return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+}
+
+function paintSMLM(canvas, seed, palettes, nStrands, nBg) {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width  = canvas.offsetWidth  * dpr;
+  canvas.height = canvas.offsetHeight * dpr;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const r = prng(seed);
+
+  for (let s = 0; s < nStrands; s++) {
+    const pal = palettes[Math.floor(r() * palettes.length)];
+    const col = pal[Math.floor(r() * pal.length)];
+    const a   = 0.22 + r() * 0.62;
+    const lw  = (0.5 + r() * 1.9) * dpr;
+    const x0 = r() * W * 1.3 - W * 0.15, y0 = r() * H * 1.3 - H * 0.15;
+    const x1 = x0 + (r() - 0.35) * W * 0.95, y1 = y0 + (r() - 0.35) * H * 0.95;
+    const cx = (x0+x1)/2 + (r()-0.5)*W*0.3, cy = (y0+y1)/2 + (r()-0.5)*H*0.3;
+    const ah = Math.floor(a*255).toString(16).padStart(2,'0');
+    const gh = Math.floor(a*0.22*255).toString(16).padStart(2,'0');
+
+    ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(cx,cy,x1,y1);
+    ctx.lineWidth = lw * 3.5; ctx.strokeStyle = col + gh; ctx.stroke();
+
+    ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(cx,cy,x1,y1);
+    ctx.lineWidth = lw; ctx.strokeStyle = col + ah; ctx.stroke();
+
+    const nd = Math.floor(5 + r() * 32);
+    for (let d = 0; d < nd; d++) {
+      const t = r();
+      const bx = (1-t)*(1-t)*x0 + 2*(1-t)*t*cx + t*t*x1;
+      const by = (1-t)*(1-t)*y0 + 2*(1-t)*t*cy + t*t*y1;
+      ctx.beginPath();
+      ctx.arc(bx+(r()-0.5)*5, by+(r()-0.5)*5, (0.4+r()*1.7)*dpr, 0, Math.PI*2);
+      ctx.fillStyle = col + 'cc'; ctx.fill();
+    }
+  }
+  for (let i = 0; i < nBg; i++) {
+    const col = palettes[Math.floor(r()*palettes.length)][0];
+    ctx.beginPath();
+    ctx.arc(r()*W, r()*H, r()*0.85*dpr, 0, Math.PI*2);
+    ctx.fillStyle = col + '55'; ctx.fill();
+  }
+}
+
+const ACTIN = [
+  ['#00d8ff','#00b0e0','#0088cc'],
+  ['#40e880','#18c850','#089830'],
+  ['#ff5818','#e03808','#c01800'],
+  ['#ffd020','#e8a800','#b07800'],
+];
+const MITO  = [['#38e888','#20c860','#10a840'],['#28d8a8','#10b888','#089870']];
+const CRYO  = [['#28b8ff','#0898e0','#0068b8'],['#88a8ff','#5888e0','#2860c0'],['#a878ff','#8858e0','#5030c0']];
+
+function drawAll() {
+  paintSMLM(document.getElementById('c0'), 42,  ACTIN, 42, 900);
+  paintSMLM(document.getElementById('c1'), 101, MITO,  30, 550);
+  paintSMLM(document.getElementById('c2'), 77,  CRYO,  38, 750);
+  paintSMLM(document.getElementById('c-cryo'), 199, CRYO,  24, 450);
+  paintSMLM(document.getElementById('c-mito'), 256, MITO,  20, 320);
+}
+drawAll();
+window.addEventListener('resize', drawAll);
+
+/* ── HERO CAROUSEL ── */
+const slides = document.querySelectorAll('.hero-slide');
+const dots   = document.querySelectorAll('.dot');
+let cur = 0, timer;
+
+function goSlide(n) {
+  slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active'); dots[cur].classList.add('active');
+}
+function next() { goSlide((cur + 1) % slides.length); }
+timer = setInterval(next, 4800);
+dots.forEach((d, i) => d.addEventListener('click', () => {
+  clearInterval(timer); goSlide(i); timer = setInterval(next, 4800);
+}));
+
+/* ── SCROLL-SPY NAV ── */
+const sections = document.querySelectorAll('[id]');
+const navAs    = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let active = '';
+  sections.forEach(s => { if (scrollY >= s.offsetTop - 72) active = s.id; });
+  navAs.forEach(a => {
+    const href = a.getAttribute('href').replace('.html','').replace('index','').replace('#','');
+    a.classList.toggle('active', href === active || (active === 'top' && href === ''));
+  });
+}, { passive: true });
+</script>
 </body>
 </html>
