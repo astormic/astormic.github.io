@@ -42,12 +42,21 @@ hr.rule { border:none; border-top:0.5px solid rgba(255,255,255,0.1); max-width:1
 
 /* NOTE CARDS */
 .notes-feed { display:flex; flex-direction:column; gap:0; }
-
 .note-card { border-bottom:0.5px solid rgba(255,255,255,0.08); padding:0; transition:background .15s; }
 .note-card:first-child { border-top:0.5px solid rgba(255,255,255,0.08); }
 
-.note-header { display:grid; grid-template-columns:96px 1fr auto; gap:18px; padding:18px 0; align-items:start; cursor:pointer; }
+/* HEADER: thumbnail | meta+title | toggle */
+.note-header { display:grid; grid-template-columns:72px 1fr auto; gap:18px; padding:18px 0; align-items:start; cursor:pointer; }
 .note-header:hover .note-title { color:rgba(255,255,255,0.75); }
+
+/* THUMBNAIL (header) */
+.note-thumb {
+  width:72px; height:72px; border-radius:2px; overflow:hidden; flex-shrink:0;
+  background:var(--thumb-bg, rgba(255,255,255,0.06));
+  display:flex; align-items:center; justify-content:center;
+}
+.note-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.note-thumb svg { width:32px; height:32px; opacity:0.55; }
 
 .note-meta-date { font-size:11px; font-weight:300; letter-spacing:0.75px; color:var(--faint); padding-top:2px; }
 .note-meta-author { font-size:10px; font-weight:300; letter-spacing:0.5px; color:rgba(255,255,255,0.25); margin-top:3px; }
@@ -63,7 +72,8 @@ hr.rule { border:none; border-top:0.5px solid rgba(255,255,255,0.1); max-width:1
 .note-toggle { font-size:14px; color:var(--faint); padding-top:20px; transition:transform .2s, color .15s; user-select:none; }
 .note-toggle.open { transform:rotate(90deg); color:var(--cyan); }
 
-.note-body { display:none; padding:0 0 24px 114px; }
+/* BODY */
+.note-body { display:none; padding:0 0 28px 90px; }
 .note-body.open { display:block; }
 .note-body p { font-size:12px; font-weight:300; letter-spacing:0.75px; line-height:20px; color:rgba(255,255,255,0.72); margin-bottom:14px; }
 .note-body p:last-child { margin-bottom:0; }
@@ -72,9 +82,32 @@ hr.rule { border:none; border-top:0.5px solid rgba(255,255,255,0.1); max-width:1
 .note-discuss { display:inline-block; margin-top:16px; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid rgba(38,173,228,0.3); padding-bottom:2px; transition:border-color .15s; }
 .note-discuss:hover { border-color:var(--cyan); }
 
+/* BODY IMAGES */
+.note-images { margin-bottom:18px; }
+
+/* single image */
+.note-images.single img {
+  width:100%; max-height:380px; object-fit:cover; border-radius:2px; display:block;
+}
+
+/* two images side by side */
+.note-images.duo { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.note-images.duo img { width:100%; height:220px; object-fit:cover; border-radius:2px; display:block; }
+
+/* three images: one large top, two below */
+.note-images.trio { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:6px; }
+.note-images.trio img:first-child { grid-column:1/-1; width:100%; height:260px; object-fit:cover; border-radius:2px; display:block; }
+.note-images.trio img:not(:first-child) { width:100%; height:180px; object-fit:cover; border-radius:2px; display:block; }
+
 footer { border-top:0.5px solid rgba(255,255,255,0.07); padding:22px 36px; max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; font-size:11px; font-weight:300; letter-spacing:0.75px; color:var(--faint); }
 .footer-links { display:flex; gap:20px; }
 footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
+
+/* SVG placeholder icons */
+.icon-lab    { color:var(--cyan); }
+.icon-news   { color:#e8c87e; }
+.icon-reading{ color:#7ee8b8; }
+.icon-thought{ color:rgba(255,255,255,0.42); }
 </style>
 </head>
 <body>
@@ -109,14 +142,18 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
     <div class="notes-feed">
 
-      <!-- Note 1 -->
+      <!-- Note 1 — Solvatochromic dyes (Lab note, no image → placeholder) -->
       <div class="note-card" data-cat="lab">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb" style="--thumb-bg:rgba(38,173,228,0.08);">
+            <svg class="icon-lab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3h6M9 3v8l-4 9h14L15 11V3M9 3H7M15 3h2"/>
+              <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <div>
             <p class="note-meta-date">Jan 2026</p>
             <p class="note-meta-author">Cambridge</p>
-          </div>
-          <div>
             <p class="note-cat lab">Lab note</p>
             <p class="note-title">Why solvatochromic dyes are tricky in cold membranes</p>
           </div>
@@ -130,34 +167,42 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
       </div>
 
-      <!-- Note 2 -->
+      <!-- Note 2 — smFC preprint (News, single image) -->
       <div class="note-card" data-cat="news">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb">
+            <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
+          </div>
           <div>
             <p class="note-meta-date">Aug 2025</p>
             <p class="note-meta-author">Cambridge</p>
-          </div>
-          <div>
             <p class="note-cat news">News</p>
             <p class="note-title">smFC preprint is out on bioRxiv</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images single">
+            <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
+          </div>
           <p>Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv. We integrated high-NA oblique plane microscopy with microfluidics to push flow cytometry sensitivity down to single molecules on live cells — enabling detection of as few as ~2 labelled receptors per cell.</p>
           <p>The key insight was combining optical sectioning from the OPM light sheet with super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence, which is the main bottleneck in conventional flow cytometry at low expression levels. We validated the system on c-kit receptor distribution in triple-negative breast cancer cells and found a subpopulation invisible to standard FC. Future work will extend smFC to multicolour detection and higher throughput. Feedback very welcome!</p>
           <a href="https://doi.org/10.1101/2025.08.26.672174" class="note-discuss" target="_blank">Read the preprint on bioRxiv →</a>
         </div>
       </div>
 
-      <!-- Note 3 -->
+      <!-- Note 3 — soTILT3D (Reading, no image → placeholder) -->
       <div class="note-card" data-cat="reading">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb" style="--thumb-bg:rgba(126,232,184,0.07);">
+            <svg class="icon-reading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+          </div>
           <div>
             <p class="note-meta-date">Dec 2024</p>
             <p class="note-meta-author">Cambridge</p>
-          </div>
-          <div>
             <p class="note-cat reading">Reading</p>
             <p class="note-title">soTILT3D — whole-cell SMLM without a second objective</p>
           </div>
@@ -170,40 +215,48 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
       </div>
 
-      <!-- Note 4 -->
+      <!-- Note 4 — Best Poster EPFL (News, single image) -->
       <div class="note-card" data-cat="news">
         <div class="note-header" onclick="toggleNote(this)">
-          <div>
-            <p class="note-meta-date">Oct 2024</p>
-            <p class="note-meta-author">Leeds</p>
+          <div class="note-thumb">
+            <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
           </div>
           <div>
+            <p class="note-meta-date">Oct 2024</p>
+            <p class="note-meta-author">Lausanne</p>
             <p class="note-cat news">News</p>
             <p class="note-title">Best Poster Award at Smart Microscopy Symposium, EPFL</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images single">
+            <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
+          </div>
           <p>I was awarded the Best Poster Prize at the Smart Microscopy Symposium held at EPFL, Lausanne in October 2024, for work on PiFocus — our low-cost, open-source active focus stabilisation system built around a Raspberry Pi and astigmatic infrared detection.</p>
           <p>The symposium brought together a great mix of people working at the intersection of microscopy hardware, computational imaging, and biological applications. It was a genuine pleasure to present and discuss the work, and being recognised with the poster prize was a wonderful surprise. Many thanks to the organisers and jury at the EPFL BioImaging &amp; Optics Platform.</p>
           <a href="mailto:ar2368@cam.ac.uk?subject=Re: EPFL Best Poster Award" class="note-discuss">Discuss by email →</a>
         </div>
       </div>
 
-      <!-- Note 5 -->
+      <!-- Note 5 — Building vs buying (Thought, single image) -->
       <div class="note-card" data-cat="thought">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb">
+            <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
+          </div>
           <div>
             <p class="note-meta-date">Oct 2023</p>
             <p class="note-meta-author">Leeds</p>
-          </div>
-          <div>
             <p class="note-cat thought">Thought</p>
             <p class="note-title">On building microscopes vs. buying them</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images single">
+            <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
+          </div>
           <p>A recurring debate in imaging labs: should you build your own microscope or buy a commercial system? The honest answer depends on what question you are trying to answer, but I've come to think the framing itself is slightly wrong.</p>
           <p>Commercial systems are optimised for robustness and reproducibility. They are excellent for asking well-defined questions on well-behaved samples. The moment your sample or your question is at the edge of what the instrument was designed for — flowing cells, sub-zero temperatures, nanometre-precision focus over long timescales — you are fighting the machine rather than using it.</p>
           <p>Building your own system is slow and often frustrating, but it forces you to understand every degree of freedom in the measurement. When something goes wrong (and it always does), you know where to look. More importantly, when you want to do something the machine was not designed for, you can. My working rule: buy commercial for routine measurements, build custom for novel modalities. And never underestimate how much you learn from building.</p>
@@ -211,60 +264,76 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
       </div>
 
-      <!-- Note 6 -->
+      <!-- Note 6 — ELMI 2024 (News, trio images) -->
       <div class="note-card" data-cat="news">
         <div class="note-header" onclick="toggleNote(this)">
-          <div>
-            <p class="note-meta-date">Sep 2024</p>
-            <p class="note-meta-author">Leeds</p>
+          <div class="note-thumb">
+            <img src="assets/ELMI2.jpeg" alt="ELMI 2024" loading="lazy">
           </div>
           <div>
+            <p class="note-meta-date">Sep 2024</p>
+            <p class="note-meta-author">Liverpool</p>
             <p class="note-cat news">News</p>
             <p class="note-title">Presenting at ELMI 2024, Liverpool</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images trio">
+            <img src="assets/ELMI2.jpeg" alt="ELMI 2024 talk" loading="lazy">
+            <img src="assets/ELMI_i.jpeg" alt="ELMI 2024" loading="lazy">
+            <img src="assets/ELMI_f.jpeg" alt="infocus Magazine ELMI feature" loading="lazy">
+          </div>
           <p>I gave a flashtalk at the European Light Microscopy Initiative (ELMI) 2024 meeting in Liverpool, on active focus stabilisation using astigmatism with universal objective lens compatibility and sub-10 nm precision — the work behind PiFocus.</p>
           <p>ELMI is one of those conferences where the community feel is genuinely warm: good science discussions, old friends reconnected, new ones made. A football match between delegates somehow made it onto the programme too. And a few months later I discovered I'd been photographed mid-talk and featured in the September 2024 issue of <em>infocus</em> Magazine's ELMI 2024 Picture Special — which I did not notice at the time.</p>
           <a href="mailto:ar2368@cam.ac.uk?subject=Re: ELMI 2024" class="note-discuss">Discuss by email →</a>
         </div>
       </div>
 
-      <!-- Note 7 -->
+      <!-- Note 7 — Moon Palace (News, trio images) -->
       <div class="note-card" data-cat="news">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb">
+            <img src="assets/MoonPalace.jpeg" alt="Moon Palace outreach" loading="lazy">
+          </div>
           <div>
             <p class="note-meta-date">Nov 2023</p>
             <p class="note-meta-author">Leeds</p>
-          </div>
-          <div>
             <p class="note-cat news">News</p>
             <p class="note-title">Science hosting at Moon Palace, Leeds</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images trio">
+            <img src="assets/MoonPalace.jpeg" alt="Moon Palace bus" loading="lazy">
+            <img src="assets/MoonPalace2.jpeg" alt="Moon Palace outreach" loading="lazy">
+            <img src="assets/MoonPalace3.jpeg" alt="Moon Palace outreach" loading="lazy">
+          </div>
           <p>In November 2023 I spent a day as a science host aboard Moon Palace — a beautifully converted double-decker bus turned mobile observatory, parked up in Leeds. Talking to kids and parents about space, planets, telescopes, and the joy of seeing massive objects through optics. And naturally, I couldn't resist sneaking in some microscopy talk too.</p>
           <p>The bus is kitted out with a rooftop satellite dish, a mounted telescope, binoculars, and screens showing Jupiter and Earth — a wonderfully tactile backdrop for talking to curious kids and parents about space, planets, and the joy of seeing distant objects through optics.</p>
           <a href="mailto:ar2368@cam.ac.uk?subject=Re: Moon Palace" class="note-discuss">Discuss by email →</a>
         </div>
       </div>
 
-      <!-- Note 8 -->
+      <!-- Note 8 — Be Curious (News, single image) -->
       <div class="note-card" data-cat="news">
         <div class="note-header" onclick="toggleNote(this)">
+          <div class="note-thumb">
+            <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
+          </div>
           <div>
             <p class="note-meta-date">May 2022</p>
             <p class="note-meta-author">Leeds</p>
-          </div>
-          <div>
             <p class="note-cat news">News</p>
             <p class="note-title">Science outreach at Be Curious, University of Leeds</p>
           </div>
           <div class="note-toggle">→</div>
         </div>
         <div class="note-body">
+          <div class="note-images single">
+            <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
+          </div>
           <p>I took part in Be Curious, the University of Leeds' annual public research festival, on 7 May 2022. Our stand — solar-powered racing cars vs. plants — let families explore how photovoltaics and photosynthesis both harvest energy from light.</p>
           <p>Visitors — mostly families with young children — could race small solar-powered cars on a track and then compare how their tiny photovoltaic cells convert sunlight into motion versus how plant chloroplasts convert it into chemical energy through photosynthesis. The side-by-side comparison sparked some genuinely great conversations about energy efficiency, evolution, and why plants are green. It's always a pleasure to do this kind of outreach. Explaining the physics of light to a seven-year-old is one of the best tests of whether you actually understand it yourself.</p>
           <a href="mailto:ar2368@cam.ac.uk?subject=Re: Be Curious outreach" class="note-discuss">Discuss by email →</a>
