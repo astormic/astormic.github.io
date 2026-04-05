@@ -554,7 +554,6 @@ p { line-height: 1.65; }
 .contact-item:hover { opacity: 0.7; }
 .contact-item img {
   width: 38px; height: 38px;
-  filter: brightness(0) invert(1);
   object-fit: contain;
 }
 .contact-item span {
@@ -647,15 +646,15 @@ footer a:hover { color: var(--cyan); }
 <!-- ══ HERO ══ -->
 <section class="hero" id="top">
 
-  <!-- Canvas SMLM slides -->
+  <!-- Hero background image -->
   <div class="hero-slide active" id="slide-0">
-    <canvas id="c0"></canvas>
+    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
   </div>
   <div class="hero-slide" id="slide-1">
-    <canvas id="c1"></canvas>
+    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
   </div>
   <div class="hero-slide" id="slide-2">
-    <canvas id="c2"></canvas>
+    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
   </div>
 
   <div class="hero-blur-overlay"></div>
@@ -698,12 +697,7 @@ footer a:hover { color: var(--cyan); }
   <!-- Bottom bar -->
   <div class="hero-bottom-bar">
     <a href="https://www.ch.cam.ac.uk" target="_blank">
-      <img src="assets/cambridge-logo.svg" alt="University of Cambridge"
-           onerror="this.style.display='none'">
-    </a>
-    <a href="https://www.bas.ac.uk" target="_blank">
-      <img src="assets/bas-logo.svg" alt="British Antarctic Survey"
-           onerror="this.style.display='none'">
+      <img src="icons/uniLogo.svg" alt="University of Cambridge">
     </a>
   </div>
 
@@ -743,7 +737,7 @@ footer a:hover { color: var(--cyan); }
           institutes including EMBL Heidelberg and ICFO Barcelona.
         </p>
         <div style="display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;">
-          <a href="mailto:ar2368@cam.ac.uk" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
+          <a href="/cdn-cgi/l/email-protection#caabb8f8f9fcf28aa9aba7e4aba9e4bfa1" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
           <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">ORCiD</a>
           <a href="https://github.com/astormic" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">GitHub</a>
           <a href="cv.html" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">CV →</a>
@@ -901,23 +895,23 @@ footer a:hover { color: var(--cyan); }
 
       <div class="contact-links animate-on-scroll">
         <a href="mailto:ar2368@cam.ac.uk" class="contact-item">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          <img src="icons/Mail.svg" alt="Email">
           <span>Email</span>
         </a>
         <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" class="contact-item">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3"><circle cx="12" cy="12" r="10"/><path d="M9 7h2v10H9M13 7c4 0 6 2 6 5s-2 5-6 5"/></svg>
+          <img src="icons/Orcid.svg" alt="ORCID">
           <span>ORCID</span>
         </a>
         <a href="https://github.com/astormic" target="_blank" class="contact-item">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <img src="icons/Github.svg" alt="GitHub">
           <span>GitHub</span>
         </a>
-        <a href="#" target="_blank" class="contact-item">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <span>Scholar</span>
+        <a href="https://bsky.app/profile/astormic.bsky.social" target="_blank" class="contact-item">
+          <img src="icons/Bluesky.svg" alt="Bluesky">
+          <span>Bluesky</span>
         </a>
         <a href="https://www.linkedin.com/in/amir-rahmani" target="_blank" class="contact-item">
-          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="38" height="38"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           <span>LinkedIn</span>
         </a>
       </div>
@@ -936,7 +930,7 @@ footer a:hover { color: var(--cyan); }
 </footer>
 
 <!-- ══ SCRIPTS ══ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Sidebar ── */
 function showSidebar() { document.getElementById('sidebar').classList.add('open'); }
 function hideSidebar() { document.getElementById('sidebar').classList.remove('open'); }
@@ -995,14 +989,8 @@ const MITO  = [['#38e888','#20c860','#10a840'],['#28d8a8','#10b888','#089870']];
 const CRYO  = [['#28b8ff','#0898e0','#0068b8'],['#88a8ff','#5888e0','#2860c0'],['#a878ff','#8858e0','#5030c0']];
 
 function drawAll() {
-  const c0 = document.getElementById('c0');
-  const c1 = document.getElementById('c1');
-  const c2 = document.getElementById('c2');
   const cm = document.getElementById('c-mito');
-  if (c0) paintSMLM(c0,  42,  ACTIN, 42, 900);
-  if (c1) paintSMLM(c1,  101, MITO,  30, 550);
-  if (c2) paintSMLM(c2,  77,  CRYO,  38, 750);
-  if (cm) paintSMLM(cm,  256, MITO,  20, 320);
+  if (cm) paintSMLM(cm, 256, MITO, 20, 320);
 }
 drawAll();
 window.addEventListener('resize', drawAll);
@@ -1050,11 +1038,4 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ── Mobile research carousel snap ── */
 function snapResearchMiddle() {
   if (window.innerWidth <= 1080) {
-    const rf = document.querySelector('.research-focus');
-    if (rf) rf.scrollTo({ left: window.innerWidth * 0.3, behavior: 'smooth' });
-  }
-}
-window.addEventListener('load', snapResearchMiddle);
-</script>
-</body>
-</html>
+    const rf = document.querySelector
