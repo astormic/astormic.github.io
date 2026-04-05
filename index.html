@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amir Rahmani</title>
-
 <meta name="description" content="Amir Rahmani — Postdoctoral Research Associate at the University of Cambridge. Super-resolution microscopy, biophysics, and biological imaging.">
 <meta name="author" content="Amir Rahmani">
 <meta property="og:title" content="Amir Rahmani">
@@ -17,9 +16,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Varela+Round&display=swap" rel="stylesheet">
 
 <style>
-/* ══════════════════════════════════════════
-   ROOT & RESET
-══════════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -29,8 +25,7 @@
   --teal:         #00caac;
   --muted:        rgba(255,255,255,0.62);
   --faint:        rgba(255,255,255,0.28);
-  --glass:        rgba(6,6,10,0.52);
-  --glass-light:  rgba(6,6,10,0.38);
+  --glass:        rgba(6,6,10,0.60);
   --glass-border: rgba(255,255,255,0.10);
   --blur:         blur(20px) saturate(1.3);
   --line:         3px;
@@ -39,573 +34,260 @@
 }
 
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--jost);
-  font-size: 16px;
-  line-height: 1.6;
-  font-weight: 300;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  background: var(--black); color: var(--white);
+  font-family: var(--jost); font-size: 16px;
+  line-height: 1.6; font-weight: 300;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
-
 a { color: var(--white); text-decoration: none; transition: color .2s; }
 a:hover { color: var(--cyan); }
 p { line-height: 1.65; }
 
-/* ══════════════════════════════════════════
-   NAVBAR
-══════════════════════════════════════════ */
+/* ── NAVBAR ── */
 #navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  height: 56px;
-  background: rgba(0,0,0,0.45);
+  height: 56px; background: rgba(0,0,0,0.45);
   backdrop-filter: blur(22px) saturate(1.4);
   -webkit-backdrop-filter: blur(22px) saturate(1.4);
   border-bottom: 0.5px solid var(--glass-border);
   transition: top 0.3s ease;
 }
-#navbar > ul {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 28px;
-}
+#navbar > ul { list-style:none; display:flex; align-items:center; height:100%; padding:0 28px; }
 #navbar > ul > li > a {
-  display: flex;
-  align-items: center;
-  height: 56px;
-  padding: 0 18px;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color .2s, text-shadow .2s;
+  display:flex; align-items:center; height:56px; padding:0 18px;
+  font-size:13px; font-weight:400; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--muted); transition:color .2s,text-shadow .2s;
 }
-#navbar > ul > li > a:hover { color: var(--white); text-shadow: 0 0 8px rgba(255,255,255,0.4); }
-#navbar > ul > li:first-child { margin-right: auto; }
+#navbar > ul > li > a:hover { color:var(--white); text-shadow:0 0 8px rgba(255,255,255,0.4); }
+#navbar > ul > li:first-child { margin-right:auto; }
 #navbar > ul > li:first-child > a {
-  font-family: var(--varela);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--white);
-  padding-left: 0;
-  gap: 10px;
+  font-family:var(--varela); font-size:16px; font-weight:500;
+  letter-spacing:0.06em; color:var(--white); padding-left:0; gap:10px;
 }
-.nav-photo {
-  width: 30px; height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-.hideonmobile { display: list-item; }
-.menu-icon { display: none !important; margin-left: auto; }
-.menu-icon a { cursor: pointer; }
-.menu-icon img { width: 22px; filter: invert(1); }
+.nav-photo { width:30px; height:30px; border-radius:50%; object-fit:cover; border:1px solid rgba(255,255,255,0.2); }
+.hideonmobile { display:list-item; }
+.menu-icon { display:none !important; margin-left:auto; }
+.menu-icon a { cursor:pointer; }
+.menu-icon img { width:22px; filter:invert(1); }
 
-/* ══════════════════════════════════════════
-   SIDEBAR
-══════════════════════════════════════════ */
+/* ── SIDEBAR ── */
 .sidebar {
-  position: fixed !important;
-  top: 0; right: -280px;
-  width: 260px; height: 100vh;
-  background: rgba(4,4,8,0.97);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-left: 0.5px solid var(--glass-border);
-  z-index: 600;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  padding: 0 !important;
-  transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
-  list-style: none;
+  position:fixed !important; top:0; right:-280px;
+  width:260px; height:100vh;
+  background:rgba(4,4,8,0.97);
+  backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  border-left:0.5px solid var(--glass-border); z-index:600;
+  display:flex !important; flex-direction:column !important;
+  align-items:flex-start !important; justify-content:flex-start !important;
+  padding:0 !important; list-style:none;
+  transition:right 0.35s cubic-bezier(0.4,0,0.2,1);
 }
-.sidebar.open { right: 0 !important; }
-.sidebar li { width: 100%; }
+.sidebar.open { right:0 !important; }
+.sidebar li { width:100%; }
 .sidebar li a {
-  display: block;
-  padding: 14px 28px;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 0.5px solid rgba(255,255,255,0.05);
-  transition: color .15s, background .15s;
-  height: auto !important;
+  display:block; padding:14px 28px; font-size:12px; font-weight:400;
+  letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);
+  border-bottom:0.5px solid rgba(255,255,255,0.05);
+  transition:color .15s,background .15s; height:auto !important;
 }
-.sidebar li a:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+.sidebar li a:hover { color:var(--white); background:rgba(255,255,255,0.04); }
 .sidebar li:first-child a {
-  text-align: right;
-  padding: 16px 20px;
-  border-bottom: 0.5px solid var(--glass-border);
-  margin-bottom: 6px;
+  text-align:right; padding:16px 20px;
+  border-bottom:0.5px solid var(--glass-border); margin-bottom:6px;
 }
-.sidebar li:first-child a img { width: 18px; filter: invert(1); }
+.sidebar li:first-child a img { width:18px; filter:invert(1); }
 
-/* ══════════════════════════════════════════
-   HERO — full viewport, canvas bg + blur overlay
-══════════════════════════════════════════ */
+/* ── HERO ── */
 .hero {
-  position: relative;
-  width: 100%; height: 100vh; min-height: 560px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  position:relative; width:100%; height:100vh; min-height:560px;
+  overflow:hidden; display:flex; flex-direction:column;
 }
+.hero-slide { position:absolute; inset:0; opacity:0; transition:opacity 1.4s ease-in-out; }
+.hero-slide.active { opacity:1; }
+.hero-slide img { width:100%; height:100%; object-fit:cover; display:block; }
 
-/* Canvas SMLM background slides */
-.hero-slide {
-  position: absolute; inset: 0;
-  opacity: 0; transition: opacity 1.4s ease-in-out;
-}
-.hero-slide.active { opacity: 1; }
-.hero-slide canvas { width: 100%; height: 100%; display: block; }
-.hero-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* Directional blur vignette like Landoni */
 .hero-blur-overlay {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: rgba(0,0,0,0.42);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  mask-image: radial-gradient(ellipse 65% 40% at 65% 28%, black 18%, transparent 68%);
-  -webkit-mask-image: radial-gradient(ellipse 65% 40% at 65% 28%, black 18%, transparent 68%);
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:rgba(0,0,0,0.42);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  mask-image:radial-gradient(ellipse 65% 40% at 65% 28%, black 18%, transparent 68%);
+  -webkit-mask-image:radial-gradient(ellipse 65% 40% at 65% 28%, black 18%, transparent 68%);
 }
 
-/* Hero top: text + slide dots */
 .hero-top {
-  flex: 0 0 55%;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: calc(56px + 6vh) 12% 0;
-  gap: 3rem;
+  flex:0 0 55%; position:relative; z-index:2;
+  display:flex; align-items:center; justify-content:flex-end;
+  padding:calc(56px + 6vh) 12% 0; gap:3rem;
 }
-
 .hero-content {
-  max-width: 680px;
-  padding-right: 2rem;
-  border-right: var(--white) var(--line) solid;
-  text-align: right;
+  max-width:680px; padding-right:2rem;
+  border-right:var(--white) var(--line) solid; text-align:right;
 }
 .hero-content h1 {
-  font-family: var(--varela);
-  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  line-height: 1.1;
-  margin-bottom: 0.6rem;
+  font-family:var(--varela); font-size:clamp(2.4rem,5.5vw,3.8rem);
+  font-weight:500; letter-spacing:0.06em; line-height:1.1; margin-bottom:0.6rem;
 }
 .hero-content h2 {
-  font-family: var(--jost);
-  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-  font-weight: 300;
-  color: var(--teal);
-  letter-spacing: 0.06em;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  font-size:clamp(0.72rem,1.2vw,0.95rem); font-weight:300;
+  color:var(--teal); letter-spacing:0.06em; line-height:1.4;
+  margin-bottom:1rem; white-space:nowrap;
 }
 .hero-content p {
-  font-size: clamp(0.82rem, 1.5vw, 0.98rem);
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.65;
-  text-align: right;
+  font-size:clamp(0.82rem,1.5vw,0.95rem); font-weight:300;
+  color:var(--muted); line-height:1.65; text-align:right;
 }
 
-/* Research focus cards row */
+/* Research focus cards */
 .research-focus {
-  flex: 1;
-  min-height: 0;
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  padding: 1.5rem 12%;
-  box-sizing: border-box;
+  flex:1; min-height:0; position:relative; z-index:2;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.5rem; padding:1.5rem 12%; box-sizing:border-box;
 }
-.focus-card {
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-}
-.focus-card canvas,
-.focus-card img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
+.focus-card { position:relative; overflow:hidden; cursor:default; }
+.focus-card canvas, .focus-card img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
 }
 .focus-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 1rem;
-  transition: background .25s;
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  text-align:center; background:rgba(0,0,0,0.25);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  padding:1rem; transition:background .25s;
 }
-.focus-card:hover .focus-label { background: rgba(0,0,0,0.42); }
-.focus-label h3 {
-  font-size: clamp(0.85rem, 1.6vw, 1.1rem);
-  font-weight: 300;
-  color: var(--white);
-  line-height: 1.4;
-}
+.focus-card:hover .focus-label { background:rgba(0,0,0,0.42); }
+.focus-label h3 { font-size:clamp(0.85rem,1.6vw,1.1rem); font-weight:300; color:var(--white); line-height:1.4; }
 
-/* Bottom bar */
 .hero-bottom-bar {
-  flex: 0 0 auto;
-  position: relative; z-index: 2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem 3rem 1.5rem;
-  gap: 1.5rem;
+  flex:0 0 auto; position:relative; z-index:2;
+  display:flex; justify-content:flex-end; align-items:center;
+  padding:1rem 3rem 1.5rem; gap:1.5rem;
 }
-.hero-bottom-bar a img {
-  height: 42px; width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.6;
-  transition: opacity .2s;
-}
-.hero-bottom-bar a:hover img { opacity: 1; }
+.hero-bottom-bar a img { height:42px; width:auto; filter:brightness(0) invert(1); opacity:0.6; transition:opacity .2s; }
+.hero-bottom-bar a:hover img { opacity:1; }
 
-/* Slide dots */
 .slide-dots {
-  position: absolute;
-  bottom: 22px; left: 50%;
-  transform: translateX(-50%);
-  display: flex; gap: 8px; z-index: 3;
+  position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:3;
 }
-.dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(255,255,255,0.28); cursor: pointer;
-  transition: background .2s;
-}
-.dot.active { background: var(--cyan); }
+.dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.28); cursor:pointer; transition:background .2s; }
+.dot.active { background:var(--cyan); }
 
-/* ══════════════════════════════════════════
-   SHARED SECTION STYLES
-══════════════════════════════════════════ */
+/* ── SECTIONS ── */
 .section-photo-bg {
-  background-image: var(--section-bg, none);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: #050508;
+  background-image:var(--section-bg,none); background-size:cover;
+  background-position:center; background-repeat:no-repeat;
+  background-attachment:fixed; background-color:#050508;
 }
-
 .bg-panel {
-  background: var(--glass);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  border-top: 0.5px solid var(--glass-border);
-  border-bottom: 0.5px solid var(--glass-border);
+  background:var(--glass); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur);
+  border-top:0.5px solid var(--glass-border); border-bottom:0.5px solid var(--glass-border);
 }
+.section-inner { padding:5rem 12%; max-width:1300px; margin:0 auto; }
 
-.section-inner {
-  padding: 5rem 12%;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-.section-title-block {
-  border-left: var(--white) var(--line) solid;
-  padding-left: 1.8rem;
-  margin-bottom: 3rem;
-}
+.section-title-block { border-left:var(--white) var(--line) solid; padding-left:1.8rem; margin-bottom:3rem; }
 .section-title-block h1 {
-  font-family: var(--jost);
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
+  font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:300;
+  letter-spacing:0.08em; text-transform:uppercase; color:var(--white);
 }
-.section-title-block .section-sub {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  margin-top: 0.4rem;
-}
-.section-links {
-  display: flex; gap: 1.2rem; flex-wrap: wrap;
-  margin-top: 0.8rem;
-}
-.section-links a {
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color .15s;
-}
-.section-links a:hover { color: var(--white); }
+.section-sub { font-size:0.9rem; font-weight:300; color:var(--muted); letter-spacing:0.04em; margin-top:0.4rem; }
+.section-links { display:flex; gap:1.2rem; flex-wrap:wrap; margin-top:0.8rem; }
+.section-links a { font-size:0.8rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); transition:color .15s; }
+.section-links a:hover { color:var(--white); }
 
-/* Scroll animation */
+/* ── SCROLL ANIMATION ──
+   The critical fix: observer runs on 'load' not 'DOMContentLoaded',
+   and elements start invisible then become visible when intersecting */
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.55s ease, transform 0.55s ease;
 }
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: none;
-}
+.animate-on-scroll.visible { opacity:1; transform:none; }
 
-/* ══════════════════════════════════════════
-   PUBLICATIONS
-══════════════════════════════════════════ */
-.pubs-section {
-  --section-bg: url('assets/RCard1.jpg');
-}
-
-.pub-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
-  list-style: none;
-}
-
+/* ── PUBLICATIONS ── */
+.pubs-section { --section-bg:url('assets/RCard1.jpg'); }
+.pub-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; list-style:none; }
 .pub-card {
-  display: block;
-  background: rgba(0,0,0,0.18);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 0.5px solid var(--glass-border);
-  padding: 1.6rem 2rem;
-  text-decoration: none;
-  color: inherit;
-  transition: background .25s, border-color .25s, transform .2s;
+  display:block; background:rgba(255,255,255,0.04);
+  border:0.5px solid var(--glass-border); padding:1.6rem 2rem; color:inherit;
+  transition:background .25s,border-color .25s,transform .2s;
 }
-.pub-card:hover {
-  background: rgba(38,173,228,0.07);
-  border-color: rgba(38,173,228,0.25);
-  transform: translateY(-2px);
-  color: inherit;
-}
-.pub-title {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--white);
-  line-height: 1.45;
-  margin-bottom: 0.5rem;
-}
-.pub-authors {
-  font-size: 0.82rem;
-  font-weight: 300;
-  color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 0.3rem;
-}
-.pub-authors strong { color: rgba(255,255,255,0.88); font-weight: 500; }
-.pub-journal {
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--teal);
-  margin-bottom: 0.3rem;
-}
-.pub-doi {
-  font-size: 0.78rem;
-  color: var(--cyan);
-  text-decoration: underline;
-}
+.pub-card:hover { background:rgba(38,173,228,0.07); border-color:rgba(38,173,228,0.25); transform:translateY(-2px); color:inherit; }
+.pub-title { font-size:1rem; font-weight:500; color:var(--white); line-height:1.45; margin-bottom:0.5rem; }
+.pub-authors { font-size:0.82rem; font-weight:300; color:var(--muted); line-height:1.5; margin-bottom:0.3rem; }
+.pub-authors strong { color:rgba(255,255,255,0.88); font-weight:500; }
+.pub-journal { font-size:0.8rem; font-style:italic; color:var(--teal); margin-bottom:0.3rem; }
+.pub-doi { font-size:0.78rem; color:var(--cyan); text-decoration:underline; }
 .pub-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 2px;
-  vertical-align: middle;
-  margin-left: 8px;
-  background: rgba(38,173,228,0.15);
-  color: var(--cyan);
-  border: 0.5px solid rgba(38,173,228,0.4);
+  display:inline-block; font-size:0.65rem; font-weight:600; letter-spacing:0.1em;
+  text-transform:uppercase; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-left:8px;
+  background:rgba(38,173,228,0.15); color:var(--cyan); border:0.5px solid rgba(38,173,228,0.4);
 }
-
 .more-link {
-  display: block;
-  text-align: center;
-  margin-top: 2.2rem;
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color .15s;
+  display:block; text-align:center; margin-top:2.2rem; font-size:0.82rem;
+  font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); transition:color .15s;
 }
-.more-link:hover { color: var(--white); }
+.more-link:hover { color:var(--white); }
 
-/* ══════════════════════════════════════════
-   NOTES / OUTREACH CARDS
-══════════════════════════════════════════ */
-.notes-section {
-  --section-bg: url('assets/RCard2.jpg');
-}
-
-.notes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  list-style: none;
-}
-
+/* ── NOTES ── */
+.notes-section { --section-bg:url('assets/RCard2.jpg'); }
+.notes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; list-style:none; }
 .note-card-home {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  cursor: pointer;
-  background: var(--glass);
-  border: 0.5px solid var(--glass-border);
+  position:relative; overflow:hidden; aspect-ratio:4/3; cursor:pointer;
+  background:rgba(255,255,255,0.04); border:0.5px solid var(--glass-border);
 }
-.note-card-home img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s ease;
-}
-.note-card-home:hover img { transform: scale(1.04); }
+.note-card-home img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.note-card-home:hover img { transform:scale(1.04); }
+.note-card-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.03); }
+.note-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.2) 55%,transparent 100%); }
+.note-card-info { position:absolute; bottom:0; left:0; right:0; padding:1.2rem 1.4rem; }
+.note-tag { font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:5px; display:block; }
+.note-tag.lab     { color:var(--cyan); }
+.note-tag.thought { color:rgba(255,255,255,0.42); }
+.note-tag.reading { color:#7ee8b8; }
+.note-tag.news    { color:#e8c87e; }
+.note-card-title { font-size:0.9rem; font-weight:400; line-height:1.4; color:var(--white); }
+.note-card-date { font-size:0.72rem; font-weight:300; color:var(--faint); margin-top:5px; }
 
-.note-card-placeholder {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.03);
-}
-.note-card-placeholder svg { opacity: 0.35; }
+/* ── CONTACT ── */
+.contact-section { --section-bg:url('assets/IMG_0897.jpeg'); }
+.contact-links { display:flex; flex-wrap:wrap; gap:2rem 3rem; margin-top:1rem; }
+.contact-item { display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; transition:opacity .2s; }
+.contact-item:hover { opacity:0.7; }
+.contact-item img { width:38px; height:38px; object-fit:contain; }
+.contact-item span { font-size:0.72rem; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
 
-.note-card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 55%, transparent 100%);
-  transition: opacity .3s;
-}
-.note-card-home:hover .note-card-overlay { opacity: 0.88; }
-
-.note-card-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 1.2rem 1.4rem;
-}
-.note-tag {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  display: block;
-}
-.note-tag.lab     { color: var(--cyan); }
-.note-tag.thought { color: rgba(255,255,255,0.42); }
-.note-tag.reading { color: #7ee8b8; }
-.note-tag.news    { color: #e8c87e; }
-
-.note-card-title {
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--white);
-}
-.note-card-date {
-  font-size: 0.72rem;
-  font-weight: 300;
-  color: var(--faint);
-  margin-top: 5px;
-}
-
-/* ══════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════ */
-.contact-section {
-  --section-bg: url('assets/IMG_0897.jpeg');
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem 3rem;
-  margin-top: 1rem;
-}
-.contact-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: opacity .2s;
-}
-.contact-item:hover { opacity: 0.7; }
-.contact-item img {
-  width: 38px; height: 38px;
-  object-fit: contain;
-}
-.contact-item span {
-  font-size: 0.72rem;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-/* ══════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════ */
+/* ── FOOTER ── */
 footer {
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(12px);
-  border-top: 0.5px solid var(--glass-border);
-  padding: 20px 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.72rem;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  color: var(--faint);
+  background:rgba(0,0,0,0.85); backdrop-filter:blur(12px);
+  border-top:0.5px solid var(--glass-border); padding:20px 36px;
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:0.72rem; font-weight:300; letter-spacing:0.06em; color:var(--faint);
 }
-.footer-links { display: flex; gap: 20px; }
-footer a { color: var(--faint); transition: color .15s; }
-footer a:hover { color: var(--cyan); }
+.footer-links { display:flex; gap:20px; }
+footer a { color:var(--faint); transition:color .15s; }
+footer a:hover { color:var(--cyan); }
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════ */
-@media (max-width: 1080px) {
-  .section-photo-bg { background-attachment: scroll; }
-  .hero-blur-overlay { background: rgba(0,0,0,0.5); mask-image: none; -webkit-mask-image: none; }
-  .research-focus { grid-template-columns: none; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 1rem 4%; gap: 1rem; }
-  .focus-card { scroll-snap-align: center; min-width: 70vw; flex-shrink: 0; aspect-ratio: 4/3; position: relative; height: auto; }
-  .hero-top { padding: calc(56px + 4vh) 5% 0; justify-content: flex-start; }
-  .hero-content { border-right: none; border-left: var(--white) var(--line) solid; padding-right: 0; padding-left: 1.5rem; text-align: left; }
-  .hero-content p { text-align: left; }
-  .section-inner { padding: 3.5rem 6%; }
-  .pub-grid { grid-template-columns: 1fr; }
-  .notes-grid { grid-template-columns: repeat(2, 1fr); }
-  .hideonmobile { display: none !important; }
-  .menu-icon { display: list-item !important; }
+/* ── RESPONSIVE ── */
+@media (max-width:1080px) {
+  .section-photo-bg { background-attachment:scroll; }
+  .hero-blur-overlay { background:rgba(0,0,0,0.5); mask-image:none; -webkit-mask-image:none; }
+  .research-focus { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; padding:1rem 4%; gap:1rem; }
+  .focus-card { scroll-snap-align:center; min-width:70vw; flex-shrink:0; aspect-ratio:4/3; }
+  .hero-top { padding:calc(56px + 4vh) 5% 0; justify-content:flex-start; }
+  .hero-content { border-right:none; border-left:var(--white) var(--line) solid; padding-right:0; padding-left:1.5rem; text-align:left; }
+  .hero-content h2 { white-space:normal; }
+  .hero-content p { text-align:left; }
+  .section-inner { padding:3.5rem 6%; }
+  .pub-grid { grid-template-columns:1fr; }
+  .notes-grid { grid-template-columns:repeat(2,1fr); }
+  .hideonmobile { display:none !important; }
+  .menu-icon { display:list-item !important; }
 }
-
-@media (max-width: 560px) {
-  .notes-grid { grid-template-columns: 1fr; }
-  .hero-content h1 { font-size: 2rem; }
-  footer { flex-direction: column; gap: 10px; text-align: center; }
+@media (max-width:560px) {
+  .notes-grid { grid-template-columns:1fr; }
+  .hero-content h1 { font-size:2rem; }
+  footer { flex-direction:column; gap:10px; text-align:center; }
 }
 </style>
 </head>
@@ -627,8 +309,7 @@ footer a:hover { color: var(--cyan); }
     <ul>
       <li>
         <a href="index.html">
-          <img src="https://astormic.github.io/assets/IMG_0897.jpeg" class="nav-photo" alt="Amir Rahmani"
-               onerror="this.style.display='none'">
+          <img src="https://astormic.github.io/assets/IMG_0897.jpeg" class="nav-photo" alt="Amir Rahmani" onerror="this.style.display='none'">
           Amir Rahmani
         </a>
       </li>
@@ -645,95 +326,82 @@ footer a:hover { color: var(--cyan); }
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="top">
-
-  <!-- Hero background image -->
-  <div class="hero-slide active" id="slide-0">
-    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
-  </div>
-  <div class="hero-slide" id="slide-1">
-    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
-  </div>
-  <div class="hero-slide" id="slide-2">
-    <img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager">
-  </div>
+  <div class="hero-slide active" id="slide-0"><img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager"></div>
+  <div class="hero-slide" id="slide-1"><img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager"></div>
+  <div class="hero-slide" id="slide-2"><img src="assets/myNPCs.jpg" alt="Single-molecule imaging" loading="eager"></div>
 
   <div class="hero-blur-overlay"></div>
 
-  <!-- Text content -->
   <div class="hero-top">
     <div class="hero-content">
       <h1>Amir Rahmani</h1>
       <h2>Super-Resolution Microscopy | Single-Molecule Microscopy | Biophysics | Extreme Cell Biology</h2>
-      <p>
-        Postdoctoral Research Associate · Dept. of Chemical Engineering &amp; Biotechnology ·
+      <p>Postdoctoral Research Associate · Dept. of Chemical Engineering &amp; Biotechnology ·
         University of Cambridge. Developing autonomous optical microscopes to image
-        nanoscale cellular behaviour at sub-zero temperatures.
-      </p>
+        nanoscale cellular behaviour at sub-zero temperatures.</p>
     </div>
   </div>
 
-  <!-- Research focus cards -->
   <div class="research-focus">
     <a href="research.html" class="focus-card" style="text-decoration:none;">
       <img src="assets/RCard1.jpg" alt="Cold imaging" loading="eager">
-      <div class="focus-label">
-        <h3>Sub-zero live-cell super-resolution imaging</h3>
-      </div>
+      <div class="focus-label"><h3>Sub-zero live-cell super-resolution imaging</h3></div>
     </a>
     <a href="research.html" class="focus-card" style="text-decoration:none;">
       <img src="assets/RCard2.jpg" alt="smFC" loading="eager">
-      <div class="focus-label">
-        <h3>Single-molecule flow cytometry</h3>
-      </div>
+      <div class="focus-label"><h3>Single-molecule flow cytometry</h3></div>
     </a>
     <a href="research.html" class="focus-card" style="text-decoration:none;">
       <canvas id="c-mito"></canvas>
-      <div class="focus-label">
-        <h3>Optical System Development</h3>
-      </div>
+      <div class="focus-label"><h3>Optical System Development</h3></div>
     </a>
   </div>
 
-  <!-- Bottom bar -->
   <div class="hero-bottom-bar">
     <a href="https://www.ceb.cam.ac.uk" target="_blank">
-      <img src="icons/uniLogo.png" alt="University of Cambridge">
+      <img src="icons/uniLogo.svg" alt="University of Cambridge">
     </a>
+  </div>
+
+  <div class="slide-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
   </div>
 </section>
 
 <!-- ══ ABOUT ══ -->
-<section id="about" class="section-photo-bg bg-panel" style="--section-bg: url('assets/IMG_0897.jpeg');">
-  <div class="section-inner">
-    <div class="section-title-block animate-on-scroll">
-      <h1>About</h1>
-    </div>
-    <div style="display:grid;grid-template-columns:200px 1fr;gap:3rem;align-items:start;" class="animate-on-scroll">
-      <img src="https://astormic.github.io/assets/IMG_0897.jpeg" alt="Amir Rahmani"
-           style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block;"
-           onerror="this.style.background='rgba(255,255,255,0.04)'">
-      <div>
-        <p style="font-size:1.05rem;font-weight:500;margin-bottom:0.4rem;">Amir Rahmani</p>
-        <p style="font-size:0.85rem;font-weight:300;color:var(--muted);margin-bottom:1.4rem;line-height:1.6;">
-          Research Associate · Dept. of Chemical Engineering and Biotechnology · University of Cambridge<br>
-          College Research Associate · Wolfson College, Cambridge
-        </p>
-        <p style="font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.82);margin-bottom:1rem;text-align:justify;">
-          I'm a Postdoctoral Research Associate at the University of Cambridge, working in Prof. Clemens Kaminski's group
-          in collaboration with the British Antarctic Survey on a UKRI-funded project. My research sits at the intersection
-          of physics, biology, and engineering — I develop advanced super-resolution microscopy tools to study nanoscale
-          cellular behaviour at sub-zero temperatures.
-        </p>
-        <p style="font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.82);text-align:justify;">
-          I hold a PhD in Physics from the University of Leeds, where I developed the first single-molecule flow cytometry
-          system for applications in adaptive immunotherapy. Prior to my doctoral studies, I trained at world-leading
-          institutes including EMBL Heidelberg and ICFO Barcelona.
-        </p>
-        <div style="display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;">
-          <a href="/cdn-cgi/l/email-protection#caabb8f8f9fcf28aa9aba7e4aba9e4bfa1" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
-          <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">ORCiD</a>
-          <a href="https://github.com/astormic" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">GitHub</a>
-          <a href="cv.html" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">CV →</a>
+<section id="about" class="section-photo-bg" style="--section-bg:url('assets/IMG_0897.jpeg');">
+  <div class="bg-panel">
+    <div class="section-inner">
+      <div class="section-title-block animate-on-scroll"><h1>About</h1></div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:3rem;align-items:start;" class="animate-on-scroll">
+        <img src="https://astormic.github.io/assets/IMG_0897.jpeg" alt="Amir Rahmani"
+             style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block;"
+             onerror="this.style.background='rgba(255,255,255,0.06)'">
+        <div>
+          <p style="font-size:1.05rem;font-weight:500;margin-bottom:0.4rem;">Amir Rahmani</p>
+          <p style="font-size:0.85rem;font-weight:300;color:var(--muted);margin-bottom:1.4rem;line-height:1.6;">
+            Research Associate · Dept. of Chemical Engineering and Biotechnology · University of Cambridge<br>
+            College Research Associate · Wolfson College, Cambridge
+          </p>
+          <p style="font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.82);margin-bottom:1rem;text-align:justify;">
+            I'm a Postdoctoral Research Associate at the University of Cambridge, working in Prof. Clemens Kaminski's group
+            in collaboration with the British Antarctic Survey on a UKRI-funded project. My research sits at the intersection
+            of physics, biology, and engineering — I develop advanced super-resolution microscopy tools to study nanoscale
+            cellular behaviour at sub-zero temperatures.
+          </p>
+          <p style="font-size:0.92rem;font-weight:300;color:rgba(255,255,255,0.82);text-align:justify;">
+            I hold a PhD in Physics from the University of Leeds, where I developed the first single-molecule flow cytometry
+            system for applications in adaptive immunotherapy. Prior to my doctoral studies, I trained at world-leading
+            institutes including EMBL Heidelberg and ICFO Barcelona.
+          </p>
+          <div style="display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;">
+            <a href="mailto:ar2368@cam.ac.uk" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
+            <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">ORCiD</a>
+            <a href="https://github.com/astormic" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">GitHub</a>
+            <a href="cv.html" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">CV →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -752,37 +420,29 @@ footer a:hover { color: var(--cyan); }
           <a href="publications.html">| All Publications →</a>
         </div>
       </div>
-
       <ul class="pub-grid">
         <li class="pub-card animate-on-scroll">
-          <p class="pub-title">
-            Single-molecule flow cytometry
-            <span class="pub-badge">New</span>
-          </p>
+          <p class="pub-title">Single-molecule flow cytometry <span class="pub-badge">New</span></p>
           <p class="pub-authors"><strong>Amir Rahmani</strong>, Matthew Christie, Amy Truesdale, James Thorne, Aleks Ponjavic</p>
           <p class="pub-journal">bioRxiv · August 2025</p>
           <a href="https://doi.org/10.1101/2025.08.26.672174" class="pub-doi" target="_blank">doi: 10.1101/2025.08.26.672174</a>
         </li>
-
         <li class="pub-card animate-on-scroll">
           <p class="pub-title">Active remote focus stabilization in oblique plane microscopy</p>
           <p class="pub-authors">Trung Duc Nguyen, <strong>Amir Rahmani</strong>, Aleks Ponjavic, Alfred Millett-Sikking, Reto Fiolka</p>
           <p class="pub-journal">Biomedical Optics Express · Vol. 16, No. 3, pp. 1216–1224 · 2025</p>
         </li>
-
         <li class="pub-card animate-on-scroll">
           <p class="pub-title">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision</p>
           <p class="pub-authors"><strong>Amir Rahmani</strong>, Tabitha Cox, Akhila Thamaravelil Abhimanue Achary, Aleks Ponjavic</p>
           <p class="pub-journal">Optics Express · Vol. 32, No. 8, pp. 13331–13341 · 2024</p>
         </li>
-
         <li class="pub-card animate-on-scroll">
           <p class="pub-title">Super-resolution Imaging</p>
           <p class="pub-authors">A. Curd, <strong>A. Rahmani</strong>, O. Umney, A. Ponjavic, M. Peckham</p>
           <p class="pub-journal">In: <em>Live Cell Imaging Across Scales</em> · RMS Wiley · In press 2025</p>
         </li>
       </ul>
-
       <a href="publications.html" class="more-link animate-on-scroll">| All publications →</a>
     </div>
   </div>
@@ -795,18 +455,12 @@ footer a:hover { color: var(--cyan); }
       <div class="section-title-block animate-on-scroll">
         <h1>Notes</h1>
         <p class="section-sub">Occasional thoughts on experiments, papers, and ideas.</p>
-        <div class="section-links">
-          <a href="notes.html">| All Notes →</a>
-        </div>
+        <div class="section-links"><a href="notes.html">| All Notes →</a></div>
       </div>
-
       <ul class="notes-grid">
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
           <div class="note-card-placeholder">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#26ade4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 3h6M9 3v8l-4 9h14L15 11V3M9 3H7M15 3h2"/>
-            </svg>
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#26ade4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M9 3v8l-4 9h14L15 11V3M9 3H7M15 3h2"/></svg>
           </div>
           <div class="note-card-overlay"></div>
           <div class="note-card-info">
@@ -815,7 +469,6 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">Jan 2026 · Cambridge</p>
           </div>
         </li>
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
           <img src="assets/smOPM_All2.png" alt="smFC preprint" loading="lazy">
           <div class="note-card-overlay"></div>
@@ -825,7 +478,6 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">Aug 2025 · Cambridge</p>
           </div>
         </li>
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
           <img src="assets/EPFL.jpeg" alt="EPFL Best Poster" loading="lazy">
           <div class="note-card-overlay"></div>
@@ -835,13 +487,8 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">Oct 2024 · Lausanne</p>
           </div>
         </li>
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
-          <img src="assets/DSC03685.jpg" alt="YES24" loading="lazy"
-               onerror="this.style.display='none';this.parentElement.querySelector('.note-card-placeholder').style.display='flex'">
-          <div class="note-card-placeholder" style="display:none;">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#e8c87e" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
+          <img src="assets/DSC03685.jpg" alt="YES24" loading="lazy" onerror="this.style.display='none'">
           <div class="note-card-overlay"></div>
           <div class="note-card-info">
             <span class="note-tag news">News</span>
@@ -849,7 +496,6 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">2024 · Leeds</p>
           </div>
         </li>
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
           <img src="assets/OPM_Wolfson.png" alt="Building microscopes" loading="lazy">
           <div class="note-card-overlay"></div>
@@ -859,7 +505,6 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">Oct 2023 · Leeds</p>
           </div>
         </li>
-
         <li class="note-card-home animate-on-scroll" onclick="location.href='notes.html'">
           <img src="assets/ELMI2.jpeg" alt="ELMI 2024" loading="lazy">
           <div class="note-card-overlay"></div>
@@ -869,9 +514,7 @@ footer a:hover { color: var(--cyan); }
             <p class="note-card-date">Jun 2024 · Liverpool</p>
           </div>
         </li>
-
       </ul>
-
       <a href="notes.html" class="more-link animate-on-scroll">| All notes →</a>
     </div>
   </div>
@@ -885,23 +528,18 @@ footer a:hover { color: var(--cyan); }
         <h1>Contact</h1>
         <p class="section-sub">Happy to hear from collaborators, students, or anyone curious about the work.</p>
       </div>
-
       <div class="contact-links animate-on-scroll">
         <a href="mailto:ar2368@cam.ac.uk" class="contact-item">
-          <img src="icons/Mail.svg" alt="Email">
-          <span>Email</span>
+          <img src="icons/Mail.svg" alt="Email"><span>Email</span>
         </a>
         <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" class="contact-item">
-          <img src="icons/Orcid.svg" alt="ORCID">
-          <span>ORCID</span>
+          <img src="icons/Orcid.svg" alt="ORCID"><span>ORCID</span>
         </a>
         <a href="https://github.com/astormic" target="_blank" class="contact-item">
-          <img src="icons/Github.svg" alt="GitHub">
-          <span>GitHub</span>
+          <img src="icons/Github.svg" alt="GitHub"><span>GitHub</span>
         </a>
         <a href="https://bsky.app/profile/astormic.bsky.social" target="_blank" class="contact-item">
-          <img src="icons/Bluesky.svg" alt="Bluesky">
-          <span>Bluesky</span>
+          <img src="icons/Bluesky.svg" alt="Bluesky"><span>Bluesky</span>
         </a>
         <a href="https://www.linkedin.com/in/amir-rahmani" target="_blank" class="contact-item">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff" width="38" height="38"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
@@ -922,8 +560,7 @@ footer a:hover { color: var(--cyan); }
   </div>
 </footer>
 
-<!-- ══ SCRIPTS ══ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── Sidebar ── */
 function showSidebar() { document.getElementById('sidebar').classList.add('open'); }
 function hideSidebar() { document.getElementById('sidebar').classList.remove('open'); }
@@ -934,7 +571,7 @@ document.addEventListener('click', e => {
     sb.classList.remove('open');
 });
 
-/* ── Canvas SMLM painter ── */
+/* ── Canvas painter ── */
 function prng(seed) {
   let s = seed;
   return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
@@ -944,48 +581,41 @@ function paintSMLM(canvas, seed, palettes, nStrands, nBg) {
   canvas.width  = canvas.offsetWidth  * dpr;
   canvas.height = canvas.offsetHeight * dpr;
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, H = canvas.height;
-  const r = prng(seed);
+  const W = canvas.width, H = canvas.height, r = prng(seed);
   for (let s = 0; s < nStrands; s++) {
     const pal = palettes[Math.floor(r() * palettes.length)];
     const col = pal[Math.floor(r() * pal.length)];
-    const a   = 0.22 + r() * 0.62;
-    const lw  = (0.5 + r() * 1.9) * dpr;
-    const x0 = r() * W * 1.3 - W * 0.15, y0 = r() * H * 1.3 - H * 0.15;
-    const x1 = x0 + (r() - 0.35) * W * 0.95, y1 = y0 + (r() - 0.35) * H * 0.95;
-    const cx = (x0+x1)/2 + (r()-0.5)*W*0.3, cy = (y0+y1)/2 + (r()-0.5)*H*0.3;
+    const a = 0.22 + r() * 0.62, lw = (0.5 + r() * 1.9) * dpr;
+    const x0 = r()*W*1.3-W*0.15, y0 = r()*H*1.3-H*0.15;
+    const x1 = x0+(r()-0.35)*W*0.95, y1 = y0+(r()-0.35)*H*0.95;
+    const cx = (x0+x1)/2+(r()-0.5)*W*0.3, cy = (y0+y1)/2+(r()-0.5)*H*0.3;
     const ah = Math.floor(a*255).toString(16).padStart(2,'0');
     const gh = Math.floor(a*0.22*255).toString(16).padStart(2,'0');
     ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(cx,cy,x1,y1);
-    ctx.lineWidth = lw * 3.5; ctx.strokeStyle = col + gh; ctx.stroke();
+    ctx.lineWidth = lw*3.5; ctx.strokeStyle = col+gh; ctx.stroke();
     ctx.beginPath(); ctx.moveTo(x0,y0); ctx.quadraticCurveTo(cx,cy,x1,y1);
-    ctx.lineWidth = lw; ctx.strokeStyle = col + ah; ctx.stroke();
-    const nd = Math.floor(5 + r() * 32);
-    for (let d = 0; d < nd; d++) {
+    ctx.lineWidth = lw; ctx.strokeStyle = col+ah; ctx.stroke();
+    for (let d = 0; d < Math.floor(5+r()*32); d++) {
       const t = r();
-      const bx = (1-t)*(1-t)*x0 + 2*(1-t)*t*cx + t*t*x1;
-      const by = (1-t)*(1-t)*y0 + 2*(1-t)*t*cy + t*t*y1;
+      const bx = (1-t)*(1-t)*x0+2*(1-t)*t*cx+t*t*x1;
+      const by = (1-t)*(1-t)*y0+2*(1-t)*t*cy+t*t*y1;
       ctx.beginPath();
       ctx.arc(bx+(r()-0.5)*5, by+(r()-0.5)*5, (0.4+r()*1.7)*dpr, 0, Math.PI*2);
-      ctx.fillStyle = col + 'cc'; ctx.fill();
+      ctx.fillStyle = col+'cc'; ctx.fill();
     }
   }
   for (let i = 0; i < nBg; i++) {
     const col = palettes[Math.floor(r()*palettes.length)][0];
     ctx.beginPath(); ctx.arc(r()*W, r()*H, r()*0.85*dpr, 0, Math.PI*2);
-    ctx.fillStyle = col + '55'; ctx.fill();
+    ctx.fillStyle = col+'55'; ctx.fill();
   }
 }
-
-const ACTIN = [['#00d8ff','#00b0e0','#0088cc'],['#40e880','#18c850','#089830'],['#ff5818','#e03808','#c01800'],['#ffd020','#e8a800','#b07800']];
-const MITO  = [['#38e888','#20c860','#10a840'],['#28d8a8','#10b888','#089870']];
-const CRYO  = [['#28b8ff','#0898e0','#0068b8'],['#88a8ff','#5888e0','#2860c0'],['#a878ff','#8858e0','#5030c0']];
-
+const MITO = [['#38e888','#20c860','#10a840'],['#28d8a8','#10b888','#089870']];
 function drawAll() {
   const cm = document.getElementById('c-mito');
-  if (cm) paintSMLM(cm, 256, MITO, 20, 320);
+  if (cm && cm.offsetWidth > 0) paintSMLM(cm, 256, MITO, 20, 320);
 }
-drawAll();
+window.addEventListener('load', drawAll);
 window.addEventListener('resize', drawAll);
 
 /* ── Hero carousel ── */
@@ -997,22 +627,23 @@ function goSlide(n) {
   cur = n;
   slides[cur].classList.add('active'); dots[cur].classList.add('active');
 }
-function nextSlide() { goSlide((cur + 1) % slides.length); }
-timer = setInterval(nextSlide, 4800);
+timer = setInterval(() => goSlide((cur + 1) % slides.length), 4800);
 dots.forEach((d, i) => d.addEventListener('click', () => {
-  clearInterval(timer); goSlide(i); timer = setInterval(nextSlide, 4800);
+  clearInterval(timer); goSlide(i);
+  timer = setInterval(() => goSlide((cur+1) % slides.length), 4800);
 }));
 
 /* ── Scroll-hide navbar ── */
 let prevScroll = window.pageYOffset;
 window.addEventListener('scroll', () => {
-  const cur = window.pageYOffset;
-  document.getElementById('navbar').style.top = (prevScroll > cur || cur < 80) ? '0' : '-65px';
-  prevScroll = cur;
+  const y = window.pageYOffset;
+  document.getElementById('navbar').style.top = (prevScroll > y || y < 80) ? '0' : '-65px';
+  prevScroll = y;
 }, { passive: true });
 
-/* ── Scroll-triggered fade-in ── */
-document.addEventListener('DOMContentLoaded', () => {
+/* ── Scroll fade-in — runs on load, catches all elements ── */
+window.addEventListener('load', () => {
+  const els = document.querySelectorAll('.animate-on-scroll');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1020,15 +651,19 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
-  document.querySelectorAll('.animate-on-scroll').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.055) + 's';
+  els.forEach((el, i) => {
+    el.style.transitionDelay = (i % 5 * 0.07) + 's';
     observer.observe(el);
   });
-});
 
-/* ── Mobile research carousel snap ── */
-function snapResearchMiddle() {
-  if (window.innerWidth <= 1080) {
-    const rf = document.querySelector
+  /* Also immediately reveal anything already in viewport on load */
+  els.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
