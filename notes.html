@@ -6,400 +6,667 @@
 <title>Notes · Amir Rahmani</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&family=Varela+Round&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-:root { --black:#000; --grey:rgb(10,10,10); --white:#fff; --cyan:#26ade4; --muted:rgba(255,255,255,0.6); --faint:rgba(255,255,255,0.28); --nunito:'Nunito',-apple-system,sans-serif; }
-html { scroll-behavior:smooth; }
-body { background:var(--black); color:var(--white); font-family:var(--nunito); font-size:14px; line-height:21px; letter-spacing:0.75px; -webkit-font-smoothing:antialiased; }
-a { color:var(--white); text-decoration:none; transition:color .15s; }
-a:hover { color:var(--cyan); }
-p { text-align:justify; }
+/* ===== RESET & ROOT ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-nav { position:fixed; top:0; left:0; right:0; z-index:200; height:52px; background:rgba(0,0,0,0.92); backdrop-filter:blur(6px); display:flex; align-items:center; padding:0 32px; justify-content:space-between; border-bottom:0.5px solid rgba(255,255,255,0.07); }
-.nav-brand { font-size:16px; font-weight:700; letter-spacing:0.75px; }
-.nav-links { display:flex; gap:30px; list-style:none; }
-.nav-links a { font-size:13px; font-weight:400; letter-spacing:0.75px; color:var(--muted); padding-bottom:3px; border-bottom:3px solid transparent; transition:color .15s,border-color .15s; }
-.nav-links a:hover { color:var(--white); }
-.nav-links a.active { color:var(--cyan); border-bottom-color:var(--cyan); }
+:root {
+  --black:   #000;
+  --white:   #fff;
+  --cyan:    #26ade4;
+  --muted:   rgba(255,255,255,0.62);
+  --faint:   rgba(255,255,255,0.28);
+  --glass:   rgba(8, 8, 12, 0.52);
+  --glass-border: rgba(255,255,255,0.10);
+  --blur:    blur(18px) saturate(1.4);
+  --jost:    'Jost', sans-serif;
+  --varela:  'Varela Round', sans-serif;
+  --cyan-dim: rgba(38,173,228,0.18);
+}
 
-.page-hero { padding:120px 0 60px; text-align:center; background:var(--black); }
-.page-title { font-family:'Varela Round',sans-serif; font-size:clamp(32px,6vw,56px); font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px; }
-.page-sub { font-size:15px; font-weight:300; letter-spacing:0.75px; color:var(--muted); max-width:520px; margin:0 auto; text-align:center; line-height:23px; }
+html { scroll-behavior: smooth; }
 
-hr.rule { border:none; border-top:0.5px solid rgba(255,255,255,0.1); max-width:1100px; margin:0 auto; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--jost);
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 
-.sec { padding:60px 0; }
-.sec.black { background:var(--black); }
-.sec.grey  { background:var(--grey); }
-.wrap { max-width:860px; margin:0 auto; padding:0 36px; }
+/* ===== FULL-PAGE BACKGROUND ===== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('assets/myNPCs.jpg') center / cover no-repeat;
+  z-index: -2;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: -1;
+}
 
-/* FILTER BAR */
-.filter-bar { display:flex; gap:6px; margin-bottom:36px; flex-wrap:wrap; }
-.filter-btn { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 14px; border-radius:2px; border:0.5px solid rgba(255,255,255,0.15); background:transparent; color:var(--muted); cursor:pointer; transition:all .15s; font-family:var(--nunito); }
-.filter-btn:hover { border-color:rgba(255,255,255,0.35); color:var(--white); }
-.filter-btn.active { background:var(--cyan); border-color:var(--cyan); color:#000; }
+a { color: var(--white); text-decoration: none; transition: color .15s; }
+a:hover { color: var(--cyan); }
 
-/* NOTE CARDS */
-.notes-feed { display:flex; flex-direction:column; gap:0; }
-.note-card { border-bottom:0.5px solid rgba(255,255,255,0.08); padding:0; transition:background .15s; }
-.note-card:first-child { border-top:0.5px solid rgba(255,255,255,0.08); }
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  transition: top 0.35s ease;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--glass-border);
+}
+#navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  height: 54px;
+  gap: 0;
+}
+#navbar ul li a {
+  font-family: var(--jost);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 14px;
+  transition: color .15s;
+  display: block;
+}
+#navbar ul li a:hover { color: var(--white); }
+#navbar ul li:first-child a {
+  font-size: 15px;
+  font-weight: 500;
+  font-family: var(--varela);
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-right: 12px;
+  padding-left: 0;
+}
+#navbar ul li.hideonmobile { display: list-item; }
+#navbar ul li.menu-icon { display: none; margin-left: auto; }
+#navbar ul li.menu-icon a img { width: 22px; height: 22px; filter: invert(1); cursor: pointer; }
 
-/* HEADER: thumbnail | meta+title | toggle */
-.note-header { display:grid; grid-template-columns:72px 1fr auto; gap:18px; padding:18px 0; align-items:start; cursor:pointer; }
-.note-header:hover .note-title { color:rgba(255,255,255,0.75); }
+/* Active nav link */
+#navbar ul li a.active {
+  color: var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+}
 
-/* THUMBNAIL (header) */
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed !important;
+  top: 0; right: -280px;
+  width: 260px; height: 100vh;
+  background: rgba(5,5,10,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 0.5px solid var(--glass-border);
+  z-index: 400;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  padding: 20px 0 !important;
+  height: 100vh !important;
+  transition: right 0.3s ease;
+  gap: 0 !important;
+}
+.sidebar.open { right: 0 !important; }
+.sidebar li { width: 100%; padding: 0; }
+.sidebar li a {
+  display: block;
+  padding: 13px 28px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+}
+.sidebar li a:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+.sidebar li:first-child a {
+  padding: 10px 20px 20px;
+  text-align: right;
+  border-bottom: 0.5px solid var(--glass-border);
+  margin-bottom: 8px;
+}
+.sidebar li:first-child a img { width: 20px; filter: invert(1); cursor: pointer; }
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  padding: calc(54px + 7vh) 0 5vh;
+  text-align: center;
+}
+.page-hero h1 {
+  font-family: var(--varela);
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.page-hero p {
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 22px;
+}
+
+/* ===== MAIN CONTENT GLASS PANEL ===== */
+.content-panel {
+  max-width: 920px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  padding: 18px 28px;
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 2px;
+}
+.filter-btn {
+  font-family: var(--jost);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 2px;
+  border: 0.5px solid rgba(255,255,255,0.18);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .18s;
+}
+.filter-btn:hover {
+  border-color: rgba(255,255,255,0.4);
+  color: var(--white);
+}
+.filter-btn.active {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  color: #000;
+}
+
+/* ===== NOTE CARDS ===== */
+.notes-feed { display: flex; flex-direction: column; gap: 3px; }
+
+.note-card {
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 0.5px solid var(--glass-border);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.note-card:hover { border-color: rgba(255,255,255,0.22); }
+
+/* Header row: thumbnail | meta | chevron */
+.note-header {
+  display: grid;
+  grid-template-columns: 80px 1fr 32px;
+  gap: 20px;
+  padding: 18px 22px;
+  align-items: center;
+  cursor: pointer;
+  transition: background .15s;
+}
+.note-header:hover { background: rgba(255,255,255,0.03); }
+
 .note-thumb {
-  width:72px; height:72px; border-radius:2px; overflow:hidden; flex-shrink:0;
-  background:var(--thumb-bg, rgba(255,255,255,0.06));
-  display:flex; align-items:center; justify-content:center;
+  width: 80px; height: 80px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
 }
-.note-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-.note-thumb svg { width:32px; height:32px; opacity:0.55; }
+.note-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.note-thumb svg { opacity: 0.5; }
 
-.note-meta-date { font-size:13px; font-weight:300; letter-spacing:0.75px; color:rgba(255,255,255,0.65); padding-top:2px; }
-.note-meta-author { font-size:12px; font-weight:300; letter-spacing:0.5px; color:rgba(255,255,255,0.5); margin-top:3px; }
-
-.note-cat { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:5px; }
-.note-cat.lab     { color:var(--cyan); }
-.note-cat.thought { color:rgba(255,255,255,0.42); }
-.note-cat.reading { color:#7ee8b8; }
-.note-cat.news    { color:#e8c87e; }
-
-.note-title { font-size:16px; font-weight:600; letter-spacing:0.75px; line-height:1.45; color:var(--white); transition:color .15s; }
-
-.note-toggle { font-size:14px; color:var(--faint); padding-top:20px; transition:transform .2s, color .15s; user-select:none; }
-.note-toggle.open { transform:rotate(90deg); color:var(--cyan); }
-
-/* BODY */
-.note-body { display:none; padding:0 0 28px 90px; }
-.note-body.open { display:block; }
-.note-body p { font-size:14px; font-weight:300; letter-spacing:0.75px; line-height:23px; color:rgba(255,255,255,0.72); margin-bottom:14px; }
-.note-body p:last-child { margin-bottom:0; }
-.note-body a { color:var(--cyan); border-bottom:1px solid rgba(38,173,228,0.3); padding-bottom:1px; }
-.note-body a:hover { border-color:var(--cyan); }
-.note-discuss { display:inline-block; margin-top:16px; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid rgba(38,173,228,0.3); padding-bottom:2px; transition:border-color .15s; }
-.note-discuss:hover { border-color:var(--cyan); }
-
-/* BODY IMAGES */
-.note-images { margin-bottom:18px; }
-
-/* single image */
-.note-images.single img {
-  width:100%; max-height:380px; object-fit:cover; border-radius:2px; display:block;
+.note-meta {}
+.note-meta-line {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--faint);
+  margin-bottom: 4px;
 }
 
-/* two images side by side */
-.note-images.duo { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
-.note-images.duo img { width:100%; height:220px; object-fit:cover; border-radius:2px; display:block; }
+.note-cat {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.note-cat.lab     { color: var(--cyan); }
+.note-cat.thought { color: rgba(255,255,255,0.42); }
+.note-cat.reading { color: #7ee8b8; }
+.note-cat.news    { color: #e8c87e; }
 
-/* three images: one large top, two below */
-.note-images.trio { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto auto; gap:6px; }
-.note-images.trio img:first-child { grid-column:1/-1; width:100%; height:260px; object-fit:cover; border-radius:2px; display:block; }
-.note-images.trio img:not(:first-child) { width:100%; height:180px; object-fit:cover; border-radius:2px; display:block; }
+.note-title {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1.45;
+  color: var(--white);
+  transition: color .15s;
+}
+.note-header:hover .note-title { color: rgba(255,255,255,0.8); }
 
-footer { border-top:0.5px solid rgba(255,255,255,0.07); padding:22px 36px; max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; font-size:13px; font-weight:300; letter-spacing:0.75px; color:var(--faint); }
-.footer-links { display:flex; gap:20px; }
-footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
+.note-chevron {
+  color: var(--faint);
+  font-size: 18px;
+  transition: transform .25s ease, color .15s;
+  user-select: none;
+  text-align: center;
+  line-height: 1;
+}
+.note-chevron.open { transform: rotate(90deg); color: var(--cyan); }
 
-/* SVG placeholder icons */
-.icon-lab    { color:var(--cyan); }
-.icon-news   { color:#e8c87e; }
-.icon-reading{ color:#7ee8b8; }
-.icon-thought{ color:rgba(255,255,255,0.42); }
+/* ===== NOTE BODY ===== */
+.note-body {
+  display: none;
+  padding: 0 22px 24px 122px; /* aligns with title */
+  border-top: 0.5px solid rgba(255,255,255,0.07);
+}
+.note-body.open { display: block; }
+
+.note-body p {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.4px;
+  line-height: 22px;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 13px;
+  text-align: left;
+}
+.note-body p:first-child { margin-top: 18px; }
+.note-body p:last-of-type { margin-bottom: 0; }
+
+.note-body a {
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(38,173,228,0.3);
+  padding-bottom: 1px;
+}
+.note-body a:hover { border-color: var(--cyan); }
+
+.note-body-images {
+  margin: 16px 0;
+}
+.note-body-images.single img {
+  width: 100%; max-height: 360px; object-fit: cover; border-radius: 2px; display: block;
+}
+.note-body-images.duo {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+}
+.note-body-images.duo img { width: 100%; height: 200px; object-fit: cover; border-radius: 2px; }
+.note-body-images.trio {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+}
+.note-body-images.trio img:first-child {
+  grid-column: 1 / -1; width: 100%; height: 240px; object-fit: cover; border-radius: 2px;
+}
+.note-body-images.trio img:not(:first-child) { width: 100%; height: 170px; object-fit: cover; border-radius: 2px; }
+
+.note-discuss {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border-bottom: 1px solid rgba(38,173,228,0.3);
+  padding-bottom: 2px;
+  transition: border-color .15s;
+}
+.note-discuss:hover { border-color: var(--cyan); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--glass);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-top: 0.5px solid var(--glass-border);
+  padding: 22px 36px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.75px;
+  color: var(--faint);
+}
+.footer-links { display: flex; gap: 20px; }
+footer a { color: var(--faint); }
+footer a:hover { color: var(--cyan); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  #navbar ul li.hideonmobile { display: none; }
+  #navbar ul li.menu-icon { display: list-item; }
+
+  .note-header {
+    grid-template-columns: 60px 1fr 28px;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+  .note-thumb { width: 60px; height: 60px; }
+  .note-body { padding: 0 16px 20px; }
+  .note-body p:first-child { margin-top: 14px; }
+  .note-title { font-size: 13px; }
+
+  .filter-bar { padding: 14px 16px; }
+  .content-panel { padding: 0 12px; }
+  footer { flex-direction: column; gap: 10px; text-align: center; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">Home</a>
-  <ul class="nav-links">
-    <li><a href="research.html">Research</a></li>
-    <li><a href="publications.html">Publications</a></li>
-    <li><a href="cv.html">CV</a></li>
-    <li><a href="notes.html" class="active">Notes</a></li>
-  </ul>
-</nav>
+<!-- ===== NAVBAR ===== -->
+<header>
+  <nav id="navbar">
+    <ul class="sidebar" id="sidebar">
+      <li onclick="hideSidebar()">
+        <a><img src="icons/close.svg" alt="Close"></a>
+      </li>
+      <li><a href="index.html">| HOME</a></li>
+      <li><a href="research.html">| RESEARCH</a></li>
+      <li><a href="publications.html">| PUBLICATIONS</a></li>
+      <li><a href="cv.html">| CV</a></li>
+      <li><a href="notes.html" class="active">| NOTES</a></li>
+    </ul>
+    <ul>
+      <li><a href="index.html" style="font-family:'Varela Round',sans-serif;font-size:15px;font-weight:500;letter-spacing:0.08em;color:var(--white);">Amir Rahmani</a></li>
+      <li class="hideonmobile"><a href="research.html">| RESEARCH</a></li>
+      <li class="hideonmobile"><a href="publications.html">| PUBLICATIONS</a></li>
+      <li class="hideonmobile"><a href="cv.html">| CV</a></li>
+      <li class="hideonmobile"><a href="notes.html" class="active">| NOTES</a></li>
+      <li class="menu-icon" onclick="showSidebar()">
+        <a><img src="icons/menu.svg" alt="Menu"></a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-<div class="page-hero">
-  <h1 class="page-title">Notes</h1>
-  <p class="page-sub">Occasional thoughts on experiments, papers, and ideas from the microscopy lab.</p>
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero animate-on-scroll">
+  <h1>Notes</h1>
+  <p>Occasional thoughts on experiments, papers, and ideas from the microscopy lab.</p>
 </div>
 
-<hr class="rule">
+<!-- ===== CONTENT ===== -->
+<main class="content-panel">
 
-<section class="sec black">
-  <div class="wrap">
-
-    <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterNotes('all', this)">All</button>
-      <button class="filter-btn" onclick="filterNotes('lab', this)">Lab Note</button>
-      <button class="filter-btn" onclick="filterNotes('thought', this)">Thought</button>
-      <button class="filter-btn" onclick="filterNotes('reading', this)">Reading</button>
-      <button class="filter-btn" onclick="filterNotes('news', this)">News</button>
-    </div>
-
-    <div class="notes-feed">
-
-      <!-- Note 1 — Solvatochromic dyes (Lab note, no image → placeholder) -->
-      <div class="note-card" data-cat="lab">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb" style="--thumb-bg:rgba(38,173,228,0.08);">
-            <svg class="icon-lab" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 3h6M9 3v8l-4 9h14L15 11V3M9 3H7M15 3h2"/>
-              <circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div>
-            <p class="note-meta-date">Jan 2026</p>
-            <p class="note-meta-author">Cambridge</p>
-            <p class="note-cat lab">Lab note</p>
-            <p class="note-title">Why solvatochromic dyes are tricky in cold membranes</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <p>Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws up some surprising challenges. How does membrane fluidity change if you cool mammalian cells toward 0°C? And are the changes we see from the dye or actual fluidity changes? Lowering temperature also affects how the dye partitions and reports.</p>
-          <p>The peak emission wavelength of solvatochromic dyes shifts with the polarity of their local environment. In disordered membranes, the fluorophore sits in a more polar environment and shifts one way; in ordered membranes, it shifts the other. The problem at very low temperatures is that most mammalian membrane lipids start to phase-separate or gel, and the spectral shift you'd normally interpret as "ordered membrane" now partially reflects a kinetic freezing-in of the dye rather than true equilibrium partitioning.</p>
-          <p>So if I prepare membrane models and image them at low temperature, it should be interpretable of how the dye is behaving on the membrane at cold and we can use this as the calibration of membrane dyes at cold. More notes to follow as this project develops.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: Why solvatochromic dyes are tricky in cold membranes" class="note-discuss">Discuss by email →</a>
-        </div>
-      </div>
-
-      <!-- Note 2 — smFC preprint (News, single image) -->
-      <div class="note-card" data-cat="news">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">Aug 2025</p>
-            <p class="note-meta-author">Cambridge</p>
-            <p class="note-cat news">News</p>
-            <p class="note-title">smFC preprint is out on bioRxiv</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <div class="note-images single">
-            <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
-          </div>
-          <p>Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv. We integrated high-NA oblique plane microscopy with microfluidics to push flow cytometry sensitivity down to single molecules on live cells — enabling detection of as few as ~2 labelled receptors per cell.</p>
-          <p>The key insight was combining optical sectioning from the OPM light sheet with super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence, which is the main bottleneck in conventional flow cytometry at low expression levels. We validated the system on c-kit receptor distribution in triple-negative breast cancer cells and found a subpopulation invisible to standard FC. Future work will extend smFC to multicolour detection and higher throughput. Feedback very welcome!</p>
-          <a href="https://doi.org/10.1101/2025.08.26.672174" class="note-discuss" target="_blank">Read the preprint on bioRxiv →</a>
-        </div>
-      </div>
-
-      <!-- Note 3 — soTILT3D (Reading, no image → placeholder) -->
-      <div class="note-card" data-cat="reading">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb" style="--thumb-bg:rgba(126,232,184,0.07);">
-            <svg class="icon-reading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="note-meta-date">Dec 2024</p>
-            <p class="note-meta-author">Cambridge</p>
-            <p class="note-cat reading">Reading</p>
-            <p class="note-title">soTILT3D — whole-cell SMLM without a second objective</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <p>A recent <em>Nature Communications</em> paper presents soTILT3D, a single-objective tilted light-sheet approach for whole-cell 3D SMLM. It is a clever engineering solution to an aged problem — but why not just have an OPM?</p>
-          <p>The key idea is to steer a light sheet at a tilt angle through the sample using only the primary high-NA objective, combined with nanoprinted microfluidics to hold the sample. This avoids the stitching artefacts and drift issues that plague dual-objective setups. The results show super-resolution imaging of whole mammalian cells with reduced background compared to TIRF or HILO.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: soTILT3D reading note" class="note-discuss">Discuss by email →</a>
-        </div>
-      </div>
-
-  
-      <div class="note-card" data-cat="news">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">Oct 2024</p>
-            <p class="note-meta-author">Lausanne</p>
-            <p class="note-cat news">News</p>
-            <p class="note-title">Best Poster Award at Smart Microscopy Symposium, EPFL</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <div class="note-images single">
-            <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
-          </div>
-          <p>I was awarded the Best Poster Prize at the Smart Microscopy Symposium held at EPFL, Lausanne in October 2024, for work on PiFocus — our low-cost, open-source active focus stabilisation system built around a Raspberry Pi and astigmatic infrared detection.</p>
-          <p>The symposium brought together a great mix of people working at the intersection of microscopy hardware, computational imaging, and biological applications. It was a genuine pleasure to present and discuss the work, and being recognised with the poster prize was a wonderful surprise. Many thanks to the organisers and jury at the EPFL BioImaging &amp; Optics Platform.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: EPFL Best Poster Award" class="note-discuss">Discuss by email →</a>
-        </div>
-      </div>
-
-      <!-- NOTE POST: YES24 / Caffinity Biotech -->
-<article class="note-post" data-category="news">
-  <div class="note-inner">
-
-    <!-- Thumbnail -->
-    <div class="note-thumb">
-      <!-- Replace src with your asset, e.g. assets/YES24.jpeg -->
-      <img src="assets/DSC03685.jpg" alt="YES24 competition Caffinity Biotech team" onerror="this.style.display='none'">
-    </div>
-
-    <!-- Content -->
-    <div class="note-content">
-      <div class="note-meta">
-        <span class="note-tag">News</span>
-        <span class="note-date">2024</span>
-      </div>
-
-      <h3 class="note-title">Caffinity Biotech wins Best Disruptive Food &amp; Drink Business Plan at YES24</h3>
-
-      <!-- Full post (toggle) -->
-      <div class="note-full" style="display:none;">
-        <p>
-          The <a href="https://www.yescompetitions.co.uk/" target="_blank" rel="noopener">Your Entrepreneurs Scheme (YES)</a>
-          is a long-running competition, celebrating its 29th year in 2024, that challenges early-career researchers
-          to develop hypothetical but plausible start-up ideas addressing global challenges.
-        </p>
-        <p>
-          Our entry tackled a genuinely underserved problem: the notoriously poor quality of decaffeinated coffee.
-          Caffinity Biotech's R&amp;D concept used protein design and microbial fermentation to convert caffeine into
-          a non-stimulatory molecule, preserving flavour while removing the kick. We took our pitch from initial
-          concept all the way through to a business-plan-ready proposal, presenting first at the regional Food &amp; Drink
-          category heat at Campden BRI, and then at the national showcase at the Royal Society, London.
-        </p>
-        <p>
-          It was a hugely rewarding experience, learning how to translate scientific ideas into something investable,
-          and collaborating with brilliant teams across disciplines. Before YES24, I genuinely wouldn't have known
-          where to start with a start-up challenge. Now I feel far more equipped, and genuinely excited, for
-          real-world entrepreneurial opportunities.
-        </p>
-        <p>
-          Full team: Darcey Ridgway-Brown, Lawrence Collins, Amir Rahmani, and Brian Mantilla (all from the
-          <a href="https://astbury.leeds.ac.uk/" target="_blank" rel="noopener">Astbury Centre, University of Leeds</a>).
-        </p>
-      </div>
-
-      <!-- Toggle + discuss -->
-      <div class="note-actions">
-        <button class="note-toggle" onclick="toggleNote(this)">Read more</button>
-        <a class="note-discuss" href="mailto:ar2368@cam.ac.uk?subject=YES24 / Caffinity Biotech">Discuss via email →</a>
-      </div>
-    </div>
-
+  <!-- Filter bar -->
+  <div class="filter-bar animate-on-scroll">
+    <button class="filter-btn active" onclick="filterNotes('all', this)">All</button>
+    <button class="filter-btn" onclick="filterNotes('lab', this)">Lab Note</button>
+    <button class="filter-btn" onclick="filterNotes('thought', this)">Thought</button>
+    <button class="filter-btn" onclick="filterNotes('reading', this)">Reading</button>
+    <button class="filter-btn" onclick="filterNotes('news', this)">News</button>
   </div>
-</article>
-      
-      <div class="note-card" data-cat="thought">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">Oct 2023</p>
-            <p class="note-meta-author">Leeds</p>
-            <p class="note-cat thought">Thought</p>
-            <p class="note-title">On building microscopes vs. buying them</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <div class="note-images single">
-            <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
-          </div>
-          <p>A recurring debate in imaging labs: should you build your own microscope or buy a commercial system? The honest answer depends on what question you are trying to answer, but I've come to think the framing itself is slightly wrong.</p>
-          <p>Commercial systems are optimised for robustness and reproducibility. They are excellent for asking well-defined questions on well-behaved samples. The moment your sample or your question is at the edge of what the instrument was designed for — flowing cells, sub-zero temperatures, nanometre-precision focus over long timescales — you are fighting the machine rather than using it.</p>
-          <p>Building your own system is slow and often frustrating, but it forces you to understand every degree of freedom in the measurement. When something goes wrong (and it always does), you know where to look. More importantly, when you want to do something the machine was not designed for, you can. My working rule: buy commercial for routine measurements, build custom for novel modalities. And never underestimate how much you learn from building.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: Building vs buying microscopes" class="note-discuss">Discuss by email →</a>
-        </div>
-      </div>
 
-      <!-- Note 6 — ELMI 2024 (News, trio images) -->
-      <div class="note-card" data-cat="news">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/ELMI2.jpeg" alt="ELMI 2024" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">Sep 2024</p>
-            <p class="note-meta-author">Liverpool</p>
-            <p class="note-cat news">News</p>
-            <p class="note-title">Presenting at ELMI 2024, Liverpool</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <div class="note-images trio">
-            <img src="assets/ELMI2.jpeg" alt="ELMI 2024 talk" loading="lazy">
-            <img src="assets/ELMI_i.jpeg" alt="ELMI 2024" loading="lazy">
-            <img src="assets/ELMI_f.jpeg" alt="infocus Magazine ELMI feature" loading="lazy">
-          </div>
-          <p>I gave a flashtalk at the European Light Microscopy Initiative (ELMI) 2024 meeting in Liverpool, on active focus stabilisation using astigmatism with universal objective lens compatibility and sub-10 nm precision — the work behind PiFocus.</p>
-          <p>ELMI is one of those conferences where the community feel is genuinely warm: good science discussions, old friends reconnected, new ones made. A football match between delegates somehow made it onto the programme too. And a few months later I discovered I'd been photographed mid-talk and featured in the September 2024 issue of <em>infocus</em> Magazine's ELMI 2024 Picture Special — which I did not notice at the time.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: ELMI 2024" class="note-discuss">Discuss by email →</a>
-        </div>
-      </div>
+  <div class="notes-feed">
 
-      <!-- Note 7 — Moon Palace (News, trio images) -->
-      <div class="note-card" data-cat="news">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/MoonPalace.jpeg" alt="Moon Palace outreach" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">Nov 2023</p>
-            <p class="note-meta-author">Leeds</p>
-            <p class="note-cat news">News</p>
-            <p class="note-title">Science hosting at Moon Palace, Leeds</p>
-          </div>
-          <div class="note-toggle">→</div>
+    <!-- ── Note: Solvatochromic dyes (Lab) ── -->
+    <div class="note-card animate-on-scroll" data-cat="lab">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb" style="background:rgba(38,173,228,0.08);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#26ade4" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 3h6M9 3v8l-4 9h14L15 11V3M9 3H7M15 3h2"/>
+            <circle cx="12" cy="17" r="1" fill="#26ade4" stroke="none"/>
+          </svg>
         </div>
-        <div class="note-body">
-          <div class="note-images trio">
-            <img src="assets/MoonPalace.jpeg" alt="Moon Palace bus" loading="lazy">
-            <img src="assets/MoonPalace2.jpeg" alt="Moon Palace outreach" loading="lazy">
-            <img src="assets/MoonPalace3.jpeg" alt="Moon Palace outreach" loading="lazy">
-          </div>
-          <p>In November 2023 I spent a day as a science host aboard Moon Palace — a beautifully converted double-decker bus turned mobile observatory, parked up in Leeds. Talking to kids and parents about space, planets, telescopes, and the joy of seeing massive objects through optics. And naturally, I couldn't resist sneaking in some microscopy talk too.</p>
-          <p>The bus is kitted out with a rooftop satellite dish, a mounted telescope, binoculars, and screens showing Jupiter and Earth — a wonderfully tactile backdrop for talking to curious kids and parents about space, planets, and the joy of seeing distant objects through optics.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: Moon Palace" class="note-discuss">Discuss by email →</a>
+        <div class="note-meta">
+          <p class="note-meta-line">Jan 2026 · Cambridge</p>
+          <span class="note-cat lab">Lab note</span>
+          <p class="note-title">Why solvatochromic dyes are tricky in cold membranes</p>
         </div>
+        <div class="note-chevron">›</div>
       </div>
-
-      <!-- Note 8 — Be Curious (News, single image) -->
-      <div class="note-card" data-cat="news">
-        <div class="note-header" onclick="toggleNote(this)">
-          <div class="note-thumb">
-            <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
-          </div>
-          <div>
-            <p class="note-meta-date">May 2022</p>
-            <p class="note-meta-author">Leeds</p>
-            <p class="note-cat news">News</p>
-            <p class="note-title">Science outreach at Be Curious, University of Leeds</p>
-          </div>
-          <div class="note-toggle">→</div>
-        </div>
-        <div class="note-body">
-          <div class="note-images single">
-            <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
-          </div>
-          <p>I took part in Be Curious, the University of Leeds' annual public research festival, on 7 May 2022. Our stand — solar-powered racing cars vs. plants — let families explore how photovoltaics and photosynthesis both harvest energy from light.</p>
-          <p>Visitors — mostly families with young children — could race small solar-powered cars on a track and then compare how their tiny photovoltaic cells convert sunlight into motion versus how plant chloroplasts convert it into chemical energy through photosynthesis. The side-by-side comparison sparked some genuinely great conversations about energy efficiency, evolution, and why plants are green. It's always a pleasure to do this kind of outreach. Explaining the physics of light to a seven-year-old is one of the best tests of whether you actually understand it yourself.</p>
-          <a href="mailto:ar2368@cam.ac.uk?subject=Re: Be Curious outreach" class="note-discuss">Discuss by email →</a>
-        </div>
+      <div class="note-body">
+        <p>Working with solvatochromic dyes like Nile Red and Laurdan at sub-zero temperatures throws up some surprising challenges. How does membrane fluidity change if you cool mammalian cells toward 0°C? And are the changes we see from the dye or actual fluidity changes? Lowering temperature also affects how the dye partitions and reports.</p>
+        <p>The peak emission wavelength of solvatochromic dyes shifts with the polarity of their local environment. In disordered membranes, the fluorophore sits in a more polar environment and shifts one way; in ordered membranes, it shifts the other. The problem at very low temperatures is that most mammalian membrane lipids start to phase-separate or gel, and the spectral shift you'd normally interpret as "ordered membrane" now partially reflects a kinetic freezing-in of the dye rather than true equilibrium partitioning.</p>
+        <p>So if I prepare membrane models and image them at low temperature, it should be interpretable of how the dye is behaving on the membrane at cold and we can use this as the calibration of membrane dyes at cold. More notes to follow as this project develops.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: Why solvatochromic dyes are tricky in cold membranes" class="note-discuss">Discuss by email →</a>
       </div>
-
     </div>
-  </div>
-</section>
 
+    <!-- ── Note: smFC preprint (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Aug 2025 · Cambridge</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">smFC preprint is out on bioRxiv</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images single">
+          <img src="assets/smOPM_All2.png" alt="smFC preprint figure" loading="lazy">
+        </div>
+        <p>Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv. We integrated high-NA oblique plane microscopy with microfluidics to push flow cytometry sensitivity down to single molecules on live cells — enabling detection of as few as ~2 labelled receptors per cell.</p>
+        <p>The key insight was combining optical sectioning from the OPM light sheet with super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence, which is the main bottleneck in conventional flow cytometry at low expression levels. We validated the system on c-kit receptor distribution in triple-negative breast cancer cells and found a subpopulation invisible to standard FC. Future work will extend smFC to multicolour detection and higher throughput. Feedback very welcome!</p>
+        <a href="https://doi.org/10.1101/2025.08.26.672174" class="note-discuss" target="_blank">Read the preprint on bioRxiv →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: soTILT3D (Reading) ── -->
+    <div class="note-card animate-on-scroll" data-cat="reading">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb" style="background:rgba(126,232,184,0.07);">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7ee8b8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Dec 2024 · Cambridge</p>
+          <span class="note-cat reading">Reading</span>
+          <p class="note-title">soTILT3D — whole-cell SMLM without a second objective</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <p>A recent <em>Nature Communications</em> paper presents soTILT3D, a single-objective tilted light-sheet approach for whole-cell 3D SMLM. It is a clever engineering solution to an aged problem — but why not just have an OPM?</p>
+        <p>The key idea is to steer a light sheet at a tilt angle through the sample using only the primary high-NA objective, combined with nanoprinted microfluidics to hold the sample. This avoids the stitching artefacts and drift issues that plague dual-objective setups. The results show super-resolution imaging of whole mammalian cells with reduced background compared to TIRF or HILO.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: soTILT3D reading note" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: EPFL Best Poster (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Oct 2024 · Lausanne</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">Best Poster Award at Smart Microscopy Symposium, EPFL</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images single">
+          <img src="assets/EPFL.jpeg" alt="Best Poster Award EPFL" loading="lazy">
+        </div>
+        <p>I was awarded the Best Poster Prize at the Smart Microscopy Symposium held at EPFL, Lausanne in October 2024, for work on PiFocus — our low-cost, open-source active focus stabilisation system built around a Raspberry Pi and astigmatic infrared detection.</p>
+        <p>The symposium brought together a great mix of people working at the intersection of microscopy hardware, computational imaging, and biological applications. It was a genuine pleasure to present and discuss the work, and being recognised with the poster prize was a wonderful surprise. Many thanks to the organisers and jury at the EPFL BioImaging &amp; Optics Platform.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: EPFL Best Poster Award" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: YES24 / Caffinity Biotech (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/DSC03685.jpg" alt="YES24 Caffinity Biotech" loading="lazy"
+               onerror="this.style.display='none';this.parentElement.style.background='rgba(232,200,126,0.08)';">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">2024 · Leeds</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">Caffinity Biotech wins Best Disruptive Food &amp; Drink Business Plan at YES24</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <p>The <a href="https://www.yescompetitions.co.uk/" target="_blank" rel="noopener">Your Entrepreneurs Scheme (YES)</a> is a long-running competition, celebrating its 29th year in 2024, that challenges early-career researchers to develop hypothetical but plausible start-up ideas addressing global challenges.</p>
+        <p>Our entry tackled a genuinely underserved problem: the notoriously poor quality of decaffeinated coffee. Caffinity Biotech's R&amp;D concept used protein design and microbial fermentation to convert caffeine into a non-stimulatory molecule, preserving flavour while removing the kick. We took our pitch from initial concept all the way through to a business-plan-ready proposal, presenting first at the regional Food &amp; Drink category heat at Campden BRI, and then at the national showcase at the Royal Society, London.</p>
+        <p>It was a hugely rewarding experience, learning how to translate scientific ideas into something investable, and collaborating with brilliant teams across disciplines. Before YES24, I genuinely wouldn't have known where to start with a start-up challenge. Now I feel far more equipped, and genuinely excited, for real-world entrepreneurial opportunities.</p>
+        <p>Full team: Darcey Ridgway-Brown, Lawrence Collins, Amir Rahmani, and Brian Mantilla (all from the <a href="https://astbury.leeds.ac.uk/" target="_blank" rel="noopener">Astbury Centre, University of Leeds</a>).</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=YES24 / Caffinity Biotech" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: Building vs buying (Thought) ── -->
+    <div class="note-card animate-on-scroll" data-cat="thought">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Oct 2023 · Leeds</p>
+          <span class="note-cat thought">Thought</span>
+          <p class="note-title">On building microscopes vs. buying them</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images single">
+          <img src="assets/OPM_Wolfson.png" alt="OPM at Wolfson" loading="lazy">
+        </div>
+        <p>A recurring debate in imaging labs: should you build your own microscope or buy a commercial system? The honest answer depends on what question you are trying to answer, but I've come to think the framing itself is slightly wrong.</p>
+        <p>Commercial systems are optimised for robustness and reproducibility. They are excellent for asking well-defined questions on well-behaved samples. The moment your sample or your question is at the edge of what the instrument was designed for — flowing cells, sub-zero temperatures, nanometre-precision focus over long timescales — you are fighting the machine rather than using it.</p>
+        <p>Building your own system is slow and often frustrating, but it forces you to understand every degree of freedom in the measurement. When something goes wrong (and it always does), you know where to look. More importantly, when you want to do something the machine was not designed for, you can. My working rule: buy commercial for routine measurements, build custom for novel modalities. And never underestimate how much you learn from building.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: Building vs buying microscopes" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: ELMI 2024 (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/ELMI2.jpeg" alt="ELMI 2024" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Jun 2024 · Liverpool</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">Presenting at ELMI 2024, Liverpool</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images trio">
+          <img src="assets/ELMI2.jpeg" alt="ELMI 2024 talk" loading="lazy">
+          <img src="assets/ELMI_i.jpeg" alt="ELMI 2024" loading="lazy">
+          <img src="assets/ELMI_f.jpeg" alt="infocus Magazine ELMI feature" loading="lazy">
+        </div>
+        <p>I gave a flashtalk at the European Light Microscopy Initiative (ELMI) 2024 meeting in Liverpool, on active focus stabilisation using astigmatism with universal objective lens compatibility and sub-10 nm precision — the work behind PiFocus.</p>
+        <p>ELMI is one of those conferences where the community feel is genuinely warm: good science discussions, old friends reconnected, new ones made. A football match between delegates somehow made it onto the programme too. And a few months later I discovered I'd been photographed mid-talk and featured in the September 2024 issue of <em>infocus</em> Magazine's ELMI 2024 Picture Special — which I did not notice at the time.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: ELMI 2024" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: Moon Palace (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/MoonPalace.jpeg" alt="Moon Palace outreach" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">Nov 2023 · Leeds</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">Science hosting at Moon Palace, Leeds</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images trio">
+          <img src="assets/MoonPalace.jpeg" alt="Moon Palace bus" loading="lazy">
+          <img src="assets/MoonPalace2.jpeg" alt="Moon Palace outreach" loading="lazy">
+          <img src="assets/MoonPalace3.jpeg" alt="Moon Palace outreach" loading="lazy">
+        </div>
+        <p>In November 2023 I spent a day as a science host aboard Moon Palace — a beautifully converted double-decker bus turned mobile observatory, parked up in Leeds. Talking to kids and parents about space, planets, telescopes, and the joy of seeing massive objects through optics. And naturally, I couldn't resist sneaking in some microscopy talk too.</p>
+        <p>The bus is kitted out with a rooftop satellite dish, a mounted telescope, binoculars, and screens showing Jupiter and Earth — a wonderfully tactile backdrop for talking to curious kids and parents about space, planets, and the joy of seeing distant objects through optics.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: Moon Palace" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+    <!-- ── Note: Be Curious (News) ── -->
+    <div class="note-card animate-on-scroll" data-cat="news">
+      <div class="note-header" onclick="toggleNote(this)">
+        <div class="note-thumb">
+          <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
+        </div>
+        <div class="note-meta">
+          <p class="note-meta-line">May 2022 · Leeds</p>
+          <span class="note-cat news">News</span>
+          <p class="note-title">Science outreach at Be Curious, University of Leeds</p>
+        </div>
+        <div class="note-chevron">›</div>
+      </div>
+      <div class="note-body">
+        <div class="note-body-images single">
+          <img src="assets/BeCurious.jpeg" alt="Be Curious outreach" loading="lazy">
+        </div>
+        <p>I took part in Be Curious, the University of Leeds' annual public research festival, on 7 May 2022. Our stand — solar-powered racing cars vs. plants — let families explore how photovoltaics and photosynthesis both harvest energy from light.</p>
+        <p>Visitors — mostly families with young children — could race small solar-powered cars on a track and then compare how their tiny photovoltaic cells convert sunlight into motion versus how plant chloroplasts convert it into chemical energy through photosynthesis. The side-by-side comparison sparked some genuinely great conversations about energy efficiency, evolution, and why plants are green. It's always a pleasure to do this kind of outreach. Explaining the physics of light to a seven-year-old is one of the best tests of whether you actually understand it yourself.</p>
+        <a href="mailto:ar2368@cam.ac.uk?subject=Re: Be Curious outreach" class="note-discuss">Discuss by email →</a>
+      </div>
+    </div>
+
+  </div><!-- /.notes-feed -->
+</main>
+
+<!-- ===== FOOTER ===== -->
 <footer>
-  <span>© 2025 Amir Rahmani</span>
+  <span>© 2026 Amir Rahmani</span>
   <div class="footer-links">
     <a href="mailto:ar2368@cam.ac.uk">ar2368@cam.ac.uk</a>
     <a href="https://github.com/astormic" target="_blank">GitHub</a>
@@ -407,13 +674,30 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 </footer>
 
 <script>
+/* ── Sidebar ── */
+function showSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+}
+function hideSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  const sb = document.getElementById('sidebar');
+  const icon = document.querySelector('.menu-icon');
+  if (sb && icon && !sb.contains(e.target) && !icon.contains(e.target)) {
+    sb.classList.remove('open');
+  }
+});
+
+/* ── Toggle note ── */
 function toggleNote(header) {
-  const body   = header.nextElementSibling;
-  const toggle = header.querySelector('.note-toggle');
-  const open   = body.classList.toggle('open');
-  toggle.classList.toggle('open', open);
+  const body    = header.nextElementSibling;
+  const chevron = header.querySelector('.note-chevron');
+  const open    = body.classList.toggle('open');
+  chevron.classList.toggle('open', open);
 }
 
+/* ── Filter ── */
 function filterNotes(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -421,6 +705,31 @@ function filterNotes(cat, btn) {
     card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
   });
 }
+
+/* ── Scroll-triggered fade-in ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.animate-on-scroll').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.04) + 's';
+    observer.observe(el);
+  });
+});
+
+/* ── Scroll-hide navbar ── */
+let prevScroll = window.pageYOffset;
+window.onscroll = () => {
+  const cur = window.pageYOffset;
+  document.getElementById('navbar').style.top = (prevScroll > cur) ? '0' : '-70px';
+  prevScroll = cur;
+};
 </script>
 </body>
 </html>
