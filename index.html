@@ -106,7 +106,8 @@ p { line-height: 1.65; }
 
 .hero-blur-overlay {
   position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:rgba(0,0,0,0.32);
+  background:rgba(0,0,0,0.42);
+
 }
 
 .hero-top {
@@ -169,7 +170,7 @@ p { line-height: 1.65; }
   background-attachment:fixed; background-color:#050508;
 }
 .bg-panel {
-  background:var(--glass); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur);
+  background:rgba(4,4,8,0.88); backdrop-filter:var(--blur); -webkit-backdrop-filter:var(--blur);
   border-top:0.5px solid var(--glass-border); border-bottom:0.5px solid var(--glass-border);
 }
 .section-inner { padding:5rem 12%; max-width:1300px; margin:0 auto; }
@@ -377,7 +378,7 @@ footer a:hover { color:var(--cyan); }
             institutes including EMBL Heidelberg and ICFO Barcelona.
           </p>
           <div style="display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;">
-            <a href="/cdn-cgi/l/email-protection#8cedfebebfbab4ccefede1a2edefa2f9e7" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
+            <a href="/cdn-cgi/l/email-protection#29485b1b1a1f11694a484407484a075c42" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">Email</a>
             <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">ORCiD</a>
             <a href="https://github.com/astormic" target="_blank" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">GitHub</a>
             <a href="cv.html" style="font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);border-bottom:1px solid rgba(38,173,228,0.35);padding-bottom:2px;">CV →</a>
@@ -512,7 +513,7 @@ footer a:hover { color:var(--cyan); }
         <p class="section-sub">Happy to hear from collaborators, students, or anyone curious about the work.</p>
       </div>
       <div class="contact-links animate-on-scroll">
-        <a href="/cdn-cgi/l/email-protection#9dfcefafaeaba5ddfefcf0b3fcfeb3e8f6" class="contact-item">
+        <a href="/cdn-cgi/l/email-protection#0a6b7838393c324a696b67246b69247f61" class="contact-item">
           <img src="icons/Mail.svg" alt="Email"><span>Email</span>
         </a>
         <a href="https://orcid.org/0000-0002-2730-6099" target="_blank" class="contact-item">
@@ -602,6 +603,7 @@ window.addEventListener('load', drawAll);
 window.addEventListener('resize', drawAll);
 
 
+
 /* ── Scroll-hide navbar ── */
 let prevScroll = window.pageYOffset;
 window.addEventListener('scroll', () => {
@@ -627,4 +629,12 @@ window.addEventListener('load', () => {
     observer.observe(el);
   });
 
-  /* Also immediately reveal anything already in viewp
+  /* Also immediately reveal anything already in viewport on load */
+  els.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
