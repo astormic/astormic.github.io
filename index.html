@@ -116,13 +116,14 @@ p { line-height: 1.65; }
 }
 
 .hero-top {
-  flex:0 0 55%; position:relative; z-index:2;
-  display:flex; align-items:center; justify-content:flex-end;
-  padding:calc(56px + 6vh) 12% 0; gap:3rem;
+  padding: calc(56px + 6vh) 6% 0;  /* was 12% */
 }
+  
 .hero-content {
-  max-width:680px; padding-right:2rem;
-  border-right:var(--white) var(--line) solid; text-align:right;
+  max-width: min(680px, 70vw);
+  padding-right: 2rem;
+  border-right: var(--white) var(--line) solid;
+  text-align: right;
 }
 .hero-content h1 {
   font-family:var(--varela); font-size:clamp(2.4rem,5.5vw,3.8rem);
