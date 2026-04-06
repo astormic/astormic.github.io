@@ -411,14 +411,12 @@ footer a:hover { color: var(--cyan); }
       </li>
       <li><a href="index.html">| HOME</a></li>
       <li><a href="research.html">| RESEARCH</a></li>
-      <li><a href="publications.html">| PUBLICATIONS</a></li>
       <li><a href="cv.html">| CV</a></li>
       <li><a href="notes.html" class="active">| NOTES</a></li>
     </ul>
     <ul>
       <li><a href="index.html" style="font-family:'Varela Round',sans-serif;font-size:15px;font-weight:500;letter-spacing:0.08em;color:var(--white);">Amir Rahmani</a></li>
       <li class="hideonmobile"><a href="research.html">| RESEARCH</a></li>
-      <li class="hideonmobile"><a href="publications.html">| PUBLICATIONS</a></li>
       <li class="hideonmobile"><a href="cv.html">| CV</a></li>
       <li class="hideonmobile"><a href="notes.html" class="active">| NOTES</a></li>
       <li class="menu-icon" onclick="showSidebar()">
@@ -492,29 +490,6 @@ footer a:hover { color: var(--cyan); }
         <p>Our preprint on single-molecule flow cytometry (smFC) is now live on bioRxiv. We integrated high-NA oblique plane microscopy with microfluidics to push flow cytometry sensitivity down to single molecules on live cells — enabling detection of as few as ~2 labelled receptors per cell.</p>
         <p>The key insight was combining optical sectioning from the OPM light sheet with super-bright, large Stokes-shift fluorophores to overcome cellular autofluorescence, which is the main bottleneck in conventional flow cytometry at low expression levels. We validated the system on c-kit receptor distribution in triple-negative breast cancer cells and found a subpopulation invisible to standard FC. Future work will extend smFC to multicolour detection and higher throughput. Feedback very welcome!</p>
         <a href="https://doi.org/10.1101/2025.08.26.672174" class="note-discuss" target="_blank">Read the preprint on bioRxiv →</a>
-      </div>
-    </div>
-
-    <!-- ── Note: soTILT3D (Reading) ── -->
-    <div class="note-card animate-on-scroll" data-cat="reading">
-      <div class="note-header" onclick="toggleNote(this)">
-        <div class="note-thumb" style="background:rgba(126,232,184,0.07);">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#7ee8b8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-          </svg>
-        </div>
-        <div class="note-meta">
-          <p class="note-meta-line">Dec 2024 · Cambridge</p>
-          <span class="note-cat reading">Reading</span>
-          <p class="note-title">soTILT3D — whole-cell SMLM without a second objective</p>
-        </div>
-        <div class="note-chevron">›</div>
-      </div>
-      <div class="note-body">
-        <p>A recent <em>Nature Communications</em> paper presents soTILT3D, a single-objective tilted light-sheet approach for whole-cell 3D SMLM. It is a clever engineering solution to an aged problem — but why not just have an OPM?</p>
-        <p>The key idea is to steer a light sheet at a tilt angle through the sample using only the primary high-NA objective, combined with nanoprinted microfluidics to hold the sample. This avoids the stitching artefacts and drift issues that plague dual-objective setups. The results show super-resolution imaging of whole mammalian cells with reduced background compared to TIRF or HILO.</p>
-        <a href="mailto:ar2368@cam.ac.uk?subject=Re: soTILT3D reading note" class="note-discuss">Discuss by email →</a>
       </div>
     </div>
 
