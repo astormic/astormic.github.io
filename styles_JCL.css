@@ -1252,39 +1252,39 @@ p{
 .pub-scholar-stats {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start;
-    padding: 2rem 10% 1rem;
+    align-items: baseline;
+    padding: 2rem 10% 0.5rem;
 }
 
 .pub-stat-card {
-    background: var(--alpha-color);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 0.6rem 1.2rem;
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    background: var(--alpha-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 0.5rem 1rem;
 }
 
 .pub-stat-num {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: 300;
     color: var(--titles-color);
-    line-height: 1;
 }
 
 .pub-stat-label {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.55);
     letter-spacing: 0.04em;
 }
 
-/* ── Publication list ── */
+/* ── Publication rows ── */
 .pub-list {
-    padding: 0 10% 1rem;
     display: flex;
     flex-direction: column;
+    margin: 0 10%;
+    padding: 0.5rem 0 1rem;
 }
 
 .pub-row {
@@ -1300,6 +1300,7 @@ p{
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     transition: background 0.3s ease;
+    margin-bottom: 0.5rem;
 }
 
 .pub-row:hover {
@@ -1311,6 +1312,7 @@ p{
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    min-width: 0;
 }
 
 .pub-row-title {
@@ -1322,14 +1324,14 @@ p{
 
 .pub-row-authors {
     font-size: var(--font-size-body);
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     font-style: italic;
 }
 
 .pub-row-self {
     font-weight: 700;
-    color: rgba(255,255,255,0.85);
     font-style: normal;
+    color: rgba(255,255,255,0.85);
 }
 
 .pub-row-journal {
@@ -1338,19 +1340,20 @@ p{
     font-style: italic;
 }
 
-/* ── Right-side meta ── */
+/* ── Citation bar + meta ── */
 .pub-row-meta {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.4rem;
-    min-width: 120px;
+    min-width: 110px;
+    flex-shrink: 0;
 }
 
 .pub-cite-bar-bg {
     width: 100%;
     height: 4px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.12);
     border-radius: 99px;
     overflow: hidden;
     display: block;
@@ -1365,7 +1368,7 @@ p{
 
 .pub-cite-count {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     white-space: nowrap;
 }
 
@@ -1383,15 +1386,13 @@ p{
 .pub-type-preprint { border-color: rgba(250,175,75,0.6); color: rgba(250,175,75,0.9); }
 .pub-type-book     { border-color: rgba(100,210,140,0.6); color: rgba(100,210,140,0.9); }
 
-/* ── Remove old grid styles ── */
 .publication-citations { display: none; }
-.publications-grid { display: none; }
 
 /* ── Mobile ── */
 @media (max-width: 1080px) {
-    .pub-scholar-stats { padding: 1.5rem 2rem 0.5rem; gap: 0.5rem; }
-    .pub-list { padding: 0 2rem 1rem; }
-    .pub-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; padding: 1rem; }
-    .pub-row-meta { flex-direction: row; align-items: center; min-width: unset; flex-wrap: wrap; }
-    .pub-cite-bar-bg { width: 80px; }
+    .pub-scholar-stats { padding: 1.5rem 2rem 0.5rem; flex-wrap: wrap; }
+    .pub-list { margin: 0 1rem; }
+    .pub-row { flex-direction: column; align-items: flex-start; gap: 0.6rem; padding: 1rem; }
+    .pub-row-meta { flex-direction: row; align-items: center; flex-wrap: wrap; min-width: unset; }
+    .pub-cite-bar-bg { width: 60px; }
 }
