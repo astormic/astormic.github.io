@@ -29,12 +29,33 @@
             padding-top: 8rem;
         }
 
-        /* Content sections alternate dark / slightly lighter */
+        /* Content sections with parallax background image support */
         .research-sec {
             padding: 3rem 0;
+            position: relative;
+            background-image: var(--section-bg, none);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #000;
         }
-        .research-sec.dark  { background: rgba(0,0,0,0.92); }
-        .research-sec.mid   { background: rgba(10,10,10,0.95); }
+
+        /* Dark overlay via pseudo-element so the image shows through */
+        .research-sec::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .research-sec.dark::before  { background: rgba(0, 0, 0, 0.72); }
+        .research-sec.mid::before   { background: rgba(0, 0, 0, 0.82); }
+
+        /* Ensure content sits above the overlay */
+        .research-sec > * {
+            position: relative;
+            z-index: 1;
+        }
 
         .research-wrap {
             max-width: 1100px;
@@ -331,6 +352,7 @@
         </ul>
         <ul>
             <li><a href="index.html"><img class="lab-logo" src="assets/LogoBW.svg" alt="Logo" loading="eager" decoding="async"> Amir Rahmani</a></li>
+            <li class="hideonmobile"><a href="index.html#science">| SCIENCE</a></li>
             <li class="hideonmobile"><a href="research.html">| RESEARCH</a></li>
             <li class="hideonmobile"><a href="index.html#publications">| PUBLICATIONS</a></li>
             <li class="hideonmobile"><a href="notes.html">| OUTREACH</a></li>
@@ -346,13 +368,13 @@
     <div class="bg-titles">
         <div class="section-title">
             <h1>RESEARCH</h1>
-            <h2>Custom microscopy for nanoscale cell biology</h2>
+            <h2>Super-resolution microscopy &amp; optical system development</h2>
         </div>
     </div>
 </section>
 
 <!-- ===== PROJECTS ===== -->
-<section class="research-sec" style="background-image: var(--section-bg); --section-bg: url('assets/IMG_3693.jpeg'); background-size: cover; background-position: center; background-attachment: fixed;">
+<section class="research-sec dark" style="--section-bg: url('assets/IMG_3693.jpeg');">
     <div class="research-wrap">
         <h2 class="research-sec-title">Current Research Projects</h2>
 
@@ -403,7 +425,7 @@
 <hr class="research-rule">
 
 <!-- ===== COLLABORATIONS ===== -->
-<section class="section-header" style="--section-bg: url('assets/ER_C12_85.png');">
+<section class="section-header" style="--section-bg: url('assets/ER_C8_108.png');">
     <div class="bg-titles">
         <div class="section-title">
             <h1>COLLABORATIONS</h1>
@@ -411,10 +433,10 @@
     </div>
 </section>
 
-<section class="research-sec" style="background-image: var(--section-bg); --section-bg: url('assets/ER_C2_85.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+<section class="research-sec mid" style="--section-bg: url('assets/ER_C8_108.png');">
     <div class="research-wrap">
         <p style="font-weight: var(--fontWeight); color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.5rem; max-width: 760px;">
-            Ongoing and recent collaborations within the University of Cambridge.
+            Ongoing and recent collaborations within the Department of Chemical Engineering &amp; Biotechnology, University of Cambridge.
         </p>
         <div class="collab-grid">
             <div class="collab-card">
@@ -434,7 +456,7 @@
 <hr class="research-rule">
 
 <!-- ===== OPTICAL SYSTEMS ===== -->
-<section class="section-header" style="--section-bg: url('assets/IMG_1575.jpeg');">
+<section class="section-header" style="--section-bg: url('assets/STAR635.jpg');">
     <div class="bg-titles">
         <div class="section-title">
             <h1>OPTICAL SYSTEMS</h1>
@@ -443,7 +465,7 @@
     </div>
 </section>
 
-<section class="research-sec" style="background-image: var(--section-bg); --section-bg: url('assets/IMG_1575.jpeg'); background-size: cover; background-position: center; background-attachment: fixed;">
+<section class="research-sec dark" style="--section-bg: url('assets/IMG_1575.jpeg');">
     <div class="research-wrap">
         <div class="instr-grid">
 
@@ -455,13 +477,13 @@
                     <line x1="18" y1="14" x2="18" y2="33" stroke="#00caac" stroke-width="0.6" stroke-dasharray="2 2"/>
                 </svg>
                 <div class="instr-abbr">OPM System</div>
-                <div class="instr-full">Oblique plane microscopy integrated with microfluidics for counting individual molecules on cells in 3D. Detects as few as ~2 labelled molecules on flowing cells.</div>
+                <div class="instr-full">Oblique Plane Microscopy — single-objective light-sheet with microfluidics for smFC. Detects as few as ~2 labelled molecules on flowing cells.</div>
                 <div class="tag-row">
                     <span class="tag">Light-sheet</span>
                     <span class="tag">Microfluidics</span>
                     <span class="tag">smFC</span>
                 </div>
-                <div class="instr-place">Ponjavic Lab · Leeds · 2021–2025</div>
+                <div class="instr-place">Ponjavic Lab · Leeds · PhD 2021–2025</div>
             </div>
 
             <div class="instr-card">
@@ -474,13 +496,13 @@
                     <line x1="26" y1="18" x2="33" y2="18" stroke="#50a8e8" stroke-width="0.6" stroke-dasharray="2 1.5"/>
                 </svg>
                 <div class="instr-abbr">PiFocus</div>
-                <div class="instr-full">Astigmatism-based focus stabilisation. Compatible 10×–100× objective lenses, &lt;10 nm axial precision over &gt;10 µm range. Standalone Raspberry Pi architecture.</div>
+                <div class="instr-full">Astigmatism-based focus stabilisation. Compatible 10×–100×, &lt;10 nm axial precision over &gt;10 µm range. Standalone Raspberry Pi architecture.</div>
                 <div class="tag-row">
                     <span class="tag">Focus Stabilisation</span>
                     <span class="tag">Raspberry Pi</span>
                     <span class="tag">Open-source</span>
                 </div>
-                <div class="instr-place">Ponjavic Lab · Leeds · 2021–2025</div>
+                <div class="instr-place">Ponjavic Lab · Leeds · PhD 2021–2025</div>
             </div>
 
             <div class="instr-card">
@@ -492,13 +514,13 @@
                     <circle cx="24" cy="23" r="2" fill="#a078e0" opacity="0.5"/>
                 </svg>
                 <div class="instr-abbr">DH-PSF SMLM</div>
-                <div class="instr-full">Double-helix PSF for 3D SMLM, simultaneous lateral and axial localisation with extended depth range vs astigmatic approaches.</div>
+                <div class="instr-full">Double-helix PSF for 3D SMLM — simultaneous lateral and axial localisation with extended depth range vs astigmatic approaches.</div>
                 <div class="tag-row">
                     <span class="tag">SMLM</span>
                     <span class="tag">3D Super-res</span>
                     <span class="tag">DH-PSF</span>
                 </div>
-                <div class="instr-place">Ponjavic Lab · Leeds · 2021–2025</div>
+                <div class="instr-place">Ponjavic Lab · Leeds · PhD 2021–2025</div>
             </div>
 
             <div class="instr-card">
@@ -510,7 +532,7 @@
                     <circle cx="29" cy="12" r="1.5" stroke="#00caac" stroke-width="0.6" fill="#00caac" fill-opacity="0.2"/>
                 </svg>
                 <div class="instr-abbr">Dual-channel SMLM</div>
-                <div class="instr-full">Two-colour SMLM for simultaneous multi-channel imaging was built to study protein complex spatial organisation.</div>
+                <div class="instr-full">Two-colour SMLM for simultaneous multi-target imaging — built to study protein complex stoichiometry and spatial organisation.</div>
                 <div class="tag-row">
                     <span class="tag">SMLM</span>
                     <span class="tag">Two-colour</span>
@@ -534,7 +556,7 @@
     </div>
 </section>
 
-<section class="research-sec" style="--section-bg: url('assets/1000006619.jpeg');">
+<section class="research-sec mid" style="--section-bg: url('assets/1000006619.jpeg');">
     <div class="research-wrap">
         <p style="font-weight: var(--fontWeight); color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.5rem; max-width: 760px;">
             Current and recent students supervised or co-supervised within the University of Cambridge.
@@ -586,7 +608,7 @@
     <div class="bg-titles-contact">
         <h1 class="contact-title">Contact</h1>
         <div class="simple-contact-links">
-            <a href="mailto:amir.rahmani.microscopy@gmail.com" class="simple-contact-item">
+            <a href="/cdn-cgi/l/email-protection#b2d3dfdbc09cc0d3dadfd3dcdb9cdfdbd1c0ddc1d1ddc2cbf2d5dfd3dbde9cd1dddf" class="simple-contact-item">
                 <img src="./icons/SVG/Mail.svg" alt="Email" class="simple-contact-icon" loading="lazy" decoding="async">
                 <span class="simple-contact-label">Email</span>
             </a>
@@ -614,8 +636,4 @@
     <div class="footer">
         <p>&copy; 2026 Copyright Amir Rahmani | Design Quentin Kohler. All rights reserved.</p>
     </div>
-    <script src="App_q.js"></script>
-</footer>
-
-</body>
-</html>
+    <scr
