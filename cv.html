@@ -4,93 +4,407 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CV · Amir Rahmani</title>
+
+<meta name="description" content="CV — Amir Rahmani, Postdoctoral Research Associate, University of Cambridge.">
+<meta name="author" content="Amir Rahmani">
+
+<link rel="icon" type="image/png" href="assets/IMG_0897.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles_JCL.css">
+
 <style>
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-:root { --black:#000; --grey:rgb(10,10,10); --white:#fff; --cyan:#26ade4; --muted:rgba(255,255,255,0.6); --faint: rgba(255,255,255,0.5); --nunito:'Nunito',-apple-system,sans-serif; }
-html { scroll-behavior:smooth; }
-body { background:var(--black); color:var(--white); font-family:var(--nunito); font-size:12px; line-height:18px; letter-spacing:0.75px; -webkit-font-smoothing:antialiased; }
-a { color:var(--white); text-decoration:none; transition:color .15s; }
-a:hover { color:var(--cyan); }
+/* ── CV-page-specific overrides ── */
+.cv-hero-section {
+    background-image: url('assets/ER_C8_108.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #000;
+}
 
-nav { position:fixed; top:0; left:0; right:0; z-index:200; height:52px; background:rgba(0,0,0,0.92); backdrop-filter:blur(6px); display:flex; align-items:center; padding:0 32px; justify-content:space-between; border-bottom:0.5px solid rgba(255,255,255,0.07); }
-.nav-brand { font-size:16px; font-weight:700; letter-spacing:0.75px; }
-.nav-links { display:flex; gap:30px; list-style:none; }
-.nav-links a { font-size:12px; font-weight:400; letter-spacing:0.75px; color:var(--muted); padding-bottom:3px; border-bottom:3px solid transparent; transition:color .15s,border-color .15s; }
-.nav-links a:hover { color:var(--white); }
-.nav-links a.active { color:var(--cyan); border-bottom-color:var(--cyan); }
+.cv-hero-inner {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: var(--alpha-color);
+    backdrop-filter: blur(15px) brightness(0.6);
+    -webkit-backdrop-filter: blur(15px) brightness(0.6);
+}
 
-.page-hero { padding:120px 0 60px; text-align:center; background:var(--black); }
-.page-title { font-family:'Varela Round',sans-serif; font-size:clamp(32px,6vw,56px); font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px; }
-.page-sub { font-size:13px; font-weight:300; letter-spacing:0.75px; color:var(--muted); max-width:520px; margin:0 auto; text-align:center; line-height:20px; }
+.cv-hero-text {
+    border-left: 3px solid #ffffff;
+    margin-left: 10%;
+    padding-left: 2rem;
+}
 
-hr.rule { border:none; border-top:0.5px solid rgba(255,255,255,0.1); max-width:1100px; margin:0 auto; }
+.cv-hero-text h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1.2;
+}
 
-.sec { padding:60px 0; }
-.sec.black { background:var(--black); }
-.sec.grey  { background:var(--grey); }
-.wrap { max-width:860px; margin:0 auto; padding:0 36px; }
+.cv-hero-text p {
+    color: rgba(255,255,255,0.55);
+    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    margin-top: 0.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+}
 
-/* CV SECTION */
-.cv-section { margin-bottom:48px; }
-.cv-section-title { font-size:16px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--cyan); margin-bottom:18px; padding-bottom:10px; border-bottom:0.5px solid rgba(38,173,228,0.25); }
+/* ── CV body ── */
+.cv-body {
+    background: #0a0a0a;
+    padding: 3rem 0 4rem;
+}
 
-.cv-row { display:grid; grid-template-columns:110px 1fr; gap:20px; padding:14px 0; border-bottom:0.5px solid rgba(255,255,255,0.07); align-items:start; }
-.cv-row:first-of-type { border-top:0.5px solid rgba(255,255,255,0.07); }
-.cv-date { font-size:12px; font-weight:300; letter-spacing:0.75px; color:var(--faint); padding-top:2px; white-space:nowrap; }
-.cv-body {}
-.cv-role { font-size:14px; font-weight:600; letter-spacing:0.75px; margin-bottom:3px; }
-.cv-org { font-size:13px; font-weight:400; letter-spacing:0.75px; color:var(--cyan); margin-bottom:3px; }
-.cv-detail { font-size:12px; font-weight:300; letter-spacing:0.5px; line-height:17px; color:var(--muted); }
+.cv-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 36px;
+}
 
-/* AWARDS */
-.award-row { display:grid; grid-template-columns:110px 1fr; gap:20px; padding:12px 0; border-bottom:0.5px solid rgba(255,255,255,0.07); }
-.award-row:first-of-type { border-top:0.5px solid rgba(255,255,255,0.07); }
-.award-year { font-size:12px; font-weight:300; letter-spacing:0.75px; color:var(--faint); padding-top:2px; }
-.award-name { font-size:14px; font-weight:600; letter-spacing:0.75px; margin-bottom:2px; }
-.award-org  { font-size:12px; font-weight:300; letter-spacing:0.5px; color:var(--muted); }
+/* ── Section blocks ── */
+.cv-section {
+    margin-bottom: 3rem;
+}
 
-/* PRESENTATIONS */
-.pres-row { display:grid; grid-template-columns:110px 1fr auto; gap:20px; padding:12px 0; border-bottom:0.5px solid rgba(255,255,255,0.07); align-items:start; }
-.pres-row:first-of-type { border-top:0.5px solid rgba(255,255,255,0.07); }
-.pres-date { font-size:12px; font-weight:300; letter-spacing:0.75px; color:var(--faint); padding-top:2px; }
-.pres-name { font-size:13px; font-weight:600; letter-spacing:0.75px; margin-bottom:2px; }
-.pres-loc  { font-size:12px; font-weight:300; letter-spacing:0.5px; color:var(--muted); }
-.pres-type { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--cyan); white-space:nowrap; padding-top:3px; }
+.cv-section-title {
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--titles-color);
+    border-bottom: 0.5px solid rgba(0, 202, 172, 0.25);
+    padding-bottom: 0.6rem;
+    margin-bottom: 3px;
+}
 
-/* SKILLS */
-.skills-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
-.skill-card { background:rgba(255,255,255,0.025); border:0.5px solid rgba(255,255,255,0.07); padding:20px 20px; }
-.skill-cat { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px; }
-.skill-list { font-size:12px; font-weight:300; letter-spacing:0.5px; line-height:18px; color:var(--muted); }
+/* ── Shared row base ── */
+.cv-row,
+.award-row,
+.pres-row {
+    background: var(--alpha-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    margin-bottom: 3px;
+    transition: background 0.3s ease;
+}
 
-footer { border-top:0.5px solid rgba(255,255,255,0.07); padding:22px 36px; max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; font-size:11px; font-weight:300; letter-spacing:0.75px; color:var(--faint); }
-.footer-links { display:flex; gap:20px; }
-footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
+.cv-row:hover,
+.award-row:hover,
+.pres-row:hover {
+    background: var(--alpha-color2);
+}
+
+/* ── Position / Education / Teaching / Service rows ── */
+.cv-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.25rem;
+    align-items: start;
+}
+
+.cv-date {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    padding-top: 3px;
+    white-space: nowrap;
+}
+
+.cv-role {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+
+.cv-org {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--titles-color);
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+
+.cv-detail {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+}
+
+/* ── Awards ── */
+.award-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 0.9rem 1.25rem;
+    align-items: start;
+}
+
+.award-year {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    padding-top: 3px;
+}
+
+.award-name {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2px;
+    line-height: 1.4;
+}
+
+.award-org {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+}
+
+/* ── Presentations ── */
+.pres-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 52px;
+    gap: 1.25rem;
+    padding: 0.9rem 1.25rem;
+    align-items: start;
+}
+
+.pres-date {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    padding-top: 3px;
+}
+
+.pres-name {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 2px;
+    line-height: 1.4;
+}
+
+.pres-loc {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+}
+
+.pres-type {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--titles-color);
+    text-align: right;
+    padding-top: 3px;
+    white-space: nowrap;
+}
+
+/* ── Skills grid ── */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+}
+
+.skill-card {
+    background: var(--alpha-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1rem 1.25rem;
+    transition: background 0.3s ease;
+}
+
+.skill-card:hover {
+    background: var(--alpha-color2);
+}
+
+.skill-cat {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--titles-color);
+    margin-bottom: 6px;
+}
+
+.skill-list {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+}
+
+/* ── Peer review row ── */
+.service-row {
+    background: var(--alpha-color);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    transition: background 0.3s ease;
+}
+
+.service-row:hover {
+    background: var(--alpha-color2);
+}
+
+.service-label {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    padding-top: 3px;
+}
+
+.service-journals {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* ── Footer (override for CV page) ── */
+.cv-footer {
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 36px;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+}
+
+.cv-footer a {
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.cv-footer a:hover {
+    color: var(--titles-color);
+}
+
+.cv-footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 1080px) {
+    .cv-hero-section {
+        background-attachment: scroll;
+    }
+
+    .cv-hero-text {
+        margin-left: 2rem;
+    }
+
+    .cv-wrap {
+        padding: 0 1rem;
+    }
+
+    .cv-row {
+        grid-template-columns: 100px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .award-row {
+        grid-template-columns: 50px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .pres-row {
+        grid-template-columns: 70px 1fr 44px;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .service-row {
+        grid-template-columns: 100px 1fr;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .cv-footer-links {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">Home</a>
-  <ul class="nav-links">
-    <li><a href="research.html">Research</a></li>
-    <li><a href="cv.html" class="active">CV</a></li>
-    <li><a href="notes.html">Outreach and News</a></li>
-  </ul>
-</nav>
+<!-- ══ NAV ══ -->
+<header>
+  <nav id="navbar">
+    <ul class="sidebar">
+      <li onclick="hideSidebar()"><a><img src="icons/close.svg" loading="eager" decoding="async"></a></li>
+      <li><a href="research.html">| RESEARCH</a></li>
+      <li><a href="index.html#publications">| PUBLICATIONS</a></li>
+      <li><a href="notes.html">| OUTREACH</a></li>
+      <li><a href="#contact">| CONTACT</a></li>
+    </ul>
+    <ul>
+      <li><a href="index.html"><img class="lab-logo" src="assets/LogoBW.svg" alt="Logo" loading="eager" decoding="async"> Amir Rahmani</a></li>
+      <li class="hideonmobile"><a href="research.html">| RESEARCH</a></li>
+      <li class="hideonmobile"><a href="index.html#publications">| PUBLICATIONS</a></li>
+      <li class="hideonmobile"><a href="notes.html">| OUTREACH</a></li>
+      <li class="hideonmobile"><a href="cv.html" style="color:var(--titles-color);">| CV</a></li>
+      <li class="hideonmobile"><a href="index.html#contact">| CONTACT</a></li>
+      <li class="menu-icon" onclick="showSidebar()"><a><img src="assets/LogoBW.svg" alt="Logo" loading="eager" decoding="async"></a></li>
+    </ul>
+  </nav>
+</header>
 
-<div class="page-hero">
-  <h1 class="page-title">CV</h1>
-  <p class="page-sub">Amir Rahmani · Research Associate · University of Cambridge · Cambridge, UK</p>
-</div>
+<!-- ══ HERO ══ -->
+<section class="cv-hero-section">
+  <div class="cv-hero-inner">
+    <div class="cv-hero-text">
+      <h1>CV</h1>
+      <p>Amir Rahmani &nbsp;·&nbsp; Postdoctoral Research Associate &nbsp;·&nbsp; University of Cambridge &nbsp;·&nbsp; Cambridge, UK</p>
+    </div>
+  </div>
+</section>
 
-<hr class="rule">
-
-<section class="sec black">
-  <div class="wrap">
+<!-- ══ CV BODY ══ -->
+<div class="cv-body">
+  <div class="cv-wrap">
 
     <!-- POSITIONS -->
     <div class="cv-section">
@@ -98,7 +412,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">Oct 2025–present</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Postdoctoral Research Associate</p>
           <p class="cv-org">Kaminski Group · Dept. of Chemical Engineering &amp; Biotechnology, University of Cambridge, UK</p>
           <p class="cv-detail">In collaboration with the British Antarctic Survey</p>
@@ -108,15 +422,15 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">Oct 2025–present</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">College Research Associate</p>
           <p class="cv-org">Wolfson College, University of Cambridge, UK</p>
         </div>
       </div>
-      
+
       <div class="cv-row">
         <div class="cv-date">Mar–Sep 2025</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Postdoctoral Research Assistant</p>
           <p class="cv-org">Kaminski Group · University of Cambridge, UK</p>
           <p class="cv-detail">UKRI Cross Research Council Responsive Mode (CRCRM)</p>
@@ -125,7 +439,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">Oct 2021–Sep 2025</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Doctoral Researcher</p>
           <p class="cv-org">Ponjavic Lab · School of Physics and Astronomy, University of Leeds, UK</p>
           <p class="cv-detail">Funded by EPSRC Doctoral Training Studentship</p>
@@ -134,7 +448,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">2020</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Research Trainee</p>
           <p class="cv-org">ICFO – The Institute of Photonic Sciences · Barcelona, Spain</p>
           <p class="cv-detail">Supervisor: Prof. Stefan Wieser</p>
@@ -143,7 +457,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">2019</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Research Trainee</p>
           <p class="cv-org">EMBL Heidelberg · Heidelberg, Germany</p>
           <p class="cv-detail">Supervisor: Prof. Jonas Ries</p>
@@ -157,7 +471,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">2025</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">PhD in Physics</p>
           <p class="cv-org">University of Leeds, Leeds, UK</p>
           <p class="cv-detail">Dissertation: Single-molecule imaging flow cytometry</p>
@@ -166,7 +480,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">2019</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">BSc in Physics</p>
           <p class="cv-org">Aryamehr University of Technology, Tehran, Iran</p>
         </div>
@@ -184,6 +498,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
           <p class="award-org">Focus on Microscopy · Taipei, Taiwan</p>
         </div>
       </div>
+
       <div class="award-row">
         <div class="award-year">2024</div>
         <div>
@@ -191,6 +506,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
           <p class="award-org">EPFL LATSIS Symposium on Smart Microscopy · Lausanne, Switzerland</p>
         </div>
       </div>
+
       <div class="award-row">
         <div class="award-year">2024</div>
         <div>
@@ -198,6 +514,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
           <p class="award-org">The Company of Biologists Ltd, UK</p>
         </div>
       </div>
+
       <div class="award-row">
         <div class="award-year">2021</div>
         <div>
@@ -205,6 +522,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
           <p class="award-org">UKRI, UK</p>
         </div>
       </div>
+
       <div class="award-row">
         <div class="award-year">2020</div>
         <div>
@@ -226,6 +544,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Poster</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Jun 2024</div>
         <div>
@@ -234,6 +553,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Oral</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Aug 2023</div>
         <div>
@@ -242,6 +562,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Poster</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Dec 2023</div>
         <div>
@@ -250,6 +571,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Oral</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Mar 2023</div>
         <div>
@@ -258,6 +580,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Oral</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Jan 2023</div>
         <div>
@@ -266,6 +589,7 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
         </div>
         <div class="pres-type">Poster</div>
       </div>
+
       <div class="pres-row">
         <div class="pres-date">Sep 2022</div>
         <div>
@@ -282,21 +606,23 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
 
       <div class="cv-row">
         <div class="cv-date">2025–2026</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Teaching Assistant — Computational Skills: Python</p>
           <p class="cv-org">University of Cambridge, Cambridge, UK</p>
         </div>
       </div>
+
       <div class="cv-row">
         <div class="cv-date">2022–2024</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Teaching Assistant — Computational Skills: Python</p>
           <p class="cv-org">University of Leeds, Leeds, UK</p>
         </div>
       </div>
+
       <div class="cv-row">
         <div class="cv-date">2022–2024</div>
-        <div class="cv-body">
+        <div>
           <p class="cv-role">Teaching Assistant — Introduction to Experimental Physics</p>
           <p class="cv-org">University of Leeds, Leeds, UK</p>
         </div>
@@ -306,12 +632,13 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
     <!-- SERVICE & REVIEWING -->
     <div class="cv-section">
       <h2 class="cv-section-title">Service &amp; Reviewing</h2>
-      <div class="cv-row" style="border-top:0.5px solid rgba(255,255,255,0.07);">
-        <div class="cv-date">Peer review</div>
-        <div class="cv-body">
-          <p class="cv-detail" style="color:rgba(255,255,255,0.75);">
-            <em>Nature Communications</em> · <em>Optics Letters</em> · <em>Optics Express</em> · <em>Biomedical Optics Express</em>
-          </p>
+      <div class="service-row">
+        <div class="service-label">Peer review</div>
+        <div class="service-journals">
+          <em>Nature Communications</em> &nbsp;·&nbsp;
+          <em>Optics Letters</em> &nbsp;·&nbsp;
+          <em>Optics Express</em> &nbsp;·&nbsp;
+          <em>Biomedical Optics Express</em>
         </div>
       </div>
     </div>
@@ -343,15 +670,19 @@ footer a { color:var(--faint); } footer a:hover { color:var(--cyan); }
       </div>
     </div>
 
-  </div>
-</section>
+  </div><!-- /cv-wrap -->
 
-<footer>
-  <span>© 2026 Amir Rahmani</span>
-  <div class="footer-links">
-    <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">ORCiD 0000-0002-2730-6099</a>
-    <a href="mailto:ar2368@cam.ac.uk">ar2368@cam.ac.uk</a>
+  <!-- FOOTER -->
+  <div class="cv-footer">
+    <span>© 2026 Amir Rahmani</span>
+    <div class="cv-footer-links">
+      <a href="https://orcid.org/0000-0002-2730-6099" target="_blank">ORCiD 0000-0002-2730-6099</a>
+      <a href="mailto:ar2368@cam.ac.uk">ar2368@cam.ac.uk</a>
+    </div>
   </div>
-</footer>
+
+</div><!-- /cv-body -->
+
+<script src="App_q.js"></script>
 </body>
 </html>
