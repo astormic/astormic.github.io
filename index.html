@@ -164,261 +164,49 @@
              data-href → the paper's own URL, opened when the title link is clicked
         ──────────────────────────────────────────────────────────────────── -->
 
-        <div class="pub-row" data-doi="10.64898/2026.04.24.720652" data-href="https://doi.org/10.64898/2026.04.24.720652">
+        <div class="pub-row">
             <div class="pub-row-main">
                 <span class="pub-row-title">Antarctic fish cell cultures show adaptation of organelle morphology and dynamics to extreme cold.</span>
                 <span class="pub-row-authors">Tartwijk, FWv.<sup>†</sup>, Marty, APM.<sup>†</sup>, <span class="pub-row-self">Rahmani, A.</span>, Jia, Y., Ward, E., Hussain, I., Peck, L., Kaminski, C., Clark, M.</span>
                 <span class="pub-row-journal">bioRxiv (2026)</span>
             </div>
-            <div class="pub-row-meta">
-                <span class="pub-cited-by">Cited by —</span>
-                <span class="pub-type-pill pub-type-preprint">preprint</span>
-            </div>
         </div>
-        <div class="pub-citations-panel" hidden></div>
 
-        <div class="pub-row" data-doi="10.1002/9781394232413.ch1" data-href="https://doi.org/10.1002/9781394232413.ch1">
+        <div class="pub-row">
             <div class="pub-row-main">
                 <span class="pub-row-title">Super-Resolution Imaging.</span>
                 <span class="pub-row-authors">Curd, A., <span class="pub-row-self">Rahmani, A.</span>, Umney, O., Ponjavic, A., Peckham, M.</span>
                 <span class="pub-row-journal">Live Biological Imaging Across Scales (2026)</span>
             </div>
-            <div class="pub-row-meta">
-                <span class="pub-cited-by">Cited by —</span>
-                <span class="pub-type-pill pub-type-book">book</span>
-            </div>
         </div>
-        <div class="pub-citations-panel" hidden></div>
 
-        <div class="pub-row" data-doi="10.1101/2025.08.26.672174" data-href="https://doi.org/10.1101/2025.08.26.672174">
+        <div class="pub-row">
             <div class="pub-row-main">
                 <span class="pub-row-title">Single-molecule flow cytometry.</span>
                 <span class="pub-row-authors"><span class="pub-row-self">Rahmani, A.</span>, Christie, M., Truesdale, A., Thorne, J., Ponjavic, A.</span>
                 <span class="pub-row-journal">bioRxiv (2025)</span>
             </div>
-            <div class="pub-row-meta">
-                <span class="pub-cited-by">Cited by —</span>
-                <span class="pub-type-pill pub-type-preprint">preprint</span>
-            </div>
         </div>
-        <div class="pub-citations-panel" hidden></div>
 
-        <div class="pub-row" data-doi="10.1364/BOE.549699" data-href="https://opg.optica.org/boe/fulltext.cfm?uri=boe-16-3-1216">
+        <div class="pub-row">
             <div class="pub-row-main">
                 <span class="pub-row-title">Active remote focus stabilization in oblique plane microscopy.</span>
                 <span class="pub-row-authors">Nguyen, T. D., <span class="pub-row-self">Rahmani, A.</span>, Ponjavic, A., Millett-Sikking, A., Fiolka, R.</span>
                 <span class="pub-row-journal">Biomedical Optics Express (2025)</span>
             </div>
-            <div class="pub-row-meta">
-                <span class="pub-cited-by">Cited by —</span>
-                <span class="pub-type-pill pub-type-journal">journal</span>
-            </div>
         </div>
-        <div class="pub-citations-panel" hidden></div>
 
-        <div class="pub-row" data-doi="10.1364/OE.519802" data-href="https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-8-13331">
+        <div class="pub-row">
             <div class="pub-row-main">
                 <span class="pub-row-title">Astigmatism-based active focus stabilisation with universal objective lens compatibility, extended operating range and nanometer precision.</span>
                 <span class="pub-row-authors"><span class="pub-row-self">Rahmani, A.</span>, Cox, T., Achary, A. T. A., Ponjavic, A.</span>
                 <span class="pub-row-journal">Optics Express (2024)</span>
             </div>
-            <div class="pub-row-meta">
-                <span class="pub-cited-by">Cited by —</span>
-                <span class="pub-type-pill pub-type-journal">journal</span>
-            </div>
         </div>
-        <div class="pub-citations-panel" hidden></div>
 
     </div>
 
-    <style>
-      /* ── Row becomes a button-like container ── */
-      .pub-row {
-        cursor: pointer;
-        transition: background 0.15s;
-        border-radius: 4px;
-      }
-      .pub-row:hover { background: rgba(255,255,255,0.04); }
-      .pub-row.pub-row--open { background: rgba(255,255,255,0.06); }
 
-      /* "Cited by X" badge */
-      .pub-cited-by {
-        font-size: 0.78rem;
-        opacity: 0.65;
-        white-space: nowrap;
-        letter-spacing: 0.02em;
-      }
-      .pub-cited-by.loading { opacity: 0.4; font-style: italic; }
-
-      /* Expand/collapse chevron on the row */
-      .pub-row-chevron {
-        margin-left: auto;
-        font-size: 0.7rem;
-        opacity: 0.5;
-        transition: transform 0.2s;
-        flex-shrink: 0;
-      }
-      .pub-row--open .pub-row-chevron { transform: rotate(180deg); }
-
-      /* Citations panel */
-      .pub-citations-panel {
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.35s ease, padding 0.2s;
-        padding: 0 1rem;
-        border-left: 2px solid rgba(255,255,255,0.12);
-        margin: 0 0.5rem 0.5rem 0.5rem;
-      }
-      .pub-citations-panel.pub-panel--open {
-        max-height: 600px;
-        padding: 0.75rem 1rem;
-      }
-      .pub-citations-panel[hidden] { display: block; } /* override so transition works */
-
-      .pub-cit-list {
-        list-style: none;
-        margin: 0; padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
-      }
-      .pub-cit-item a {
-        display: block;
-        font-size: 0.8rem;
-        line-height: 1.35;
-        opacity: 0.85;
-        text-decoration: none;
-        color: inherit;
-      }
-      .pub-cit-item a:hover { opacity: 1; text-decoration: underline; }
-      .pub-cit-item .cit-authors {
-        font-size: 0.72rem;
-        opacity: 0.5;
-        margin-top: 0.1rem;
-      }
-      .pub-cit-msg {
-        font-size: 0.8rem;
-        opacity: 0.5;
-        font-style: italic;
-      }
-    </style>
-
-    <script>
-    (function () {
-      // Cache so we don't re-fetch on repeated opens
-      const cache = {};
-
-      async function fetchCitations(doi) {
-        if (cache[doi]) return cache[doi];
-        const url = `https://api.semanticscholar.org/graph/v1/paper/DOI:${doi}?fields=citationCount,citations.title,citations.authors,citations.year,citations.externalIds`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(res.status);
-        const data = await res.json();
-        cache[doi] = data;
-        return data;
-      }
-
-      function authorStr(authors) {
-        if (!authors || authors.length === 0) return '';
-        if (authors.length <= 3) return authors.map(a => a.name).join(', ');
-        return authors.slice(0, 3).map(a => a.name).join(', ') + ' et al.';
-      }
-
-      function paperUrl(paper) {
-        const ids = paper.externalIds || {};
-        if (ids.DOI) return `https://doi.org/${ids.DOI}`;
-        if (ids.ArXiv) return `https://arxiv.org/abs/${ids.ArXiv}`;
-        return null;
-      }
-
-      function renderPanel(panel, data) {
-        const cits = data.citations || [];
-        if (cits.length === 0) {
-          panel.innerHTML = `<p class="pub-cit-msg">No citing papers found in Semantic Scholar.</p>`;
-          return;
-        }
-        // Sort by year descending
-        cits.sort((a, b) => (b.year || 0) - (a.year || 0));
-        const items = cits.map(c => {
-          const url = paperUrl(c);
-          const inner = `<strong>${c.title || 'Untitled'}</strong>
-            <div class="cit-authors">${authorStr(c.authors)}${c.year ? ' · ' + c.year : ''}</div>`;
-          return `<li class="pub-cit-item">${url
-            ? `<a href="${url}" target="_blank" rel="noopener">${inner}</a>`
-            : `<div>${inner}</div>`}</li>`;
-        }).join('');
-        panel.innerHTML = `<ul class="pub-cit-list">${items}</ul>`;
-      }
-
-      async function initRow(row) {
-        const doi = row.dataset.doi;
-        const href = row.dataset.href;
-        const badge = row.querySelector('.pub-cited-by');
-        const panel = row.nextElementSibling; // .pub-citations-panel
-
-        // Add chevron to meta bar
-        const meta = row.querySelector('.pub-row-meta');
-        const chevron = document.createElement('span');
-        chevron.className = 'pub-row-chevron';
-        chevron.textContent = '▾';
-        meta.appendChild(chevron);
-
-        // Fetch count eagerly (non-blocking)
-        if (doi) {
-          badge.classList.add('loading');
-          badge.textContent = 'Cited by …';
-          fetchCitations(doi).then(data => {
-            const n = data.citationCount ?? (data.citations ? data.citations.length : 0);
-            badge.textContent = `Cited by ${n}`;
-            badge.classList.remove('loading');
-          }).catch(() => {
-            badge.textContent = 'Cited by —';
-            badge.classList.remove('loading');
-          });
-        }
-
-        // Click handler
-        row.addEventListener('click', async (e) => {
-          // If clicking the title, navigate instead
-          if (e.target.closest('.pub-row-title') && href) {
-            window.open(href, '_blank', 'noopener');
-            return;
-          }
-
-          const isOpen = row.classList.contains('pub-row--open');
-
-          // Close any other open row first
-          document.querySelectorAll('.pub-row--open').forEach(r => {
-            r.classList.remove('pub-row--open');
-            r.nextElementSibling.classList.remove('pub-panel--open');
-          });
-
-          if (isOpen) return; // was open → just close
-
-          row.classList.add('pub-row--open');
-          panel.classList.add('pub-panel--open');
-
-          // Load citations if not yet rendered
-          if (!panel.dataset.loaded) {
-            panel.dataset.loaded = 'true';
-            if (!doi) {
-              panel.innerHTML = `<p class="pub-cit-msg">No DOI available.</p>`;
-              return;
-            }
-            panel.innerHTML = `<p class="pub-cit-msg">Loading citing papers…</p>`;
-            try {
-              const data = await fetchCitations(doi);
-              renderPanel(panel, data);
-            } catch {
-              panel.innerHTML = `<p class="pub-cit-msg">Could not load citations — check Semantic Scholar directly.</p>`;
-            }
-          }
-        });
-      }
-
-      document.querySelectorAll('.pub-row').forEach(initRow);
-    })();
-    </script>
 
     <div class="more-publications">
         <a href="https://scholar.google.co.uk/citations?user=ALIOYIsAAAAJ&hl=en">| Full Publication List</a>
