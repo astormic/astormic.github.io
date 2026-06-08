@@ -30,14 +30,27 @@
         z-index: 0;
         pointer-events: none;
     }
-    header, .notes-page-hero, main, footer {
+    /* header needs a higher stacking context so the fixed navbar
+       isn't blocked by .notes-page-hero or main — same z-index +
+       later DOM position = painted on top = intercepts clicks first */
+    header {
+        position: relative;
+        z-index: 100;
+    }
+    .notes-page-hero, main, footer {
         position: relative;
         z-index: 1;
     }
 
     nav a.active { color: var(--titles-color); }
 
-    .notes-page-hero { padding-top: calc(4vh + 40px); }
+    /* .notes-page-hero's block box starts at y=0, directly behind
+       the fixed navbar. pointer-events:none prevents it blocking
+       any click that should reach the navbar links */
+    .notes-page-hero {
+        padding-top: calc(4vh + 40px);
+        pointer-events: none;
+    }
 
     .content-panel {
         max-width: 920px;
